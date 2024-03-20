@@ -1,0 +1,114 @@
+.mainContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: calc(100vh - 81px);
+    margin: 0 auto;
+    padding: 0 180px;
+    max-width: 1440px;
+}
+
+.pictureOne {
+    background-color: #4463E3;
+    width: 242px;
+    height: 242px;
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    left: -162px;
+    filter: blur(200px);
+}
+
+.pictureTwo {
+    background-color: #4463E3;
+    width: 200px;
+    height: 200px;
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 0;
+    filter: blur(200px);
+}
+
+.blockHeader {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    flex-direction: column;
+    align-self: flex-end;
+    margin-bottom: 120px;
+}
+
+.blockWebThree {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 24px;
+    gap: 8px;
+}
+
+.blockWebThree p {
+    margin: 0;
+}
+
+.webThreeLabel {
+    border-radius: 120px;
+    padding: 6px 8px;
+    background-color: rgba(91, 140, 243, 0.05);
+    color: rgba(91, 140, 243, 1);
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 16px;
+}
+
+.webThreeText {
+    color: rgba(163, 163, 163, 1);
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 16px;
+    text-transform: uppercase;
+}
+
+.blockMain {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 40px;
+}
+
+.blockMain h1 {
+    margin: 0;
+}
+
+.blockMainH {
+    color: rgba(26, 29, 38, 1);
+    font-size: 64px;
+    font-weight: 700;
+    line-height: 64px;
+}
+
+.blockMainText {
+    background: -webkit-linear-gradient(left, #5B8CF3, #CB5BF3);
+    background: linear-gradient(left, #5B8CF3, #CB5BF3);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 700;
+    font-size: 64px;
+    line-height: 79px;
+}
+
+.buttonAdd {
+    border-radius: 120px;
+    padding: 16px 24px;
+    background-color: #5B8CF3;
+    color: #FFFFFF;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+    border: none;
+    outline: none;
+}
+
+.blockImg {
+    display: flex;
+    align-self: flex-start;
+}

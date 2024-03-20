@@ -1,0 +1,53 @@
+.headerDemoMain {
+    border-bottom: 1px solid #F8F8F8;
+    width: 100%;
+}
+
+.headerDemo {
+    max-width: 1440px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 180px;
+}
+
+.headerDemoLogoContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.headerDemoLogoContainer svg {
+    margin-right: 12px;
+}
+
+.logoText {
+    color: rgba(26, 29, 38, 1);
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 32px;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.headerLinks {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.headerButtonConnectWallet {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 20px;
+    border-radius: 120px;
+    background-color: #EFF4FE;
+    color: #5B8CF3;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 24px;
+    border: none;
+    outline: none;
+}

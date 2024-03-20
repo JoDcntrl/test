@@ -1,0 +1,7 @@
+import React, {FC} from 'react';
+
+export const XSocial: FC<React.SVGProps<SVGSVGElement>> = () => (
+	<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+		<path fillRule="evenodd" clipRule="evenodd" d="M12 0C5.37258 0 0 5.37258 0 12C0 18.6274 5.37258 24 12 24C18.6274 24 24 18.6274 24 12C24 5.37258 18.6274 0 12 0ZM5.25 6.09375L10.3073 12.378L5.54894 17.8946H7.76705L11.3759 13.7058L14.7562 17.9062H18.75L13.4443 11.305L17.919 6.11124H15.7128L12.3776 9.97787L9.25576 6.09375H5.25ZM8.67318 7.25812H7.70619L15.3383 16.7419H16.2957L8.67318 7.25812Z" fill="#D9D9D9"/>
+	</svg>
+)
