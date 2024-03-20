@@ -8,3 +8,8 @@
     font-size: calc($mobSize + $addMobSize * ((100vw - 320px) / $maxWidth));
   }
 }
+
+$text-primary: #1B1E27;
+$text-secondary: #8C8C8C;
+$main-primary: #5B8CF3;
+$bg-card: #FAFAFA;
