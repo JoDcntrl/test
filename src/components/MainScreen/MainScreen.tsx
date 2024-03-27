@@ -2,7 +2,7 @@ import React from "react";
 
 import {LogoMain} from "@/assets/svgs/LogoMain";
 
-import './mainScreen.css'
+import './mainScreen.scss'
 
 const MainScreen: React.FC = () => (
 	<main className='mainContainer'>

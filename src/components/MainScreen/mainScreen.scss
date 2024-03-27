@@ -1,3 +1,5 @@
+@import '../../assets/core/_variables.scss';
+
 .mainContainer {
     display: flex;
     align-items: center;
@@ -87,8 +89,7 @@
 }
 
 .blockMainText {
-    background: -webkit-linear-gradient(left, #5B8CF3, #CB5BF3);
-    background: linear-gradient(left, #5B8CF3, #CB5BF3);
+    background-image: linear-gradient(125deg, #5B8CF3, #CB5BF3);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-weight: 700;
@@ -109,6 +110,8 @@
 }
 
 .blockImg {
+    max-width: 552px;
+    width: 100%;
     display: flex;
     align-self: flex-start;
 }
