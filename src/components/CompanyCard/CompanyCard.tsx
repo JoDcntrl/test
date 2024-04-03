@@ -7,8 +7,8 @@ import {Fire} from "@/components/CompanyCard/Fire";
 
 import styles from './CompanyCard.module.scss'
 
-const CompanyCard: React.FC<CompanyCardTypes> = ({logo, title, description, city, vacancyNumber}) => (
-	<div className={styles.content}>
+const CompanyCard: React.FC<CompanyCardTypes> = ({logo, title, description, city, vacancyNumber, ...props}) => (
+	<div className={styles.content} {...props}>
 		<Image src={logo} alt='Company image' width={48} height={48}/>
 		<div className={styles.descriptionBlock}>
 			<h3 className={styles.title}>

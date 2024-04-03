@@ -7,8 +7,8 @@ import {VacancyCardTypes} from "@/components/VacancyCard/VacancyCard.types";
 
 import styles from './VacancyCard.module.scss';
 
-const VacancyCard: React.FC<VacancyCardTypes> = ({name, experience, mode, city, description, salary, company, logo, date, className}) => (
-	<div className={cn(className, styles.cardContainer)}>
+const VacancyCard: React.FC<VacancyCardTypes> = ({name, experience, mode, city, description, salary, company, logo, date, className, ...props}) => (
+	<div className={cn(className, styles.cardContainer)} {...props}>
 		<div className={styles.cardHeader}>
 			<h3 className={styles.vacancyTitle}>{name}</h3>
 			<p className={styles.vacancySalary}>From {priceRu(salary)}</p>

@@ -6,8 +6,8 @@ import {CompanyPromoTypes} from "@/components/CompanyPromo/CompanyPromo.types";
 
 import styles from './CompanyPromo.module.scss';
 
-const CompanyPromo: React.FC<CompanyPromoTypes> = ({logo, className}) => (
-	<div className={cn(className, styles.cardContainer)}>
+const CompanyPromo: React.FC<CompanyPromoTypes> = ({logo, className, ...props}) => (
+	<div className={cn(className, styles.cardContainer)} {...props}>
 		<Image src={logo} alt='company image'/>
 	</div>
 )
