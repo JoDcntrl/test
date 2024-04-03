@@ -1,0 +1,11 @@
+@import '@/assets/core/_variables.scss';
+
+.cardContainer {
+  background-color: $bg-card;
+  padding: 28px 42px;
+  border-right: 24px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
