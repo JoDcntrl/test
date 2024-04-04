@@ -1,0 +1,64 @@
+.footerDemoMain {
+    width: 100%;
+    background-color: white;
+}
+
+.footerDemo {
+    max-width: 1440px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 180px 32px 180px;
+    padding-top: 48px;
+    align-items: start;
+}
+
+.footerDemoLogoContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.footerDemoLogoContainer svg {
+    margin-right: 12px;
+}
+
+.logoText {
+    color: rgba(26, 29, 38, 1);
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 32px;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+.footerMenu {
+    display: flex;
+}
+.footerList {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    height: 132px;
+    list-style: none;
+    flex-direction: column;
+}
+.footerListItem {
+    display: block;
+    text-decoration: none;
+    font-weight: 600;
+    line-height: 24px;
+
+}
+.footerIcons {
+    display: flex;
+    gap: 0px 12px;
+}
+.footerDemoBottom {
+    max-width: 1080px;
+    display: flex;
+    margin: 0 auto;
+    justify-content: space-between;
+    align-items: start;
+    border-top: 1px solid rgb(242, 242, 242);
+    padding-top: 32px;
+}

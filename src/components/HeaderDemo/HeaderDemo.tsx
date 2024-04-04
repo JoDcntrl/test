@@ -1,10 +1,10 @@
 import React from "react";
 import cn from 'classnames';
 
-import {Logo} from "@/assets/svgs/Logo";
 import Link from "@/components/Link/Link";
-
 import {HeaderDemoTypes} from "@/components/HeaderDemo/Header.types"
+
+import {Logo} from "@/assets/svgs/Logo";
 
 import './headerDemo.css';
 
