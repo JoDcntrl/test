@@ -1,0 +1,10 @@
+@media(max-width: 627px){
+  .footerDemo {
+    justify-content: center;
+  }
+}
+@media(max-width: 845px){
+  .footerDemo {
+    justify-content: space-around;
+  }
+}

@@ -1,6 +1,8 @@
 import React from "react";
 
+import Link from "next/link";
 import {FooterDemoTypes} from "@/components/Footer/Footer.types"
+
 import {Logo} from "@/assets/svgs/Logo";
 import {Shape} from '../../assets/svgs/Shape'
 import {Subtract} from '../../assets/svgs/Subtract'
@@ -9,7 +11,7 @@ import {Frame} from '../../assets/svgs/Frame'
 import {Telegram} from '../../assets/svgs/Telegram'
 
 import './footerDemo.css';
-
+import './footerDemoResponsive.css'
 
 const FooterDemo: React.FC<FooterDemoTypes> = () => {
 	return (
@@ -21,30 +23,44 @@ const FooterDemo: React.FC<FooterDemoTypes> = () => {
 				</div>
 				<nav className="footerMenu">
 					<ul className='footerList'>
-						<li className='footerListItem'>Open jobs</li>
-						<li className='footerListItem'>Companies</li>
-						<li className='footerListItem'>Specialists</li>
-						<li className='footerListItem'>Blog</li>
-					</ul>
-				</nav>
-				<nav className="footerMenu">
-					<ul className='footerList'>
-						<li className='footerListItem'>Support&feedback</li>
-						<li className='footerListItem'>Affiliate program</li>
-						<li className='footerListItem'>Privacy Policy</li>
-						<li className='footerListItem'>Terms of Use</li>
+						<li className='footerListItem'>
+							<Link className='footerListLink' href={""}>Open jobs</Link>
+						</li>
+						<li className='footerListItem'>
+							<Link className='footerListLink' href={""} >Companies</Link>
+						</li>
+						<li className='footerListItem'>
+							<Link className='footerListLink' href={""}>Specialists</Link>
+						</li>
+						<li className='footerListItem'>
+							<Link className='footerListLink' href={""}>Blog</Link>
+						</li>
+						<li className='footerListItem'>
+							<Link className='footerListLink' href={""}>Support&feedback</Link>
+						</li>
+						<li className='footerListItem'>
+							<Link className='footerListLink' href={""}>Affiliate program</Link>
+						</li>
+						<li className='footerListItem'>
+							<Link className='footerListLink' href={""}>Privacy Policy</Link>
+						</li>
+						<li className='footerListItem'>
+							<Link className='footerListLink' href={""}>Terms of Use</Link>
+						</li>
+						
 					</ul>
 				</nav>
 				<div className="footerIcons">
-					<Shape/>
-					<Subtract/>
-					<Google/>
-					<Frame/>
-					<Telegram/>
+				<Link className='footerListLink' href={""} ><Shape/></Link>
+				<Link className='footerListLink' href={""} ><Subtract/></Link>
+				<Link className='footerListLink' href={""} ><Google/></Link>
+				<Link className='footerListLink' href={""} ><Frame/></Link>
+				<Link className='footerListLink' href={""} ><Telegram/></Link>
 				</div>
 			</div>
 			<div className="footerDemoBottom">
-				© Decentral job
+				<span className="footerBottomLeft">© Decentral job</span>
+				<span className="footerBottomRight">2024</span>
 			</div>	
 		</footer>
 	);

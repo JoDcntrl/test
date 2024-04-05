@@ -4,19 +4,23 @@
 }
 
 .footerDemo {
-    max-width: 1440px;
+    max-width: 1080px;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
-    padding: 0px 180px 32px 180px;
+    padding: 0px 20px 32px 20px;
     padding-top: 48px;
-    align-items: start;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 12px 10px;
 }
 
 .footerDemoLogoContainer {
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
+    margin-top: 15px;
 }
 
 .footerDemoLogoContainer svg {
@@ -31,34 +35,57 @@
     text-transform: uppercase;
     white-space: nowrap;
 }
+
 .footerMenu {
     display: flex;
+    width: 380px;
+    margin-top: 15px;
 }
 .footerList {
+    width: 100%;
+    gap: 0px 20px;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    align-content: space-between;
     height: 132px;
     list-style: none;
     flex-direction: column;
 }
 .footerListItem {
-    display: block;
+    margin-bottom: 13px;
+}
+.footerListLink {
+    width: fit-content;
+    margin-top: 15px;
     text-decoration: none;
     font-weight: 600;
-    line-height: 24px;
-
+    line-height: 20px;
+    cursor: pointer;
+}
+.footerListLink:hover {
+    color: rgb(136, 136, 136);
 }
 .footerIcons {
     display: flex;
     gap: 0px 12px;
+    cursor: pointer;
 }
 .footerDemoBottom {
     max-width: 1080px;
     display: flex;
     margin: 0 auto;
     justify-content: space-between;
-    align-items: start;
+    align-items: flex-start;
     border-top: 1px solid rgb(242, 242, 242);
-    padding-top: 32px;
+    padding: 32px;
+}
+.footerBottomLeft {
+    color: rgb(136, 136, 136);
+    font-size: 12px;
+    font-weight: 500;
+}
+.footerBottomRight {
+    color: rgb(136, 136, 136);
+    font-size: 12px;
+    font-weight: 500;
 }
