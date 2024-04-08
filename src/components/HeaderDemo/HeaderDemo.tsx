@@ -1,6 +1,6 @@
 'use client'
 
-import React from "react";
+import { useState, useEffect } from "react";
 import cn from 'classnames';
 
 import Link from "@/components/Link/Link";
@@ -14,9 +14,13 @@ import { Cross } from "@/assets/svgs/Cross";
 import './headerDemo.scss';
 
 const HeaderDemo: React.FC<HeaderDemoTypes> = ({ className, ...props }) => {
-	const [activeBurger, setActiveBurger] = React.useState(false)
+	const [activeBurger, setActiveBurger] = useState(false)
 
-	React.useEffect(() => {
+	const toggleBurger = () => {
+		setActiveBurger((prev) => !prev)
+	}
+
+	useEffect(() => {
 		if (activeBurger) {
 			document.querySelector('body')?.style.setProperty("position", "fixed")
 		}
@@ -47,7 +51,7 @@ const HeaderDemo: React.FC<HeaderDemoTypes> = ({ className, ...props }) => {
 					</button>
 				</div>
 			</div>
-			{activeBurger ? <Cross onClick={() => setActiveBurger((prev) => !prev)} /> : <div className="headerDemoBurger" onClick={() => setActiveBurger((prev) => !prev)}><Burger /></div>}
+			{activeBurger ? <div onClick={toggleBurger} className="headerDemoCross"><Cross /></div> : <div className="headerDemoBurger" onClick={toggleBurger}><Burger /></div>}
 
 		</header>
 	);

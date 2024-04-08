@@ -17,18 +17,6 @@
     gap: 12px 10px;
 }
 
-@media(max-width: 627px) {
-    .footerDemo {
-        justify-content: center;
-    }
-}
-
-@media(max-width: 875px) {
-    .footerDemo {
-        justify-content: start;
-    }
-}
-
 .footerDemoLogoContainer {
     display: flex;
     align-items: center;
@@ -56,12 +44,7 @@
     width: 100%;
     padding: 0 15px;
     padding-top: 15px;
-}
-
-@media(max-width: 875px) {
-    .footerMenu {
-        margin: 0 auto;
-    }
+    margin: 0 auto;
 }
 
 .footerList {

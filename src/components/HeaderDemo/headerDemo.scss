@@ -67,7 +67,7 @@
 
 @media (max-width:1024px) {
     .headerDemo {
-        transform: translateY(-100%);
+        top: -100%;
         position: fixed;
         width: 100%;
         gap: 30px 0;
@@ -75,6 +75,7 @@
         padding: 48px;
         transition: transform 0.3s linear;
         background-color: $white;
+        align-items: center;
     }
 
     .headerDemo.active {
@@ -83,12 +84,14 @@
         height: 100%;
         transform: translateY(0%);
         transition: 0.3s;
+        justify-content: start;
     }
 
     .headerLinks {
         display: flex;
         flex-direction: column;
         justify-content: center;
+        margin-bottom: 30px;
     }
 
     .headerLink {
@@ -97,6 +100,36 @@
     }
 
     .headerLinkText {
+        padding-bottom: 24px;
+        padding-top: 24px;
+        font-size: 22px;
+    }
+
+    .headerDemoBurger {
+        display: inline-block;
+        padding: 21px;
+    }
+}
+
+@media (max-width:480px) {
+    .headerDemo {
+        align-items: start;
+        padding-left: 20px;
+    }
+
+    .headerLinks {
+        align-items: start;
+    }
+
+    .headerLink {
+        margin: 0;
+        font-size: 22px;
+
+    }
+
+    .headerLinkText {
+        text-align: start;
+
         padding-bottom: 24px;
         padding-top: 24px;
         font-size: 22px;
