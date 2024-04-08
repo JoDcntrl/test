@@ -8,7 +8,7 @@ import { getYear } from '@/helpers/helpers'
 
 import { Logo } from "@/assets/svgs/Logo";
 
-import styles from '@/components/FooterDemo/footerDemo.module.scss';
+import styles from './footerDemo.module.scss';
 
 const FooterDemo: React.FC<FooterDemoTypes> = () => (
 	<footer className={styles.footerDemoMain}>
