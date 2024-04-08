@@ -4,12 +4,13 @@
 }
 
 .headerDemo {
-    max-width: 1440px;
+    max-width: 1080px;
     margin: 0 auto;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 16px 180px;
+    padding: 16px 20px;
+    
 }
 
 .headerDemoLogoContainer {
@@ -51,3 +52,41 @@
     border: none;
     outline: none;
 }
+
+.headerDemoBurger {
+    display: none;
+    text-align: end;
+}
+
+@media (max-width:1024px){
+    .headerDemo {
+        background-color: #fafafa;
+        left: -360px;
+        z-index: 1;
+        position: fixed;
+        width: 330px;
+        gap: 30px 0;
+        flex-direction: column;
+        padding: 48px;
+        border: 1px solid rgb(187, 187, 187);
+        border-radius: 0 0 20px 0;
+        transition: transform 0.3s linear;
+    }
+    .headerDemo.active {
+        transform: translateX(100%);
+    }
+    .headerLinks {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 30px 0;
+    }
+    .headerLink {
+        margin: 0;
+    }
+    .headerDemoBurger {
+        display: block;
+        padding: 10px;
+    }
+}
+

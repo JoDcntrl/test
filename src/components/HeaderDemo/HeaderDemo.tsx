@@ -1,3 +1,5 @@
+'use client'
+
 import React from "react";
 import cn from 'classnames';
 
@@ -5,6 +7,7 @@ import Link from "@/components/Link/Link";
 import {HeaderDemoTypes} from "@/components/HeaderDemo/Header.types"
 
 import {Logo} from "@/assets/svgs/Logo";
+import {Burger} from "@/assets/svgs/Burger";
 
 import './headerDemo.css';
 
@@ -40,9 +43,11 @@ const LinksArr = [
 ]
 
 const HeaderDemo: React.FC<HeaderDemoTypes> = ({className, ...props}) => {
+	const [activeBurger, setActiveBurger] = React.useState(false)
+
 	return (
 		<header className={cn(className, 'headerDemoMain')} {...props}>
-			<div className='headerDemo'>
+			<div className={cn(className, 'headerDemo', {['active']: activeBurger})}>
 				<div className='headerDemoLogoContainer'>
 					<Logo/>
 					<span className={'logoText'}>decentral job</span>
@@ -63,6 +68,7 @@ const HeaderDemo: React.FC<HeaderDemoTypes> = ({className, ...props}) => {
 					</button>
 				</div>
 			</div>
+			<div className="headerDemoBurger" onClick={()=> setActiveBurger((prev)=> !prev)}><Burger/></div>
 		</header>
 	);
 };

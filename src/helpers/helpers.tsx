@@ -19,3 +19,5 @@ export const convertISOToDate = (isoDate: string): string => {
 }
 
 export const priceRu = (price: number): string => price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ').concat(' ₽')
+
+export const getYear = () => new Date().getFullYear() 
