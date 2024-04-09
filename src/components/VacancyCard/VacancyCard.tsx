@@ -2,19 +2,21 @@ import React from 'react';
 import cn from 'classnames';
 import Image from "next/image";
 
-import {convertISOToDate, priceRu, yearDeclensionEn} from "@/helpers/helpers";
-import {VacancyCardTypes} from "@/components/VacancyCard/VacancyCard.types";
+import { convertISOToDate, priceRu, yearDeclensionExperience } from "@/helpers/helpers";
+import { VacancyCardTypes } from "@/components/VacancyCard/VacancyCard.types";
 
 import styles from './VacancyCard.module.scss';
 
-const VacancyCard: React.FC<VacancyCardTypes> = ({name, experience, mode, city, description, salary, company, logo, date, className, ...props}) => (
+
+
+const VacancyCard: React.FC<VacancyCardTypes> = ({ name, experience, mode, city, description, salary, company, logo, date, className, ...props }) => (
 	<div className={cn(className, styles.cardContainer)} {...props}>
 		<div className={styles.cardHeader}>
 			<h3 className={styles.vacancyTitle}>{name}</h3>
-			<p className={styles.vacancySalary}>From {priceRu(salary)}</p>
+			<p className={styles.vacancySalary}>От {priceRu(salary)}</p>
 		</div>
 		<div className={styles.vacancyInfo}>
-			<p className={styles.vacancyInfoText}>Experience from ${yearDeclensionEn(experience)}</p>
+			<p className={styles.vacancyInfoText}>Опыт от {yearDeclensionExperience(experience)}</p>
 			<div className={styles.circle} />
 			<p className={styles.vacancyInfoText}>{mode}</p>
 			<div className={styles.circle} />

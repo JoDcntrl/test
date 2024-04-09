@@ -1,12 +1,11 @@
-import {format} from "date-fns";
+import { format } from "date-fns";
 
-export const yearDeclensionRu = (count: number): string => {
-	if (count % 10 === 1 && count % 100 !== 11) {
-		return `${count} год`;
-	} else if (count % 10 >= 2 && count % 10 <= 4 && (count % 100 < 10 || count % 100 >= 20)) {
-		return `${count} года`;
+export const yearDeclensionExperience = (count: number) => {
+	const lastNumber = Number(String(count)[String(count).length - 1])
+	if (lastNumber === 1 && count !== 11) {
+		return `${count} года`
 	}
-	return `${count} лет`;
+	else return `${count} лет`
 }
 
 export const yearDeclensionEn = (count: number): string => {
