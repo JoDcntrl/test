@@ -3,10 +3,10 @@
 .headerDemoMain {
     border-bottom: 1px solid #F8F8F8;
     width: 100%;
+    max-width: 1080px;
     text-align: end;
     display: flex;
     justify-content: space-between;
-    max-width: 1080px;
     margin: 0 auto;
 }
 
@@ -16,14 +16,14 @@
     justify-content: space-between;
     padding: 16px 20px;
     gap: 10px;
+    flex-grow: 1;
 }
 
 .headerDemoLogoContainer {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding-top: 20px;
-    padding-left: 20px
+    padding: 16px 20px;
 }
 
 .headerDemoLogoContainer svg {
@@ -31,7 +31,7 @@
 }
 
 .logoText {
-    color: rgba(26, 29, 38, 1);
+    color: $text-primary;
     font-weight: 700;
     font-size: 18px;
     line-height: 32px;
@@ -41,8 +41,10 @@
 
 .headerLinks {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
+    gap: 0 39px;
+    flex-grow: 1;
 }
 
 .headerButtonConnectWallet {
@@ -51,8 +53,8 @@
     justify-content: center;
     padding: 12px 20px;
     border-radius: 120px;
-    background-color: #EFF4FE;
-    color: #5B8CF3;
+    background-color: $main-secondary;
+    color: $main-primary;
     font-size: 14px;
     font-weight: 700;
     line-height: 24px;
@@ -75,6 +77,7 @@
         padding: 48px;
         transition: transform 0.3s linear;
         background-color: $white;
+        align-items: center;
     }
 
     .headerDemo.active {
@@ -83,12 +86,16 @@
         height: 100%;
         transform: translateY(0%);
         transition: 0.3s;
+        justify-content: flex-start;
     }
 
     .headerLinks {
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        justify-content: flex-start;
+        margin-bottom: 30px;
+        gap: 35px 0;
+        flex-grow: 0;
     }
 
     .headerLink {
@@ -97,6 +104,38 @@
     }
 
     .headerLinkText {
+        padding-bottom: 24px;
+        padding-top: 24px;
+        font-size: 22px;
+    }
+
+    .headerButtonConnectWallet {
+        font-size: 20px;
+    }
+
+    .headerDemoBurger {
+        display: inline-block;
+        padding: 21px;
+    }
+}
+
+@media (max-width:500px) {
+    .headerDemo {
+        align-items: start;
+        padding-left: 20px;
+    }
+
+    .headerLinks {
+        align-items: start;
+    }
+
+    .headerLink {
+        margin: 0;
+        font-size: 22px;
+    }
+
+    .headerLinkText {
+        text-align: start;
         padding-bottom: 24px;
         padding-top: 24px;
         font-size: 22px;

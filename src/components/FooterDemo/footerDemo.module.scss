@@ -2,7 +2,7 @@
 
 .footerDemoMain {
     width: 100%;
-    background-color: $bg-footer;
+    background-color: $white;
 }
 
 .footerDemo {
@@ -15,18 +15,6 @@
     align-items: flex-start;
     flex-wrap: wrap;
     gap: 12px 10px;
-}
-
-@media(max-width: 627px) {
-    .footerDemo {
-        justify-content: center;
-    }
-}
-
-@media(max-width: 875px) {
-    .footerDemo {
-        justify-content: start;
-    }
 }
 
 .footerDemoLogoContainer {
@@ -42,7 +30,7 @@
 }
 
 .logoText {
-    color: $text-logo;
+    color: $text-primary;
     font-weight: 700;
     font-size: 18px;
     line-height: 32px;
@@ -56,12 +44,7 @@
     width: 100%;
     padding: 0 15px;
     padding-top: 15px;
-}
-
-@media(max-width: 875px) {
-    .footerMenu {
-        margin: 0 auto;
-    }
+    margin: 0 auto;
 }
 
 .footerList {
@@ -85,7 +68,7 @@
 }
 
 .footerListLink:hover {
-    color: $text-link-hover;
+    color: $text-tertiary;
 }
 
 .footerIcons {
@@ -101,12 +84,12 @@
     margin: 0 auto;
     justify-content: space-between;
     align-items: flex-start;
-    border-top: 1px solid $line-footer;
+    border-top: 1px solid $stroke-light;
     padding: 32px;
 }
 
 .footerBottom {
-    color: $text-footer-bottom;
+    color: $text-tertiary;
     font-size: 12px;
     font-weight: 500;
 }
