@@ -1,54 +1,38 @@
+'use client'
+
 import React from "react";
 import cn from 'classnames';
 
-import {Logo} from "@/assets/svgs/Logo";
 import Link from "@/components/Link/Link";
+import { HeaderDemoTypes } from "@/components/HeaderDemo/Header.types"
+import { LinksArr } from "./HeaderData";
 
-import {HeaderDemoTypes} from "@/components/HeaderDemo/Header.types"
+import { Logo } from "@/assets/svgs/Logo";
+import { Burger } from "@/assets/svgs/Burger";
+import { Cross } from "@/assets/svgs/Cross";
 
-import './headerDemo.css';
+import './headerDemo.scss';
 
-const LinksArr = [
-	{
-		id: 1,
-		text: 'Open jobs',
-		withCount: true,
-		disabled: false,
-		count: 32,
-	},
-	{
-		id: 2,
-		text: 'Companies',
-		withCount: false,
-		disabled: false,
-		count: null,
-	},
-	{
-		id: 4,
-		text: 'Specialists',
-		withCount: false,
-		disabled: true,
-		count: null,
-	},
-	{
-		id: 5,
-		text: 'Blog',
-		withCount: false,
-		disabled: false,
-		count: null,
-	},
-]
+const HeaderDemo: React.FC<HeaderDemoTypes> = ({ className, ...props }) => {
+	const [activeBurger, setActiveBurger] = React.useState(false)
 
-const HeaderDemo: React.FC<HeaderDemoTypes> = ({className, ...props}) => {
+	React.useEffect(() => {
+		if (activeBurger) {
+			document.querySelector('body')?.style.setProperty("position", "fixed")
+		}
+		else document.querySelector('body')?.style.setProperty("position", "relative")
+	}, [activeBurger])
+
 	return (
 		<header className={cn(className, 'headerDemoMain')} {...props}>
-			<div className='headerDemo'>
-				<div className='headerDemoLogoContainer'>
-					<Logo/>
-					<span className={'logoText'}>decentral job</span>
-				</div>
+			<div className='headerDemoLogoContainer'>
+				<Logo />
+				<span className={'logoText'}>decentral job</span>
+			</div>
+			<div className={cn(className, 'headerDemo', { ['active']: activeBurger })}>
+
 				<div className={'headerLinks'}>
-					{LinksArr.map(({id, text, withCount, disabled, count}) => (
+					{LinksArr.map(({ id, text, withCount, disabled, count }) => (
 						<Link key={id} count={count} withCount={withCount} disabled={disabled}>
 							{text}
 						</Link>
@@ -63,6 +47,8 @@ const HeaderDemo: React.FC<HeaderDemoTypes> = ({className, ...props}) => {
 					</button>
 				</div>
 			</div>
+			{activeBurger ? <Cross onClick={() => setActiveBurger((prev) => !prev)} /> : <div className="headerDemoBurger" onClick={() => setActiveBurger((prev) => !prev)}><Burger /></div>}
+
 		</header>
 	);
 };

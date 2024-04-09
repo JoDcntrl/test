@@ -1,0 +1,109 @@
+@import '@/assets/core/_variables.scss';
+
+.headerDemoMain {
+    border-bottom: 1px solid #F8F8F8;
+    width: 100%;
+    text-align: end;
+    display: flex;
+    justify-content: space-between;
+    max-width: 1080px;
+    margin: 0 auto;
+}
+
+.headerDemo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+    gap: 10px;
+}
+
+.headerDemoLogoContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 20px;
+    padding-left: 20px
+}
+
+.headerDemoLogoContainer svg {
+    margin-right: 12px;
+}
+
+.logoText {
+    color: rgba(26, 29, 38, 1);
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 32px;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.headerLinks {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.headerButtonConnectWallet {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 20px;
+    border-radius: 120px;
+    background-color: #EFF4FE;
+    color: #5B8CF3;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 24px;
+    border: none;
+    outline: none;
+}
+
+.headerDemoBurger {
+    display: none;
+    text-align: end;
+}
+
+@media (max-width:1024px) {
+    .headerDemo {
+        transform: translateY(-100%);
+        position: fixed;
+        width: 100%;
+        gap: 30px 0;
+        flex-direction: column;
+        padding: 48px;
+        transition: transform 0.3s linear;
+        background-color: $white;
+    }
+
+    .headerDemo.active {
+        top: 65px;
+        max-height: calc(100vh - 65px);
+        height: 100%;
+        transform: translateY(0%);
+        transition: 0.3s;
+    }
+
+    .headerLinks {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .headerLink {
+        margin: 0;
+        font-size: 22px;
+    }
+
+    .headerLinkText {
+        padding-bottom: 24px;
+        padding-top: 24px;
+        font-size: 22px;
+    }
+
+    .headerDemoBurger {
+        display: inline-block;
+        padding: 21px;
+    }
+}
