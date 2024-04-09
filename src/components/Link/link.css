@@ -3,7 +3,7 @@
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    margin-right: 40px;
+
 }
 
 .headerLink:last-child {
@@ -16,6 +16,12 @@
     line-height: 24px;
     font-weight: 600;
     white-space: nowrap;
+}
+
+@media (max-width:1024px) {
+    .headerLinkText {
+        font-size: 22px;
+    }
 }
 
 .disabled {

@@ -2,7 +2,7 @@
 
 .footerDemoMain {
     width: 100%;
-    background-color: $bg-footer;
+    background-color: $white;
 }
 
 .footerDemo {
@@ -30,7 +30,7 @@
 }
 
 .logoText {
-    color: $text-logo;
+    color: $text-primary;
     font-weight: 700;
     font-size: 18px;
     line-height: 32px;
@@ -68,7 +68,7 @@
 }
 
 .footerListLink:hover {
-    color: $text-link-hover;
+    color: $text-tertiary;
 }
 
 .footerIcons {
@@ -84,12 +84,12 @@
     margin: 0 auto;
     justify-content: space-between;
     align-items: flex-start;
-    border-top: 1px solid $line-footer;
+    border-top: 1px solid $stroke-light;
     padding: 32px;
 }
 
 .footerBottom {
-    color: $text-footer-bottom;
+    color: $text-tertiary;
     font-size: 12px;
     font-weight: 500;
 }
