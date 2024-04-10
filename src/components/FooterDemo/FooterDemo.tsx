@@ -7,8 +7,10 @@ import { LinksArr, IconsArr } from '@/components/FooterDemo/FooterData'
 import { getYear } from '@/helpers/helpers'
 
 import { Logo } from "@/assets/svgs/Logo";
+import banner from '@/assets/images/banner.png'
 
 import styles from './footerDemo.module.scss';
+import CompanyPromo from "../CompanyPromo/CompanyPromo";
 
 const FooterDemo: React.FC<FooterDemoTypes> = () => (
 	<footer className={styles.footerDemoMain}>

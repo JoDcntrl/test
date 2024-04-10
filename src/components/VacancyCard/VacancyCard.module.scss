@@ -9,6 +9,12 @@
   background-color: $white;
 }
 
+@media(max-width:900px) {
+  .cardContainer {
+    max-width: 100%;
+  }
+}
+
 .cardContainer:hover {
   box-shadow: 0 8px 12px 0 #ECECECCC;
 }
@@ -23,6 +29,7 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 8px;
+  gap: 6px;
 }
 
 .vacancyTitle {
@@ -39,6 +46,12 @@
   font-size: 18px;
   font-weight: 600;
   line-height: 21.6px;
+}
+
+@media(max-width:400px) {
+  .vacancySalary {
+    font-size: 16px;
+  }
 }
 
 .vacancyInfo {

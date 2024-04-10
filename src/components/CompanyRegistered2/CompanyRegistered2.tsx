@@ -1,12 +1,13 @@
 import React from "react";
 
 import VacancyCard from "@/components/VacancyCard/VacancyCard";
-import { cards } from './CompanyRegisteredDate'
+import { cards } from './CompanyRegisteredDate2'
 import Button from "@/components/Button/Button";
+import CompanyCard from "../CompanyCard/CompanyCard";
 
-import styles from './companyRegistered.module.scss'
+import styles from './companyRegistered2.module.scss'
 
-const CompanyRegistered: React.FC = () => (
+const JobsScreen: React.FC = () => (
 	<section className={styles.section}>
 		<div className={styles.sectionWrapper} >
 			<div className={styles.sectionTitle} >
@@ -16,11 +17,11 @@ const CompanyRegistered: React.FC = () => (
 					size='l' className={styles.sectionTitleButton} />
 			</div>
 			<div className={styles.sectionCards} >
-				{cards.map(({ id, name, experience, mode, city, description, salary, company, logo, date }) =>
-					<VacancyCard key={id} name={name} experience={experience} mode={mode} city={city} description={description} salary={salary} company={company} logo={logo} date={date} />)}
+				{cards.map(({ id, logo, title, description, city, vacancyNumber }) =>
+					<CompanyCard key={id} logo={logo} title={title} description={description} city={city} vacancyNumber={vacancyNumber} />)}
 			</div>
 		</div>
 	</section>
 )
 
-export default CompanyRegistered;
+export default JobsScreen;

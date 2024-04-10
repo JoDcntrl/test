@@ -1,6 +1,6 @@
 import { format } from "date-fns";
 
-export const yearDeclensionExperience = (count: number) => {
+export const yearDeclensionRu = (count: number) => {
 	const lastNumber = Number(String(count)[String(count).length - 1])
 	if (lastNumber === 1 && count !== 11) {
 		return `${count} года`

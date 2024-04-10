@@ -69,6 +69,7 @@
 
 @media (max-width:1024px) {
     .headerDemo {
+        display: flex;
         transform: translateY(-100%);
         position: fixed;
         width: 100%;
