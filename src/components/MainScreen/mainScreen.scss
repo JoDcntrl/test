@@ -7,6 +7,7 @@
   align-items: center;
   justify-content: space-between;
   margin: 0 auto;
+  margin-top: 80px;
   padding-left: 10px;
   padding-top: 10px;
   position: relative;
@@ -20,7 +21,7 @@
 
 @media (max-width: 1078px) {
   .mainContainer {
-    height: calc(100vh);
+    height: calc(100vh - 80px);
   }
 }
 
