@@ -6,7 +6,7 @@ import Button from "@/components/Button/Button";
 
 import styles from "./registeredVacancies.module.scss";
 
-const CompanyRegistered: React.FC = () => (
+const RegisteredVacancies: React.FC = () => (
   <section className={styles.section}>
     <div className={styles.sectionWrapper}>
       <div className={styles.sectionTitle}>
@@ -51,4 +51,4 @@ const CompanyRegistered: React.FC = () => (
   </section>
 );
 
-export default CompanyRegistered;
+export default RegisteredVacancies;

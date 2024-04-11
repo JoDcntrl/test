@@ -7,28 +7,27 @@
   margin: 0 auto;
   padding: 0 20px;
   max-width: 1080px;
+  position: relative;
 }
 
 .pictureOne {
   background-color: #4463e3;
   width: 242px;
   height: 242px;
-  position: fixed;
-  top: 50%;
-  transform: translateY(-50%);
-  left: -162px;
-  filter: blur(200px);
+  position: absolute;
+  top: 25%;
+  left: -300px;
+  filter: blur(120px);
 }
 
 .pictureTwo {
   background-color: #4463e3;
-  width: 200px;
-  height: 200px;
-  position: fixed;
-  top: 50%;
-  transform: translateY(-50%);
-  right: 0;
-  filter: blur(200px);
+  width: 242px;
+  height: 242px;
+  position: absolute;
+  top: 40%;
+  right: -300px;
+  filter: blur(120px);
 }
 
 .blockHeader {
@@ -38,6 +37,12 @@
   flex-direction: column;
   align-self: flex-end;
   margin-bottom: 120px;
+}
+
+@media (max-width: 768px) {
+  .blockHeader {
+    margin-top: 50px;
+  }
 }
 
 .blockWebThree {
@@ -62,12 +67,24 @@
   line-height: 16px;
 }
 
+@media (max-width: 768px) {
+  .webThreeLabel {
+    font-size: 13px;
+  }
+}
+
 .webThreeText {
   color: rgba(163, 163, 163, 1);
   font-size: 16px;
   font-weight: 500;
   line-height: 16px;
   text-transform: uppercase;
+}
+
+@media (max-width: 768px) {
+  .webThreeText {
+    font-size: 13px;
+  }
 }
 
 .blockMain {
@@ -87,6 +104,15 @@
   line-height: 64px;
 }
 
+@media (max-width: 768px) {
+  .blockMainH {
+    color: rgba(26, 29, 38, 1);
+    font-size: 45px;
+    font-weight: 700;
+    line-height: 50px;
+  }
+}
+
 .blockMainText {
   background-image: linear-gradient(125deg, #5b8cf3, #cb5bf3);
   -webkit-background-clip: text;
@@ -94,6 +120,13 @@
   font-weight: 700;
   font-size: 64px;
   line-height: 79px;
+}
+
+@media (max-width: 768px) {
+  .blockMainText {
+    font-size: 45px;
+    line-height: 50px;
+  }
 }
 
 .buttonAdd {

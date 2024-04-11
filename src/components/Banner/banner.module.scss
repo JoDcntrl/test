@@ -2,18 +2,22 @@
 
 .section {
   width: 100%;
-  padding: 120px 10px;
+  padding: 120px 0;
   background-color: $white;
 }
 
 .sectionWrapper {
   background-repeat: no-repeat;
   background-size: contain;
-  max-width: 1080px;
+  max-width: 1062px;
   margin: auto;
   display: flex;
   justify-content: center;
-  background-color: $main-primary;
+  background: linear-gradient(
+    136.95deg,
+    rgb(90, 139, 243) 18.775%,
+    rgb(126, 178, 250) 86.871%
+  );
   border-radius: 40px;
   display: flex;
   justify-content: space-between;
@@ -26,14 +30,8 @@
   }
 }
 
-@media (max-width: 450px) {
-  .sectionWrapper {
-    border-radius: 40px 40px 0 0;
-  }
-}
-
 .leftBlock {
-  max-width: 370px;
+  max-width: 460px;
   padding: 64px 64px 64px 64px;
   z-index: 1;
 }
@@ -52,16 +50,20 @@
   padding-bottom: 24px;
 }
 
+@media (max-width: 768px) {
+  .leftBlockTitle {
+    font-size: 37px;
+  }
+}
+
 .rightBlockImg {
   position: relative;
-  top: 75px;
+  top: 35px;
   right: 64px;
 }
 
 @media (max-width: 768px) {
   .rightBlockImg {
-    position: relative;
-    top: 4px;
-    right: 0;
+    display: none;
   }
 }
