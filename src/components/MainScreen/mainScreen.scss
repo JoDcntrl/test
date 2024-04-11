@@ -18,10 +18,15 @@
   }
 }
 
+@media (max-width: 1078px) {
+  .mainContainer {
+    height: calc(100vh);
+  }
+}
+
 @media (max-width: 500px) {
   .mainContainer {
     padding: 10px 10px 0 10px;
-    height: calc(100vh - 70px);
   }
 }
 

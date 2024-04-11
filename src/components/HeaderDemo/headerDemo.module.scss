@@ -1,7 +1,14 @@
 @import "@/assets/core/_variables.scss";
 
 .headerDemoMain {
+  width: 100%;
   border-bottom: 1px solid #f8f8f8;
+  position: fixed;
+  background-color: $white;
+  z-index: 2;
+}
+
+.headerDemoWrapper {
   width: 100%;
   max-width: 1080px;
   text-align: end;
