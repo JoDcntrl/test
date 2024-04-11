@@ -6,6 +6,12 @@
   background-color: $bg-main;
 }
 
+@media (max-width: 1024px) and (min-width: 500px) {
+  .section {
+    padding: 120px 20px;
+  }
+}
+
 .sectionWrapper {
   max-width: 1080px;
   margin: 0 auto;

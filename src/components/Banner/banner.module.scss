@@ -23,7 +23,7 @@
   justify-content: space-between;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .sectionWrapper {
     flex-direction: column;
     align-items: center;
@@ -36,9 +36,9 @@
   z-index: 1;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .leftBlock {
-    padding: 20px;
+    padding: 64px 10px;
   }
 }
 
@@ -50,7 +50,7 @@
   padding-bottom: 24px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 820px) {
   .leftBlockTitle {
     font-size: 37px;
   }
@@ -62,7 +62,7 @@
   right: 64px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .rightBlockImg {
     display: none;
   }

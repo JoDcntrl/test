@@ -6,12 +6,6 @@
   padding: 0 10px;
 }
 
-@media (max-width: 500px) {
-  .footerDemoMain {
-    padding: 0;
-  }
-}
-
 .footerDemo {
   max-width: 1080px;
   margin: 0 auto;
@@ -29,7 +23,6 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  margin-top: 9px;
 }
 
 .footerDemoLogoContainer svg {
@@ -49,9 +42,20 @@
   display: flex;
   max-width: 380px;
   width: 100%;
-  padding: 0 15px;
-  padding-top: 15px;
+  padding: 6px;
   margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .footerMenu {
+    padding-left: 0;
+  }
+}
+
+@media (max-width: 607px) {
+  .footerMenu {
+    margin: 0;
+  }
 }
 
 .footerList {
@@ -79,7 +83,6 @@
 }
 
 .footerIcons {
-  margin-top: 9px;
   display: flex;
   gap: 0 12px;
   cursor: pointer;
@@ -92,7 +95,7 @@
   justify-content: space-between;
   align-items: flex-start;
   border-top: 1px solid $stroke-light;
-  padding: 32px;
+  padding: 32px 0;
 }
 
 .footerBottom {
