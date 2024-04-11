@@ -1,0 +1,58 @@
+@import "@/assets/core/_variables.scss";
+
+.section {
+  width: 100%;
+  padding: 120px 10px;
+  background-color: $bg-main;
+}
+
+@media (max-width: 1024px) and (min-width: 500px) {
+  .section {
+    padding: 120px 20px;
+  }
+}
+
+.sectionWrapper {
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+.sectionTitle {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 64px;
+  align-items: center;
+}
+
+.sectionTitleText {
+  color: $text-primary;
+  font-size: 40px;
+  font-weight: 700;
+  max-width: 300px;
+  line-height: 40px;
+}
+
+@media (max-width: 430px) {
+  .sectionTitleText {
+    font-size: 30px;
+    max-width: 200px;
+  }
+}
+
+.sectionCards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+@media (max-width: 1024px) {
+  .sectionCards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .sectionCards {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}

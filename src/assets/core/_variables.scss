@@ -8,3 +8,18 @@
     font-size: calc($mobSize + $addMobSize * ((100vw - 320px) / $maxWidth));
   }
 }
+
+//colors
+
+$text-primary: #1b1e27;
+$text-secondary: #8c8c8c;
+$main-primary: #5b8cf3;
+$bg-card: #fafafa;
+$stroke-card: #e6e6e6;
+$stroke-light: #f2f2f2;
+$white: #ffffff;
+$main-error: #d56f75;
+$text-tertiary: #888888;
+$main-secondary: #eaf0fd;
+$bg-footer: #ffffff;
+$bg-main: #f6f6f6;

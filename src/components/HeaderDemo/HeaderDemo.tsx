@@ -1,70 +1,77 @@
-import React from "react";
-import cn from 'classnames';
+"use client";
 
-import {Logo} from "@/assets/svgs/Logo";
+import { useState, useEffect } from "react";
+import cn from "classnames";
+
 import Link from "@/components/Link/Link";
+import { LinksArr } from "./HeaderData";
+import { HeaderDemoTypes } from "@/components/HeaderDemo/Header.types";
 
-import {HeaderDemoTypes} from "@/components/HeaderDemo/Header.types"
+import { Logo } from "@/assets/svgs/Logo";
+import { Burger } from "@/assets/svgs/Burger";
+import { Cross } from "@/assets/svgs/Cross";
 
-import './headerDemo.css';
+import styles from "./headerDemo.module.scss";
 
-const LinksArr = [
-	{
-		id: 1,
-		text: 'Open jobs',
-		withCount: true,
-		disabled: false,
-		count: 32,
-	},
-	{
-		id: 2,
-		text: 'Companies',
-		withCount: false,
-		disabled: false,
-		count: null,
-	},
-	{
-		id: 4,
-		text: 'Specialists',
-		withCount: false,
-		disabled: true,
-		count: null,
-	},
-	{
-		id: 5,
-		text: 'Blog',
-		withCount: false,
-		disabled: false,
-		count: null,
-	},
-]
+const HeaderDemo: React.FC<HeaderDemoTypes> = ({ className, ...props }) => {
+  const [activeBurger, setActiveBurger] = useState(false);
 
-const HeaderDemo: React.FC<HeaderDemoTypes> = ({className, ...props}) => {
-	return (
-		<header className={cn(className, 'headerDemoMain')} {...props}>
-			<div className='headerDemo'>
-				<div className='headerDemoLogoContainer'>
-					<Logo/>
-					<span className={'logoText'}>decentral job</span>
-				</div>
-				<div className={'headerLinks'}>
-					{LinksArr.map(({id, text, withCount, disabled, count}) => (
-						<Link key={id} count={count} withCount={withCount} disabled={disabled}>
-							{text}
-						</Link>
-					))}
-				</div>
-				<div className=''>
-					<button
-						className='headerButtonConnectWallet'
-						disabled
-					>
-						Connect wallet
-					</button>
-				</div>
-			</div>
-		</header>
-	);
+  const toggleBurger = () => {
+    setActiveBurger((prev) => !prev);
+  };
+
+  useEffect(() => {
+    const changeBodyPosition = () => {
+      if (activeBurger) {
+        document.querySelector("body")?.style.setProperty("position", "fixed");
+      } else
+        document
+          .querySelector("body")
+          ?.style.setProperty("position", "relative");
+    };
+    changeBodyPosition();
+  }, [activeBurger]);
+
+  return (
+    <header className={styles.headerDemoMain}>
+      <div className={cn(className, styles.headerDemoWrapper)} {...props}>
+        <div className={styles.headerDemoLogoContainer}>
+          <Logo />
+          <span className={styles.logoText}>decentral job</span>
+        </div>
+        <div
+          className={cn(styles.headerDemo, { [styles.active]: activeBurger })}
+        >
+          <div className={styles.headerLinks}>
+            {LinksArr.map(({ id, text, withCount, disabled, count }) => (
+              <Link
+                key={id}
+                count={count}
+                withCount={withCount}
+                disabled={disabled}
+              >
+                {text}
+              </Link>
+            ))}
+          </div>
+          <div className="">
+            <button className={styles.headerButtonConnectWallet} disabled>
+              Connect wallet
+            </button>
+          </div>
+        </div>
+        {activeBurger ? (
+          <div onClick={toggleBurger} className={styles.headerDemoCross}>
+            <Cross />
+          </div>
+        ) : (
+          <div className={styles.headerDemoBurger} onClick={toggleBurger}>
+            <Burger />
+          </div>
+        )}
+      </div>
+    </header>
+  );
 };
 
 export default HeaderDemo;

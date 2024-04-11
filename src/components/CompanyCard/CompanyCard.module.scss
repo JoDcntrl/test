@@ -1,0 +1,72 @@
+@import '@/assets/core/_variables.scss';
+
+.content {
+  max-width: 352px;
+  width: 100%;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  background-color: $bg-card;
+}
+
+@media (max-width:1024px) {
+  .content {
+    max-width: 100%;
+  }
+}
+
+.descriptionBlock {
+  display: flex;
+  flex-direction: column;
+  margin: 16px 0 32px;
+
+  .title {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 24px;
+    color: $text-primary;
+    margin-bottom: 8px;
+  }
+
+  .description {
+    margin: 0;
+    color: $text-secondary;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 22.4px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+.locationBlock {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .locationText {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    color: $text-secondary;
+    margin-left: 4px;
+  }
+
+  .locationVacancy {
+    color: $main-primary;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    margin-left: 4px;
+  }
+}
+
+

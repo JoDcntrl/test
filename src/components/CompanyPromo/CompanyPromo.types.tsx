@@ -1,6 +1,8 @@
 import { DetailedHTMLProps, HTMLAttributes } from "react";
+import { StaticImageData } from "next/image";
 
-export interface HeaderDemoTypes
+export interface CompanyPromoTypes
   extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
-  className?: string;
+  logo: StaticImageData | string;
+  className: string;
 }
