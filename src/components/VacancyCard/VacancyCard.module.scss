@@ -1,20 +1,27 @@
-@import '@/assets/core/_variables.scss';
+@import "@/assets/core/_variables.scss";
 
 .cardContainer {
+  max-width: 528px;
   padding: 24px;
   border-radius: 16px;
   display: flex;
   flex-direction: column;
-  background-color: $bg-card;
+  background-color: $white;
+}
+
+@media (max-width: 900px) {
+  .cardContainer {
+    max-width: 100%;
+  }
 }
 
 .cardContainer:hover {
-  box-shadow: 0 8px 12px 0 #ECECECCC;
+  box-shadow: 0 8px 12px 0 #ecececcc;
 }
 
 .cardContainer:active {
   border: 1px solid $stroke-card;
-  box-shadow: 0 8px 12px 0 #ECECECCC;
+  box-shadow: 0 8px 12px 0 #ecececcc;
 }
 
 .cardHeader {
@@ -22,6 +29,7 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 8px;
+  gap: 6px;
 }
 
 .vacancyTitle {
@@ -38,6 +46,12 @@
   font-size: 18px;
   font-weight: 600;
   line-height: 21.6px;
+}
+
+@media (max-width: 400px) {
+  .vacancySalary {
+    font-size: 16px;
+  }
 }
 
 .vacancyInfo {

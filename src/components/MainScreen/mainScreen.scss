@@ -1,116 +1,169 @@
-@import '../../assets/core/_variables.scss';
+@import "@/assets/core/_variables.scss";
 
 .mainContainer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin: 0 auto;
-    padding: 0 20px;
-    max-width: 1080px;
+  max-width: 1080px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 auto;
+  margin-top: 80px;
+  padding-left: 10px;
+  padding-top: 10px;
+  position: relative;
+  height: calc(100vh - 80px);
+}
+
+@media (max-width: 1024px) {
+  .mainContainer {
+    padding: 20px 20px 0 20px;
+  }
+}
+
+@media (max-width: 500px) {
+  .mainContainer {
+    padding: 10px 10px 0 10px;
+  }
 }
 
 .pictureOne {
-    background-color: #4463E3;
-    width: 242px;
-    height: 242px;
-    position: fixed;
-    top: 50%;
-    transform: translateY(-50%);
-    left: -162px;
-    filter: blur(200px);
+  background-color: #4463e3;
+  width: 242px;
+  height: 242px;
+  position: absolute;
+  top: 25%;
+  left: -300px;
+  filter: blur(120px);
 }
 
 .pictureTwo {
-    background-color: #4463E3;
-    width: 200px;
-    height: 200px;
-    position: fixed;
-    top: 50%;
-    transform: translateY(-50%);
-    right: 0;
-    filter: blur(200px);
+  background-color: #4463e3;
+  width: 242px;
+  height: 242px;
+  position: absolute;
+  top: 40%;
+  right: -300px;
+  filter: blur(120px);
 }
 
 .blockHeader {
-    display: flex;
-    justify-content: flex-end;
-    align-items: flex-start;
-    flex-direction: column;
-    align-self: flex-end;
-    margin-bottom: 120px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  flex-direction: column;
+  align-self: flex-end;
+}
+
+@media (max-width: 1078px) {
+  .blockHeader {
+    max-width: 430px;
+  }
 }
 
 .blockWebThree {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 24px;
-    gap: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 24px;
+  gap: 8px;
 }
 
 .blockWebThree p {
-    margin: 0;
+  margin: 0;
 }
 
 .webThreeLabel {
-    border-radius: 120px;
-    padding: 6px 8px;
-    background-color: rgba(91, 140, 243, 0.05);
-    color: rgba(91, 140, 243, 1);
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 16px;
+  border-radius: 120px;
+  padding: 6px 8px;
+  background-color: rgba(91, 140, 243, 0.05);
+  color: rgba(91, 140, 243, 1);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 16px;
 }
 
 .webThreeText {
-    color: rgba(163, 163, 163, 1);
-    font-size: 16px;
-    font-weight: 500;
-    line-height: 16px;
-    text-transform: uppercase;
+  color: rgba(163, 163, 163, 1);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 16px;
+  text-transform: uppercase;
 }
 
 .blockMain {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 40px;
 }
 
 .blockMain h1 {
-    margin: 0;
+  margin: 0;
 }
 
 .blockMainH {
-    color: rgba(26, 29, 38, 1);
-    font-size: 64px;
-    font-weight: 700;
-    line-height: 64px;
+  color: rgba(26, 29, 38, 1);
+  font-size: 52px;
+  font-weight: 700;
+  line-height: 59px;
+}
+
+@media (max-width: 500px) {
+  .blockMainH {
+    font-size: 45px;
+  }
+}
+
+@media (max-width: 430px) {
+  .blockMainH {
+    font-size: 43px;
+  }
 }
 
 .blockMainText {
-    background-image: linear-gradient(125deg, #5B8CF3, #CB5BF3);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-weight: 700;
-    font-size: 64px;
-    line-height: 79px;
+  background-image: linear-gradient(125deg, #5b8cf3, #cb5bf3);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 700;
+  font-size: 52px;
+  line-height: 59px;
+}
+
+@media (max-width: 500px) {
+  .blockMainText {
+    font-size: 45px;
+    line-height: 50px;
+  }
+}
+
+@media (max-width: 430px) {
+  .blockMainText {
+    font-size: 43px;
+  }
 }
 
 .buttonAdd {
-    border-radius: 120px;
-    padding: 16px 24px;
-    background-color: #5B8CF3;
-    color: #FFFFFF;
-    font-size: 16px;
-    font-weight: 700;
-    line-height: 24px;
-    border: none;
-    outline: none;
+  border-radius: 120px;
+  padding: 16px 24px;
+  background-color: #5b8cf3;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+  border: none;
+  border-radius: 14px;
+  outline: none;
 }
 
 .blockImg {
-    max-width: 552px;
-    width: 100%;
-    display: flex;
-    align-self: flex-start;
+  max-width: 609px;
+  width: 100%;
+  display: flex;
+  align-self: flex-start;
+  margin-bottom: 113px;
+}
+
+@media (max-width: 1078px) {
+  .blockImg {
+    display: none;
+  }
 }
