@@ -10,7 +10,7 @@ const RegisteredVacancies: React.FC = () => (
   <section className={styles.section}>
     <div className={styles.sectionWrapper}>
       <div className={styles.sectionTitle}>
-        <h1 className={styles.sectionTitleText}>Find the right position</h1>
+        <h3 className={styles.sectionTitleText}>Find the right position</h3>
         <Button
           children={<span className={styles.buttonText}>All jobs</span>}
           appearance={"primary"}
