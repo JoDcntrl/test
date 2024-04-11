@@ -9,6 +9,12 @@
   background-color: $bg-card;
 }
 
+@media (max-width:1024px) {
+  .content {
+    max-width: 100%;
+  }
+}
+
 .descriptionBlock {
   display: flex;
   flex-direction: column;

@@ -1,96 +1,96 @@
-@import '@/assets/core/_variables.scss';
+@import "@/assets/core/_variables.scss";
 
 .footerDemoMain {
-    width: 100%;
-    background-color: $white;
-    padding: 0 10px;
+  width: 100%;
+  background-color: $white;
+  padding: 0 10px;
 }
 
 .footerDemo {
-    max-width: 1080px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    padding-bottom: 32px;
-    padding-top: 48px;
-    align-items: flex-start;
-    flex-wrap: wrap;
-    gap: 12px 10px;
+  max-width: 1080px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 32px;
+  padding-top: 48px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 12px 10px;
 }
 
 .footerDemoLogoContainer {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    margin-top: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin-top: 9px;
 }
 
 .footerDemoLogoContainer svg {
-    margin-right: 12px;
+  margin-right: 12px;
 }
 
 .logoText {
-    color: $text-primary;
-    font-weight: 700;
-    font-size: 18px;
-    line-height: 32px;
-    text-transform: uppercase;
-    white-space: nowrap;
+  color: $text-primary;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 32px;
+  text-transform: uppercase;
+  white-space: nowrap;
 }
 
 .footerMenu {
-    display: flex;
-    max-width: 380px;
-    width: 100%;
-    padding: 0 15px;
-    padding-top: 15px;
-    margin: 0 auto;
+  display: flex;
+  max-width: 380px;
+  width: 100%;
+  padding: 0 15px;
+  padding-top: 15px;
+  margin: 0 auto;
 }
 
 .footerList {
-    width: 100%;
-    display: flex;
-    gap: 0 20px;
-    flex-wrap: wrap;
-    align-content: space-between;
-    max-height: 132px;
-    list-style: none;
-    flex-direction: column;
+  width: 100%;
+  display: flex;
+  gap: 0 20px;
+  flex-wrap: wrap;
+  align-content: space-between;
+  max-height: 132px;
+  list-style: none;
+  flex-direction: column;
 }
 
 .footerListLink {
-    width: fit-content;
-    text-decoration: none;
-    font-weight: 600;
-    line-height: 20px;
-    cursor: pointer;
-    margin-bottom: 13px;
+  width: fit-content;
+  text-decoration: none;
+  font-weight: 600;
+  line-height: 20px;
+  cursor: pointer;
+  margin-bottom: 13px;
 }
 
 .footerListLink:hover {
-    color: $text-tertiary;
+  color: $text-tertiary;
 }
 
 .footerIcons {
-    margin-top: 9px;
-    display: flex;
-    gap: 0 12px;
-    cursor: pointer;
+  margin-top: 9px;
+  display: flex;
+  gap: 0 12px;
+  cursor: pointer;
 }
 
 .footerDemoBottom {
-    max-width: 1080px;
-    display: flex;
-    margin: 0 auto;
-    justify-content: space-between;
-    align-items: flex-start;
-    border-top: 1px solid $stroke-light;
-    padding: 32px;
+  max-width: 1080px;
+  display: flex;
+  margin: 0 auto;
+  justify-content: space-between;
+  align-items: flex-start;
+  border-top: 1px solid $stroke-light;
+  padding: 32px;
 }
 
 .footerBottom {
-    color: $text-tertiary;
-    font-size: 12px;
-    font-weight: 500;
+  color: $text-tertiary;
+  font-size: 12px;
+  font-weight: 500;
 }

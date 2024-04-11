@@ -1,7 +1,7 @@
-import {InputHTMLAttributes} from 'react';
-import {FieldError} from 'react-hook-form';
+import { InputHTMLAttributes } from "react";
+import { FieldError } from "react-hook-form";
 
-export interface InputTypes extends InputHTMLAttributes<HTMLInputElement>{
-	error?: FieldError
-	isIcon?: boolean
+export interface InputTypes extends InputHTMLAttributes<HTMLInputElement> {
+  error?: FieldError;
+  isIcon?: boolean;
 }

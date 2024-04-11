@@ -1,52 +1,51 @@
 .headerLink {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
 }
 
 .headerLink:last-child {
-    margin-right: 0;
+  margin-right: 0;
 }
 
 .headerLinkText {
-    color: #1A1D26;
-    font-size: 16px;
-    line-height: 24px;
-    font-weight: 600;
-    white-space: nowrap;
+  color: #1a1d26;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 600;
+  white-space: nowrap;
 }
 
-@media (max-width:1024px) {
-    .headerLinkText {
-        font-size: 22px;
-    }
+@media (max-width: 1024px) {
+  .headerLinkText {
+    font-size: 22px;
+  }
 }
 
 .disabled {
-    color: #B1B1B1;
-    cursor: not-allowed;
+  color: #b1b1b1;
+  cursor: not-allowed;
 }
 
 .withCount {
-    margin-right: 8px;
+  margin-right: 8px;
 }
 
 .headerLinkCount {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 24px;
-    height: 24px;
-    border-radius: 8px;
-    background-color: rgba(91, 140, 243, 0.1);
-    cursor: default;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 8px;
+  background-color: rgba(91, 140, 243, 0.1);
+  cursor: default;
 }
 
 .LinkCountText {
-    font-size: 12px;
-    font-weight: 600;
-    line-height: 16px;
-    color: #5B8CF3;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 16px;
+  color: #5b8cf3;
 }

@@ -1,18 +1,20 @@
-import styles from "./page.module.css";
 import MainScreen from "@/components/MainScreen/MainScreen";
 import Layout from "@/components/Layout/Layout";
-import CompanyRegistered from "@/components/CompanyRegistered/CompanyRegistered";
 import Banner from "@/components/Banner/Banner";
-import CompanyRegistered2 from "@/components/CompanyRegistered2/CompanyRegistered2";
+import RegisteredVacancies from '@/components/RegisteredVacancies/RegisteredVacancies'
+import RegisteredCompanies from "@/components/RegisteredСompanies/RegisteredCompanies";
+
+import styles from "./page.module.css";
+
 
 export default function Home() {
 	return (
 		<main className={styles.main}>
 			<Layout>
 				<MainScreen />
-				<CompanyRegistered />
+				<RegisteredVacancies />
 				<Banner />
-				<CompanyRegistered2 />
+				<RegisteredCompanies />
 			</Layout>
 		</main>
 	);

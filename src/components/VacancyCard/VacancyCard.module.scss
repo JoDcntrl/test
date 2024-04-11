@@ -1,4 +1,4 @@
-@import '@/assets/core/_variables.scss';
+@import "@/assets/core/_variables.scss";
 
 .cardContainer {
   max-width: 528px;
@@ -9,19 +9,19 @@
   background-color: $white;
 }
 
-@media(max-width:900px) {
+@media (max-width: 900px) {
   .cardContainer {
     max-width: 100%;
   }
 }
 
 .cardContainer:hover {
-  box-shadow: 0 8px 12px 0 #ECECECCC;
+  box-shadow: 0 8px 12px 0 #ecececcc;
 }
 
 .cardContainer:active {
   border: 1px solid $stroke-card;
-  box-shadow: 0 8px 12px 0 #ECECECCC;
+  box-shadow: 0 8px 12px 0 #ecececcc;
 }
 
 .cardHeader {
@@ -48,7 +48,7 @@
   line-height: 21.6px;
 }
 
-@media(max-width:400px) {
+@media (max-width: 400px) {
   .vacancySalary {
     font-size: 16px;
   }
