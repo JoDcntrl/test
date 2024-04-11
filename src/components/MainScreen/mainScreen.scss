@@ -13,15 +13,15 @@
   position: relative;
 }
 
-@media (max-width: 1024px) {
-  .mainContainer {
-    padding: 20px 20px 0 20px;
-  }
-}
-
 @media (max-width: 1078px) {
   .mainContainer {
     height: calc(100vh - 80px);
+  }
+}
+
+@media (max-width: 1024px) {
+  .mainContainer {
+    padding: 20px 20px 0 20px;
   }
 }
 
