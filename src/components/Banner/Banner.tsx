@@ -15,11 +15,12 @@ const Banner: React.FC = () => (
           Subscribe to our bot to the latest vacancies
         </h1>
         <Button
-          children={<span className={styles.leftBlockButton}>Subscribe</span>}
-          appearance={"secondary"}
+          appearance="secondary"
           size="l"
           className={styles.sectionTitleButton}
-        />
+        >
+          Subscribe
+        </Button>
       </div>
       <div className={styles.rightBlock}>
         <Image

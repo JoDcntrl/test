@@ -12,11 +12,12 @@ const RegisteredVacancies: React.FC = () => (
       <div className={styles.sectionTitle}>
         <h3 className={styles.sectionTitleText}>Find the right position</h3>
         <Button
-          children={<span className={styles.buttonText}>All jobs</span>}
-          appearance={"primary"}
+          appearance="primary"
           size="l"
           className={styles.sectionTitleButton}
-        />
+        >
+          All jobs
+        </Button>
       </div>
       <div className={styles.sectionCards}>
         {cards.map(

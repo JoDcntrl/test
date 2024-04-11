@@ -12,11 +12,12 @@ const RegisteredCompanies: React.FC = () => (
       <div className={styles.sectionTitle}>
         <h1 className={styles.sectionTitleText}>Company registered</h1>
         <Button
-          children={<span className={styles.buttonText}>All companies</span>}
-          appearance={"primary"}
+          appearance="primary"
           size="l"
           className={styles.sectionTitleButton}
-        />
+        >
+          All companies
+        </Button>
       </div>
       <div className={styles.sectionCards}>
         {cards.map(({ id, logo, title, description, city, vacancyNumber }) => (

@@ -11,12 +11,7 @@
   padding-left: 10px;
   padding-top: 10px;
   position: relative;
-}
-
-@media (max-width: 1078px) {
-  .mainContainer {
-    height: calc(100vh - 80px);
-  }
+  height: calc(100vh - 80px);
 }
 
 @media (max-width: 1024px) {
