@@ -5,7 +5,10 @@ import { CheckboxTypes } from "./Checkbox.types";
 
 import styles from "./checkbox.module.scss";
 
-const Checkbox: React.FC<CheckboxTypes> = ({ nameSection, disabled }) => (
+const Checkbox: React.FC<CheckboxTypes> = ({
+  nameSection,
+  disabled = false,
+}) => (
   <label
     className={cn(styles.checkbox, {
       [styles.disabled]: disabled,
