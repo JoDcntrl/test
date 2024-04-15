@@ -66,6 +66,15 @@
   gap: 8px 0;
 }
 
+.checkboxesListItem {
+  display: flex;
+}
+
+.checkboxesListItem.disabled {
+  display: flex;
+  cursor: not-allowed;
+}
+
 .blockInputTitle {
   margin-bottom: 20px;
   color: $text-primary;

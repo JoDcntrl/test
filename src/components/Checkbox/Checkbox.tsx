@@ -5,23 +5,27 @@ import { CheckboxTypes } from "./Checkbox.types";
 
 import styles from "./checkbox.module.scss";
 
-const Checkbox: React.FC<CheckboxTypes> = ({
-  nameSection,
-  disabled = false,
-}) => (
-  <label
-    className={cn(styles.checkbox, {
-      [styles.disabled]: disabled,
-    })}
-  >
-    <input type="checkbox" disabled={disabled} />
+const Checkbox: React.FC<CheckboxTypes> = ({ disabled = false }) => {
+  const [checked, setChecked] = React.useState(false);
+  return (
     <div
-      className={cn(styles.checkbox__checkmark, {
+      className={cn(styles.checkbox, {
         [styles.disabled]: disabled,
       })}
-    ></div>
-    <div className={styles.checkbox__body}>{nameSection}</div>
-  </label>
-);
+    >
+      <input
+        disabled={disabled}
+        type="checkbox"
+        checked={checked}
+        onChange={() => setChecked(!checked)}
+      />
+      <div
+        className={cn(styles.checkbox__checkmark, {
+          [styles.disabled]: disabled,
+        })}
+      ></div>
+    </div>
+  );
+};
 
 export default Checkbox;

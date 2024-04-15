@@ -24,7 +24,7 @@
 }
 
 .checkbox input {
-  position: absolute;
+  position: relative;
   opacity: 0;
   cursor: pointer;
   height: 0;
@@ -39,9 +39,13 @@
   opacity: 1;
 }
 
+.checkbox:hover input ~ .checkbox__checkmark.disabled::after {
+  opacity: 0;
+}
+
 .checkbox .checkbox__checkmark {
   position: absolute;
-  top: 4px;
+  top: 2px;
   left: 0;
   height: 16px;
   width: 16px;
@@ -64,15 +68,9 @@
   transition: opacity 0.25s ease;
 }
 
-.checkbox .checkbox__checkmark.disabled:after {
+.checkbox input:checked ~ .checkbox__checkmark.disabled:after {
   border: 1.4px solid $stroke-card;
   border-width: 0 1px 1px 0;
   opacity: 1;
   cursor: not-allowed;
-}
-
-.checkbox .checkbox__body {
-  color: #333;
-  line-height: 1.4;
-  font-size: 16px;
 }
