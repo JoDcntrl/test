@@ -28,7 +28,7 @@ const CompanyCard: React.FC<CompanyCardTypes> = ({
       </div>
       <div className={styles.flex}>
         <Fire />
-        <p className={styles.locationVacancy}>{vacancyNumber} вакансий</p>
+        <p className={styles.locationVacancy}>{vacancyNumber} vacancies</p>
       </div>
     </div>
   </div>

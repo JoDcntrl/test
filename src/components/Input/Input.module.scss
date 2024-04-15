@@ -23,7 +23,7 @@
 }
 
 .inputWrapper {
-  position: absolute;
+  position: relative;
 }
 
 .errorMessage {
@@ -39,7 +39,7 @@
 .icon {
   position: absolute;
   box-sizing: border-box;
-  top: 55%;
+  top: 52%;
   left: 12px;
   transform: translateY(-50%);
 }

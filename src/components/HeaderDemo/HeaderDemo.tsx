@@ -54,8 +54,8 @@ const HeaderDemo: React.FC<HeaderDemoTypes> = ({ className, ...props }) => {
               </Link>
             ))}
           </div>
-          <div className="">
-            <button className={styles.headerButtonConnectWallet} disabled>
+          <div className={styles.buttonConnectWalletWrapper} >
+            <button className={styles.buttonConnectWallet} disabled>
               Connect wallet
             </button>
           </div>
