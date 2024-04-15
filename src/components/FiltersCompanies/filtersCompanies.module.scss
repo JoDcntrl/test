@@ -9,6 +9,7 @@
   display: flex;
   flex-direction: column;
   gap: 32px 0;
+  height: 100%;
 }
 
 @media (max-width: 1200px) {
@@ -44,6 +45,25 @@
   .filtersTitle {
     margin-top: -5px;
   }
+}
+
+.blockCheckboxes {
+  display: flex;
+  flex-direction: column;
+}
+
+.blockCheckboxesTitle {
+  margin-bottom: 20px;
+  color: $text-primary;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 120%;
+}
+
+.blockCheckboxesList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px 0;
 }
 
 .blockInputTitle {
