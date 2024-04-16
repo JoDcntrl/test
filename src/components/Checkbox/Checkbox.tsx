@@ -4,35 +4,42 @@ import cn from "classnames";
 import { CheckboxTypes } from "./Checkbox.types";
 
 import styles from "./checkbox.module.scss";
+import { useFormContext } from "react-hook-form";
 
-const Checkbox: React.FC<CheckboxTypes> = ({ active, disabled = false, id, name }) => {
-  const [checked, setChecked] = React.useState(false);
+const Checkbox: React.FC<CheckboxTypes> =
+  ({ active = false, disabled = false, name, nameGroup }) => {
+    const [checked, setChecked] = React.useState(false);
+    const { register } = useFormContext();
 
-  React.useEffect(() => {
-    if (active) {
-      setChecked(active)
-    }
-  }, [])
+    React.useEffect(() => {
+      if (active === true) {
+        setChecked(active)
+        console.log(active)
+      }
+    }, [])
 
-  return (
-    <div
-      className={cn(styles.checkbox, {
-        [styles.disabled]: disabled,
-      })}
-    >
-      <input
-        disabled={disabled}
-        type="checkbox"
-        checked={checked}
-        onChange={() => setChecked(!checked)}
-      />
+    return (
       <div
-        className={cn(styles.checkbox__checkmark, {
+        className={cn(styles.checkbox, {
           [styles.disabled]: disabled,
         })}
-      ></div>
-    </div>
-  );
-};
+      >
+        <input
+          {...register(nameGroup)}
+          disabled={disabled}
+          type="checkbox"
+          value={name}
+          checked={checked}
+          onChange={() => setChecked(!checked)}
+
+        />
+        <div
+          className={cn(styles.checkbox__checkmark, {
+            [styles.disabled]: disabled,
+          })}
+        ></div>
+      </div>
+    );
+  };
 
 export default Checkbox;

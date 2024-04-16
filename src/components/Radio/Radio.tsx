@@ -4,9 +4,12 @@ import cn from "classnames";
 import { CheckboxTypes } from "./Radio.types";
 
 import styles from "./radio.module.scss";
+import { useFormContext } from "react-hook-form";
 
 const Checkbox: React.FC<CheckboxTypes> = ({ disabled = false, data, activeValue }) => {
   const [value, setValue] = React.useState(activeValue);
+  const { register } = useFormContext();
+
   return (
     <>
       {data?.map(({ id, nameSection }) => <div key={id}>
@@ -17,11 +20,11 @@ const Checkbox: React.FC<CheckboxTypes> = ({ disabled = false, data, activeValue
             })}
           >
             <input
+              {...register('companySize')}
               type="radio"
               disabled={disabled}
-              name='CompanySize'
               value={nameSection}
-              checked={value == nameSection ? true : false}
+              checked={value === nameSection ? true : false}
               onChange={(event) => setValue(event.target.value)} />
             <div
               className={cn(styles.checkbox__checkmark, {
