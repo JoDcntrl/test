@@ -1,0 +1,81 @@
+@import "@/assets/core/_variables.scss";
+
+.checkboxesListItem {
+  display: flex;
+}
+
+.checkbox,
+.checkbox::before,
+.checkbox::after {
+  box-sizing: border-box;
+}
+
+.checkbox *,
+.checkbox *::before,
+.checkbox *::after {
+  box-sizing: border-box;
+}
+
+.checkbox {
+  display: inline-block;
+  position: relative;
+  padding-left: 25px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.checkbox.disabled {
+  cursor: not-allowed;
+}
+
+.checkbox input {
+  position: relative;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkbox input:checked~.checkbox__checkmark:after {
+  opacity: 1;
+}
+
+.checkbox:hover input~.checkbox__checkmark::after {
+  opacity: 1;
+}
+
+.checkbox:hover input~.checkbox__checkmark.disabled::after {
+  opacity: 0;
+}
+
+.checkbox .checkbox__checkmark {
+  position: absolute;
+  top: 2px;
+  left: 0;
+  height: 16px;
+  width: 16px;
+  border: 1px solid $stroke-card;
+  transition: background-color 0.25s ease;
+  border-radius: 4px;
+}
+
+.checkbox .checkbox__checkmark:after {
+  content: "";
+  position: absolute;
+  left: 5px;
+  top: 1px;
+  width: 5px;
+  height: 10px;
+  border: 1.4px solid $main-primary;
+  border-width: 0 1px 1px 0;
+  transform: rotate(45deg);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.checkbox input:checked~.checkbox__checkmark.disabled:after {
+  border: 1.4px solid $stroke-card;
+  border-width: 0 1px 1px 0;
+  opacity: 1;
+  cursor: not-allowed;
+}

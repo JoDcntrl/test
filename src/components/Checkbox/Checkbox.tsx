@@ -5,8 +5,15 @@ import { CheckboxTypes } from "./Checkbox.types";
 
 import styles from "./checkbox.module.scss";
 
-const Checkbox: React.FC<CheckboxTypes> = ({ disabled = false }) => {
+const Checkbox: React.FC<CheckboxTypes> = ({ active, disabled = false, id, name }) => {
   const [checked, setChecked] = React.useState(false);
+
+  React.useEffect(() => {
+    if (active) {
+      setChecked(active)
+    }
+  }, [])
+
   return (
     <div
       className={cn(styles.checkbox, {

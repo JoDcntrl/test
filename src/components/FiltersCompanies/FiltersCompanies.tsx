@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import { useForm, FormProvider } from "react-hook-form";
 
 import Checkbox from "@/components/Checkbox/Checkbox";
 import { CompanySize, Industry, Additionally } from "./CompanyFilterData";
@@ -9,25 +8,31 @@ import Input from "@/components/Input/Input";
 import Button from "@/components/Button/Button";
 
 import styles from "./filtersCompanies.module.scss";
+import Radio from "../Radio/Radio";
+
 
 const FiltersCompanies = () => {
   return (
-    <aside className={styles.sectionFilters}>
+    <form className={styles.sectionFilters}>
       <h2 className={styles.filtersTitle}>Filters</h2>
       <div className={styles.blockCheckboxes}>
         <h2 className={styles.blockCheckboxesTitle}>Industry</h2>
         <div className={styles.blockCheckboxesList}>
           <label className={styles.checkboxesListItem}>
-            <Checkbox active={false} disabled={false} />
-            <div className={styles.checkbox__body}>Disabled</div>
+            <Checkbox active={true} disabled={true} />
+            <div className={styles.checkbox__body}>Disabled active on</div>
           </label>
           <label className={styles.checkboxesListItem}>
-            <Checkbox disabled={true} active={true} />
-            <div className={styles.checkbox__body}>Disabled</div>
+            <Checkbox disabled={true} active={false} />
+            <div className={styles.checkbox__body}>Disabled active off</div>
+          </label>
+          <label className={styles.checkboxesListItem}>
+            <Checkbox disabled={false} active={true} />
+            <div className={styles.checkbox__body}>Active on</div>
           </label>
           {Industry.map(({ nameSection, id }) => (
             <label key={id} className={styles.checkboxesListItem}>
-              <Checkbox />
+              <Checkbox name={nameSection} />
               <div className={styles.checkbox__body}>{nameSection}</div>
             </label>
           ))}
@@ -36,12 +41,7 @@ const FiltersCompanies = () => {
       <div className={styles.blockCheckboxes}>
         <h2 className={styles.blockCheckboxesTitle}>Company size</h2>
         <div className={styles.blockCheckboxesList}>
-          {CompanySize.map(({ nameSection, id }) => (
-            <label key={id} className={styles.checkboxesListItem}>
-              <Checkbox />
-              <div className={styles.checkbox__body}>{nameSection}</div>
-            </label>
-          ))}
+          <Radio data={CompanySize} activeValue='11 - 50' />
         </div>
       </div>
       <div className={styles.blockInput}>
@@ -63,7 +63,7 @@ const FiltersCompanies = () => {
       >
         Reset all
       </Button>
-    </aside>
+    </form>
   );
 };
 
