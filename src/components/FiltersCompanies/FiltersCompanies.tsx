@@ -1,7 +1,12 @@
 "use client";
 
 import React from "react";
-import { useForm, SubmitHandler, Controller, FormProvider } from "react-hook-form"
+import {
+  useForm,
+  SubmitHandler,
+  FormProvider,
+  SubmitErrorHandler,
+} from "react-hook-form";
 
 import Checkbox from "@/components/Checkbox/Checkbox";
 import { CompanySize, Industry, Additionally } from "./CompanyFilterData";
@@ -12,25 +17,44 @@ import styles from "./filtersCompanies.module.scss";
 import Radio from "../Radio/Radio";
 
 type Inputs = {
-  industry: []
-  companySize: string
-}
-
+  industry: [];
+  companySize: string;
+  city: string;
+  additionally: boolean;
+};
 
 const FiltersCompanies = () => {
-  const methods = useForm<Inputs>()
-  const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data)
+  const methods = useForm<Inputs>();
+  const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
+
+  const error: SubmitErrorHandler<Inputs> = (data) => {
+    console.log(data);
+    for (const obj in data) {
+      if (obj === "companySize") {
+        alert(`Enter value - company size`);
+      } else alert(`Enter value - ${obj}`);
+    }
+  };
 
   return (
     <FormProvider {...methods}>
-      <form onSubmit={methods.handleSubmit(onSubmit)} className={styles.sectionFilters}>
+      <form
+        onSubmit={methods.handleSubmit(onSubmit, error)}
+        className={styles.sectionFilters}
+      >
         <h2 className={styles.filtersTitle}>Filters</h2>
         <div className={styles.blockCheckboxes}>
           <h2 className={styles.blockCheckboxesTitle}>Industry</h2>
           <div className={styles.blockCheckboxesList}>
-            {Industry.map(({ nameSection, id }) => (
+            {Industry.map(({ nameSection, id, disabled, active }) => (
               <label key={id} className={styles.checkboxesListItem}>
-                <Checkbox name={nameSection} nameGroup='industry' />
+                <Checkbox
+                  required={true}
+                  name={nameSection}
+                  nameGroup="industry"
+                  disabled={disabled}
+                  active={active}
+                />
                 <div className={styles.checkbox__body}>{nameSection}</div>
               </label>
             ))}
@@ -39,7 +63,7 @@ const FiltersCompanies = () => {
         <div className={styles.blockCheckboxes}>
           <h2 className={styles.blockCheckboxesTitle}>Company size</h2>
           <div className={styles.blockCheckboxesList}>
-            <Radio data={CompanySize} />
+            <Radio data={CompanySize} required={true} />
           </div>
         </div>
         <div className={styles.blockInput}>
@@ -49,14 +73,16 @@ const FiltersCompanies = () => {
             isIcon={false}
             className={styles.inputContainer}
             placeholder="Any"
+            required={true}
           />
         </div>
         <label className={styles.checkboxesListItem}>
-          <Checkbox disabled={false} active={false} nameGroup='additionally' />
+          <Checkbox nameGroup="additionally" name={"additionally"} />
           <div className={styles.checkbox__body}>Additionally</div>
         </label>
         <Button
           type="reset"
+          onClick={() => methods.reset()}
           appearance={"secondary"}
           size={"l"}
           className={styles.buttonStyle}
@@ -69,7 +95,7 @@ const FiltersCompanies = () => {
           size={"l"}
           className={styles.buttonStyle}
         >
-          Sumbit
+          Submit
         </Button>
       </form>
     </FormProvider>

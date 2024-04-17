@@ -32,25 +32,17 @@
   width: 0;
 }
 
-.checkbox input:checked~.checkbox__checkmark:after {
+.checkbox input:checked ~ .checkbox__checkmark:after {
   opacity: 1;
 }
 
-.checkbox input:checked~.checkbox__checkmark:after {
+.checkbox input:checked ~ .checkbox__checkmark:after {
   opacity: 1;
 }
 
-.checkbox:hover input:checked~.checkbox__checkmark:after {
+.checkbox:hover input:checked ~ .checkbox__checkmark:after {
   opacity: 1;
 }
-
-// .checkbox input:not(:checked)~.checkbox__checkmark:after {
-//   opacity: 0;
-// }
-
-// .checkbox:hover input~.checkbox__checkmark.disabled::after {
-//   opacity: 0;
-// }
 
 .checkbox .checkbox__checkmark {
   position: absolute;
@@ -77,7 +69,7 @@
   transition: opacity 0.25s ease;
 }
 
-.checkbox input:checked~.checkbox__checkmark.disabled:after {
+.checkbox input:checked ~ .checkbox__checkmark.disabled:after {
   border: 1.4px solid $stroke-card;
   border-width: 0 1px 1px 0;
   opacity: 1;
