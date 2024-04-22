@@ -6,36 +6,42 @@ import { RadioTypes } from "./Radio.types";
 
 import styles from "./radio.module.scss";
 
-const Radio: React.FC<RadioTypes> = ({ data, required = false }) => {
-  const findedActive = data.find((item) => item.active)?.nameSection;
-  const [value, setValue] = React.useState(findedActive);
-  const { register } = useFormContext();
+const Radio: React.FC<RadioTypes> = ({ nameGroup, data, required = false }) => {
+  const { register, setValue } = useFormContext();
+
+  React.useEffect(() => {
+    function setActiveItems() {
+      const findedActive = data.find(({ active }) => active);
+      if (findedActive?.active) {
+        setValue(nameGroup, findedActive?.nameSection);
+      }
+    }
+    setActiveItems();
+  }, []);
 
   return (
     <>
       {data?.map(({ id, nameSection, disabled }) => (
         <div key={id}>
-          <label className={styles.checkboxesListItem}>
+          <label className={styles.radiosListItem}>
             <div
-              className={cn(styles.checkbox, {
+              className={cn(styles.radio, {
                 [styles.disabled]: disabled,
               })}
             >
               <input
-                {...register("companySize", { required: required })}
+                {...register(nameGroup, { required: required })}
                 type="radio"
                 disabled={disabled}
                 value={nameSection}
-                checked={value === nameSection ? true : false}
-                onChange={(event) => setValue(event.target.value)}
               />
               <div
-                className={cn(styles.checkbox__checkmark, {
+                className={cn(styles.radio__checkmark, {
                   [styles.disabled]: disabled,
                 })}
               ></div>
             </div>
-            <div className={styles.checkbox__body}>{nameSection}</div>
+            <div className={styles.radio__body}>{nameSection}</div>
           </label>
         </div>
       ))}

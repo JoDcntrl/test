@@ -14,5 +14,5 @@ export const CompanySize = [
 ];
 
 export const Additionally = [
-  { id: 1, nameSection: "Additionally", disabled: false, active: false },
+  { id: 1, nameSection: "Open positions", disabled: false, active: false },
 ];

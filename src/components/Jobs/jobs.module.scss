@@ -1,0 +1,93 @@
+@import "@/assets/core/_variables.scss";
+
+.main {
+  width: 100%;
+  margin-top: 80px;
+  background-color: $bg-main;
+  padding: 0 10px;
+}
+
+@media (max-width: 1024px) and (min-width: 500px) {
+  .main {
+    padding: 0 20px;
+  }
+}
+
+.mainWrapper {
+  max-width: 1216px;
+  margin: 0 auto;
+  margin-top: 72.5px;
+}
+
+.mainTitle {
+  font-size: 48px;
+  font-weight: 600;
+  margin-bottom: 45.5px;
+}
+
+.mainSection {
+  display: flex;
+  justify-content: space-between;
+  gap: 0 32px;
+}
+
+@media (max-width: 1024px) {
+  .mainSection {
+    flex-direction: column-reverse;
+    gap: 20px 0;
+  }
+}
+
+.sectionBlock {
+  width: 100%;
+}
+
+.sectionBlock {
+  .inputContainer {
+    input {
+      width: 100%;
+      height: 56px;
+      padding: 16px 37px;
+      font-size: 16px;
+    }
+    input::placeholder {
+      color: $text-secondary;
+    }
+  }
+}
+
+.blockTotalSort {
+  margin-top: 32px;
+  margin-bottom: 16px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.blockTotal {
+  color: $text-tertiary;
+}
+
+.blockSort {
+  color: $text-tertiary;
+  display: flex;
+  gap: 0 10px;
+  align-items: flex-start;
+}
+
+.blockSortVector {
+  border: none;
+  background: none;
+}
+
+.blockCards {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 24px;
+}
+
+@media (max-width: 768px) {
+  .blockCards {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}

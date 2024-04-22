@@ -1,6 +1,6 @@
+"use client";
 import React from "react";
 
-import Input from "@/components/Input/Input";
 import CompanyCard from "@/components/CompanyCard/CompanyCard";
 import FiltersCompanies from "@/components/FiltersCompanies/FiltersCompanies";
 import { cards } from "./CompaniesData";
@@ -15,11 +15,6 @@ const Companies = () => (
       <h1 className={styles.mainTitle}>Companies</h1>
       <section className={styles.mainSection}>
         <div className={styles.sectionBlock}>
-          <Input
-            isIcon={true}
-            className={styles.inputContainer}
-            placeholder="Search..."
-          />
           <div className={styles.blockTotalSort}>
             <span className={styles.blockTotal}>Total vacancies: 250</span>
             <span className={styles.blockSort}>
@@ -47,6 +42,7 @@ const Companies = () => (
         <FiltersCompanies />
       </section>
     </div>
+    <input type="checkbox" />
   </main>
 );
 

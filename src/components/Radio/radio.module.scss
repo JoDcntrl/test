@@ -1,22 +1,22 @@
 @import "@/assets/core/_variables.scss";
 
-.checkboxesListItem {
+.radiosListItem {
   display: flex;
 }
 
-.checkbox,
-.checkbox::before,
-.checkbox::after {
+.radio,
+.radio::before,
+.radio::after {
   box-sizing: border-box;
 }
 
-.checkbox *,
-.checkbox *::before,
-.checkbox *::after {
+.radio *,
+.radio *::before,
+.radio *::after {
   box-sizing: border-box;
 }
 
-.checkbox {
+.radio {
   display: inline-block;
   position: relative;
   padding-left: 25px;
@@ -24,11 +24,11 @@
   user-select: none;
 }
 
-.checkbox.disabled {
+.radio.disabled {
   cursor: not-allowed;
 }
 
-.checkbox input {
+.radio input {
   position: relative;
   opacity: 0;
   cursor: pointer;
@@ -36,19 +36,19 @@
   width: 0;
 }
 
-.checkbox input:checked~.checkbox__checkmark:after {
+.radio input:checked ~ .radio__checkmark:after {
   opacity: 1;
 }
 
-.checkbox:hover input~.checkbox__checkmark::after {
+.radio:hover input ~ .radio__checkmark::after {
   opacity: 1;
 }
 
-.checkbox:hover input~.checkbox__checkmark.disabled::after {
+.radio:hover input ~ .radio__checkmark.disabled::after {
   opacity: 0;
 }
 
-.checkbox .checkbox__checkmark {
+.radio .radio__checkmark {
   position: absolute;
   top: 2px;
   left: 0;
@@ -59,7 +59,7 @@
   border-radius: 4px;
 }
 
-.checkbox .checkbox__checkmark:after {
+.radio .radio__checkmark:after {
   content: "";
   position: absolute;
   left: 5px;
@@ -73,9 +73,13 @@
   transition: opacity 0.25s ease;
 }
 
-.checkbox input:checked~.checkbox__checkmark.disabled:after {
+.radio input:checked ~ .radio__checkmark.disabled:after {
   border: 1.4px solid $stroke-card;
   border-width: 0 1px 1px 0;
   opacity: 1;
   cursor: not-allowed;
+}
+
+.radio__body {
+  color: $text-secondary;
 }

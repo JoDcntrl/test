@@ -9,25 +9,21 @@ import {
 } from "react-hook-form";
 
 import Checkbox from "@/components/Checkbox/Checkbox";
-import { CompanySize, Industry, Additionally } from "./CompanyFilterData";
+import { Additionally, CompanySize, Industry } from "./FilterCompanyData";
 import Input from "@/components/Input/Input";
 import Button from "@/components/Button/Button";
-
-import styles from "./filtersCompanies.module.scss";
 import Radio from "../Radio/Radio";
 
-type Inputs = {
-  industry: [];
-  companySize: string;
-  city: string;
-  additionally: boolean;
-};
+import { FilterCompaniesForm } from "./FilterCompaniesForm.types";
+
+import styles from "./filtersCompanies.module.scss";
 
 const FiltersCompanies = () => {
-  const methods = useForm<Inputs>();
-  const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
+  const methods = useForm<FilterCompaniesForm>();
+  const onSubmit: SubmitHandler<FilterCompaniesForm> = (data) =>
+    console.log(data);
 
-  const error: SubmitErrorHandler<Inputs> = (data) => {
+  const error: SubmitErrorHandler<FilterCompaniesForm> = (data) => {
     console.log(data);
     for (const obj in data) {
       if (obj === "companySize") {
@@ -43,46 +39,59 @@ const FiltersCompanies = () => {
         className={styles.sectionFilters}
       >
         <h2 className={styles.filtersTitle}>Filters</h2>
-        <div className={styles.blockCheckboxes}>
-          <h2 className={styles.blockCheckboxesTitle}>Industry</h2>
-          <div className={styles.blockCheckboxesList}>
-            {Industry.map(({ nameSection, id, disabled, active }) => (
+        <div className={styles.block}>
+          <h2 className={styles.blockTitle}>Industry</h2>
+          <div className={styles.blockList}>
+            {Industry.map(({ nameSection, id, disabled }) => (
               <label key={id} className={styles.checkboxesListItem}>
                 <Checkbox
-                  required={true}
                   name={nameSection}
-                  nameGroup="industry"
                   disabled={disabled}
-                  active={active}
+                  nameGroup={"Industry"}
+                  required={true}
+                  data={Industry}
                 />
-                <div className={styles.checkbox__body}>{nameSection}</div>
+                <span>{nameSection}</span>
               </label>
             ))}
           </div>
         </div>
-        <div className={styles.blockCheckboxes}>
-          <h2 className={styles.blockCheckboxesTitle}>Company size</h2>
-          <div className={styles.blockCheckboxesList}>
-            <Radio data={CompanySize} required={true} />
+        <div className={styles.block}>
+          <h2 className={styles.blockTitle}>Company size</h2>
+          <div className={styles.blockList}>
+            <Radio
+              data={CompanySize}
+              nameGroup="Company size"
+              required={true}
+            />
           </div>
         </div>
         <div className={styles.blockInput}>
           <h3 className={styles.blockInputTitle}>City</h3>
           <Input
-            name="city"
+            name="City"
             isIcon={false}
             className={styles.inputContainer}
             placeholder="Any"
             required={true}
           />
         </div>
-        <label className={styles.checkboxesListItem}>
-          <Checkbox nameGroup="additionally" name={"additionally"} />
-          <div className={styles.checkbox__body}>Additionally</div>
-        </label>
+        <div className={styles.block}>
+          <h2 className={styles.blockTitle}>Additionally</h2>
+          <div className={styles.blockList}>
+            <label className={styles.blockListItem}>
+              <Checkbox
+                name="Open positions"
+                nameGroup={"Additionally"}
+                data={Additionally}
+                required={false}
+              />
+              <span>Open positions</span>
+            </label>
+          </div>
+        </div>
         <Button
           type="reset"
-          onClick={() => methods.reset()}
           appearance={"secondary"}
           size={"l"}
           className={styles.buttonStyle}

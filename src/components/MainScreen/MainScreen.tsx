@@ -1,10 +1,10 @@
-import React from "react";
+import { FC } from "react";
 
 import { LogoMain } from "@/assets/svgs/LogoMain";
 
 import "./mainScreen.scss";
 
-const MainScreen: React.FC = () => (
+const MainScreen: FC = () => (
   <main className="mainContainer">
     <div className="pictureOne" />
     <div className="blockHeader">

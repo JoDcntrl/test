@@ -1,11 +1,12 @@
 import { InputHTMLAttributes } from "react";
 
 export interface RadioTypes extends InputHTMLAttributes<HTMLInputElement> {
-  required?: boolean;
+  nameGroup: string;
   data: {
     id: number;
     nameSection: string;
-    disabled?: boolean;
-    active?: boolean;
+    disabled: boolean;
+    active: boolean;
   }[];
+  required?: boolean;
 }

@@ -7,19 +7,27 @@ import { CheckboxTypes } from "./Checkbox.types";
 import styles from "./checkbox.module.scss";
 
 const Checkbox: React.FC<CheckboxTypes> = ({
-  active = false,
-  disabled = false,
   name,
   nameGroup,
+  data,
+  disabled = false,
   required = false,
 }) => {
-  const [checked, setChecked] = React.useState(false);
-  const { register } = useFormContext();
+  const { register, setValue } = useFormContext();
 
   React.useEffect(() => {
-    if (active === true) {
-      setChecked(active);
+    function setActiveItems() {
+      const arrayActives: string[] = [];
+      data?.forEach((item: { active: any; nameSection: string }) => {
+        if (item.active) {
+          arrayActives.push(item.nameSection);
+        }
+      });
+      if (arrayActives.length > 0) {
+        setValue(nameGroup, arrayActives);
+      }
     }
+    setActiveItems();
   }, []);
 
   return (
@@ -33,8 +41,6 @@ const Checkbox: React.FC<CheckboxTypes> = ({
         disabled={disabled}
         type="checkbox"
         value={name}
-        checked={checked}
-        onChange={() => setChecked(!checked)}
       />
       <div
         className={cn(styles.checkbox__checkmark, {
