@@ -1,6 +1,6 @@
 import React from "react";
 import cn from "classnames";
-import NextLink from "next/link";
+import LinkNext from "next/link";
 
 import { LinkTypes } from "@/components/Link/Link.types";
 
@@ -15,7 +15,7 @@ const Link: React.FC<LinkTypes> = ({
   link = "",
   ...props
 }) => (
-  <NextLink href={`${link}`}>
+  <LinkNext href={`${link}`}>
     <div
       className={cn(className, "headerLink", {
         ["disabled"]: disabled,
@@ -37,7 +37,7 @@ const Link: React.FC<LinkTypes> = ({
         </div>
       )}
     </div>
-  </NextLink>
+  </LinkNext>
 );
 
 export default Link;

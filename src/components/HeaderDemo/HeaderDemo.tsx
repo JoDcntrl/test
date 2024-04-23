@@ -2,9 +2,11 @@
 
 import { useState, useEffect } from "react";
 import cn from "classnames";
+import LinkNext from "next/link";
 
 import Link from "@/components/Link/Link";
 import { LinksArr } from "./HeaderData";
+
 import { HeaderDemoTypes } from "@/components/HeaderDemo/Header.types";
 
 import { Logo } from "@/assets/svgs/Logo";
@@ -35,10 +37,12 @@ const HeaderDemo: React.FC<HeaderDemoTypes> = ({ className, ...props }) => {
   return (
     <header className={styles.headerDemoMain}>
       <div className={cn(className, styles.headerDemoWrapper)} {...props}>
-        <div className={styles.headerDemoLogoContainer}>
-          <Logo />
-          <span className={styles.logoText}>decentral job</span>
-        </div>
+        <LinkNext href="/">
+          <div className={styles.headerDemoLogoContainer}>
+            <Logo />
+            <span className={styles.logoText}>decentral job</span>
+          </div>
+        </LinkNext>
         <div
           className={cn(styles.headerDemo, { [styles.active]: activeBurger })}
         >

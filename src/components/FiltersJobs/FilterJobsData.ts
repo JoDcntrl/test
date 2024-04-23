@@ -1,3 +1,5 @@
+import Shevron from "@/assets/svgs/Icon.svg";
+
 export const Qualification = [
   { id: 1, nameSection: "Traine", disabled: false, active: false },
   { id: 2, nameSection: "Junior", disabled: false, active: false },
@@ -60,9 +62,7 @@ export const Other = [
 ];
 
 export const Company = [
-  { value: "Company 1", label: "Company 1" },
-  { value: "Company 2", label: "Company 2" },
-  { value: "Company 3", label: "Company 3" },
+  { value: "Company 1", label: "Company 1", icon: Shevron },
 ];
 
 export const EmploymentType = [
