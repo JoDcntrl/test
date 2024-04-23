@@ -36,19 +36,19 @@
   width: 0;
 }
 
-.radio input:checked ~ .radio__checkmark:after {
+.radio input:checked ~ .radioCheckmark:after {
   opacity: 1;
 }
 
-.radio:hover input ~ .radio__checkmark::after {
+.radio:hover input ~ .radioCheckmark::after {
   opacity: 1;
 }
 
-.radio:hover input ~ .radio__checkmark.disabled::after {
+.radio:hover input ~ .radioCheckmark.disabled::after {
   opacity: 0;
 }
 
-.radio .radio__checkmark {
+.radio .radioCheckmark {
   position: absolute;
   top: 2px;
   left: 0;
@@ -59,7 +59,7 @@
   border-radius: 4px;
 }
 
-.radio .radio__checkmark:after {
+.radio .radioCheckmark:after {
   content: "";
   position: absolute;
   left: 5px;
@@ -73,13 +73,13 @@
   transition: opacity 0.25s ease;
 }
 
-.radio input:checked ~ .radio__checkmark.disabled:after {
+.radio input:checked ~ .radioCheckmark.disabled:after {
   border: 1.4px solid $stroke-card;
   border-width: 0 1px 1px 0;
   opacity: 1;
   cursor: not-allowed;
 }
 
-.radio__body {
+.radioBody {
   color: $text-secondary;
 }

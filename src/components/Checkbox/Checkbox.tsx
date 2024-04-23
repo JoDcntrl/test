@@ -1,4 +1,4 @@
-import React from "react";
+import { useEffect } from "react";
 import cn from "classnames";
 import { useFormContext } from "react-hook-form";
 
@@ -15,8 +15,8 @@ const Checkbox: React.FC<CheckboxTypes> = ({
 }) => {
   const { register, setValue } = useFormContext();
 
-  React.useEffect(() => {
-    function setActiveItems() {
+  useEffect(() => {
+    const setActiveItems = () => {
       const arrayActives: string[] = [];
       data?.forEach((item: { active: any; nameSection: string }) => {
         if (item.active) {
@@ -26,7 +26,7 @@ const Checkbox: React.FC<CheckboxTypes> = ({
       if (arrayActives.length > 0) {
         setValue(nameGroup, arrayActives);
       }
-    }
+    };
     setActiveItems();
   }, []);
 
@@ -43,7 +43,7 @@ const Checkbox: React.FC<CheckboxTypes> = ({
         value={name}
       />
       <div
-        className={cn(styles.checkbox__checkmark, {
+        className={cn(styles.checkboxCheckmark, {
           [styles.disabled]: disabled,
         })}
       ></div>

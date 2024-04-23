@@ -1,4 +1,4 @@
-import React from "react";
+import { useEffect } from "react";
 import cn from "classnames";
 import { useFormContext } from "react-hook-form";
 
@@ -9,13 +9,13 @@ import styles from "./radio.module.scss";
 const Radio: React.FC<RadioTypes> = ({ nameGroup, data, required = false }) => {
   const { register, setValue } = useFormContext();
 
-  React.useEffect(() => {
-    function setActiveItems() {
+  useEffect(() => {
+    const setActiveItems = () => {
       const findedActive = data.find(({ active }) => active);
       if (findedActive?.active) {
         setValue(nameGroup, findedActive?.nameSection);
       }
-    }
+    };
     setActiveItems();
   }, []);
 
@@ -36,12 +36,12 @@ const Radio: React.FC<RadioTypes> = ({ nameGroup, data, required = false }) => {
                 value={nameSection}
               />
               <div
-                className={cn(styles.radio__checkmark, {
+                className={cn(styles.radioCheckmark, {
                   [styles.disabled]: disabled,
                 })}
               ></div>
             </div>
-            <div className={styles.radio__body}>{nameSection}</div>
+            <div className={styles.radioBody}>{nameSection}</div>
           </label>
         </div>
       ))}

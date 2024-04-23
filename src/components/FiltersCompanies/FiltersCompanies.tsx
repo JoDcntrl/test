@@ -12,7 +12,7 @@ import Checkbox from "@/components/Checkbox/Checkbox";
 import { Additionally, CompanySize, Industry } from "./FilterCompanyData";
 import Input from "@/components/Input/Input";
 import Button from "@/components/Button/Button";
-import Radio from "../Radio/Radio";
+import Radio from "@/components/Radio/Radio";
 
 import { FilterCompaniesForm } from "./FilterCompaniesForm.types";
 
@@ -20,16 +20,13 @@ import styles from "./filtersCompanies.module.scss";
 
 const FiltersCompanies = () => {
   const methods = useForm<FilterCompaniesForm>();
+  const { errors } = methods.formState;
+
   const onSubmit: SubmitHandler<FilterCompaniesForm> = (data) =>
     console.log(data);
 
   const error: SubmitErrorHandler<FilterCompaniesForm> = (data) => {
     console.log(data);
-    for (const obj in data) {
-      if (obj === "companySize") {
-        alert(`Enter value - company size`);
-      } else alert(`Enter value - ${obj}`);
-    }
   };
 
   return (
@@ -47,8 +44,7 @@ const FiltersCompanies = () => {
                 <Checkbox
                   name={nameSection}
                   disabled={disabled}
-                  nameGroup={"Industry"}
-                  required={true}
+                  nameGroup="industry"
                   data={Industry}
                 />
                 <span>{nameSection}</span>
@@ -59,21 +55,18 @@ const FiltersCompanies = () => {
         <div className={styles.block}>
           <h2 className={styles.blockTitle}>Company size</h2>
           <div className={styles.blockList}>
-            <Radio
-              data={CompanySize}
-              nameGroup="Company size"
-              required={true}
-            />
+            <Radio data={CompanySize} nameGroup="size" />
           </div>
         </div>
         <div className={styles.blockInput}>
           <h3 className={styles.blockInputTitle}>City</h3>
           <Input
-            name="City"
+            name="city"
             isIcon={false}
             className={styles.inputContainer}
             placeholder="Any"
             required={true}
+            error={errors.city}
           />
         </div>
         <div className={styles.block}>
@@ -82,9 +75,8 @@ const FiltersCompanies = () => {
             <label className={styles.blockListItem}>
               <Checkbox
                 name="Open positions"
-                nameGroup={"Additionally"}
+                nameGroup="additionally"
                 data={Additionally}
-                required={false}
               />
               <span>Open positions</span>
             </label>
@@ -92,16 +84,16 @@ const FiltersCompanies = () => {
         </div>
         <Button
           type="reset"
-          appearance={"secondary"}
-          size={"l"}
+          appearance="secondary"
+          size="l"
           className={styles.buttonStyle}
         >
           Reset all
         </Button>
         <Button
           type="submit"
-          appearance={"secondary"}
-          size={"l"}
+          appearance="secondary"
+          size="l"
           className={styles.buttonStyle}
         >
           Submit

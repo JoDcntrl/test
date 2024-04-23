@@ -23,9 +23,9 @@ import {
 } from "./FilterJobsData";
 import Input from "@/components/Input/Input";
 import Button from "@/components/Button/Button";
-import BlockCheckboxesTag from "../BlockCheckboxesTag/BlockCheckboxesTag";
-import Radio from "../Radio/Radio";
-import Select from "../Select/Select";
+import BlockCheckboxesTag from "@/components/BlockCheckboxesTag/BlockCheckboxesTag";
+import Radio from "@/components/Radio/Radio";
+import Select from "@/components/Select/Select";
 import { FilterJobsFormTypes } from "./FilterJobsForm.types";
 
 import styles from "./filterJobs.module.scss";
@@ -33,14 +33,14 @@ import styles from "./filterJobs.module.scss";
 const FiltersCompanies = () => {
   const methods = useForm<FilterJobsFormTypes>();
 
+  const { errors } = methods.formState;
+
   const onSubmit: SubmitHandler<FilterJobsFormTypes> = (data) => {
     console.log(data);
   };
 
   const error: SubmitErrorHandler<FilterJobsFormTypes> = (data) => {
-    for (const obj in data) {
-      alert(`Enter value - ${obj}`);
-    }
+    console.log(data);
   };
 
   return (
@@ -53,10 +53,10 @@ const FiltersCompanies = () => {
         <div className={styles.block}>
           <h2 className={styles.blockTitle}>Specialization</h2>
           <div className={styles.listCheckboxesTag}>
-            <BlockCheckboxesTag data={Development} nameGroup="Development" />
-            <BlockCheckboxesTag data={Technical} nameGroup="Technical" />
-            <BlockCheckboxesTag data={Design} nameGroup="Design" />
-            <BlockCheckboxesTag data={Other} nameGroup="Other" />
+            <BlockCheckboxesTag data={Development} nameGroup="development" />
+            <BlockCheckboxesTag data={Technical} nameGroup="technical" />
+            <BlockCheckboxesTag data={Design} nameGroup="design" />
+            <BlockCheckboxesTag data={Other} nameGroup="other" />
           </div>
         </div>
         <div className={styles.block}>
@@ -66,9 +66,8 @@ const FiltersCompanies = () => {
               <label key={id} className={styles.blockListItem}>
                 <Checkbox
                   data={Qualification}
-                  required={true}
                   name={nameSection}
-                  nameGroup="Qualification"
+                  nameGroup="qualification"
                   disabled={disabled}
                 />
                 <span>{nameSection}</span>
@@ -79,16 +78,15 @@ const FiltersCompanies = () => {
         <div className={styles.block}>
           <h2 className={styles.blockTitle}>Experience</h2>
           <div className={styles.blockList}>
-            <Radio data={Experience} required={true} nameGroup="Experience" />
+            <Radio data={Experience} nameGroup="experience" />
           </div>
         </div>
         <div className={styles.blockInput}>
           <h3 className={styles.blockInputTitle}>Employment type</h3>
           <div className={styles.blockInputWrapper}>
             <Controller
-              name="Employment type"
+              name="type"
               control={methods.control}
-              rules={{ required: false }}
               render={({ field: { onChange, value } }) => (
                 <div>
                   <Select
@@ -105,7 +103,7 @@ const FiltersCompanies = () => {
         <div className={styles.block}>
           <div className={styles.blockList}>
             <label className={styles.blockListItem}>
-              <Checkbox name="Remote" nameGroup={"Remote"} data={Remote} />
+              <Checkbox name="remote" nameGroup="remote" data={Remote} />
               <span>Remote</span>
             </label>
           </div>
@@ -114,9 +112,8 @@ const FiltersCompanies = () => {
           <h3 className={styles.blockInputTitle}>Company</h3>
           <div className={styles.blockInputWrapper}>
             <Controller
-              name="Company"
+              name="company"
               control={methods.control}
-              rules={{ required: false }}
               render={({ field: { onChange, value } }) => (
                 <div>
                   <Select
@@ -133,11 +130,12 @@ const FiltersCompanies = () => {
         <div className={styles.blockInput}>
           <h3 className={styles.blockInputTitle}>City</h3>
           <Input
-            name="City"
+            name="city"
             isIcon={false}
             className={styles.inputContainer}
             placeholder="Any"
             required={true}
+            error={errors.city}
           />
         </div>
 
@@ -146,16 +144,16 @@ const FiltersCompanies = () => {
           onClick={() => {
             methods.reset();
           }}
-          appearance={"secondary"}
-          size={"l"}
+          appearance="secondary"
+          size="l"
           className={styles.buttonStyle}
         >
           Reset all
         </Button>
         <Button
           type="submit"
-          appearance={"secondary"}
-          size={"l"}
+          appearance="secondary"
+          size="l"
           className={styles.buttonStyle}
         >
           Submit

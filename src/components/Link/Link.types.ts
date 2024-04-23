@@ -5,6 +5,7 @@ export interface LinkTypes
   className?: string;
   withCount: boolean;
   disabled: boolean;
+  link?: string;
   count: number | null;
   children: ReactNode;
 }

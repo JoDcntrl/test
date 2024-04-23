@@ -22,6 +22,10 @@
   border: 1px solid $main-error;
 }
 
+.error:focus-visible {
+  outline: 1px solid $main-error;
+}
+
 .inputWrapper {
   position: relative;
 }

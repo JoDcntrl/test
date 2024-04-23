@@ -1,14 +1,14 @@
 import LayoutHeader from "@/components/LayoutHeader/LayoutHeader";
-import Companies from "@/components/Companies/Companies";
+import Jobs from "@/components/Jobs/Jobs";
 
 import styles from "@/app/page.module.css";
 
-const PageCompanies = () => (
+const PageVacancies = () => (
   <main className={styles.main}>
     <LayoutHeader>
-      <Companies />
+      <Jobs />
     </LayoutHeader>
   </main>
 );
 
-export default PageCompanies;
+export default PageVacancies;

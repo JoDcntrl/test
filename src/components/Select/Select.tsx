@@ -13,14 +13,8 @@ const Select: React.FC<SelectTypes> = ({
   data,
   placeholder,
 }) => {
-  const getValue = (obj: { value: string; label: string }) => {
-    return obj
-      ? data?.find(
-          (option: { value: string; label: string }) =>
-            option.value === obj.value
-        )
-      : "";
-  };
+  const getValue = (obj: { value: string }) =>
+    obj ? data?.find((option) => option.value === obj.value) : "";
 
   return (
     <ReactSelect
@@ -28,10 +22,8 @@ const Select: React.FC<SelectTypes> = ({
       classNamePrefix="react-select"
       instanceId={useId()}
       options={data}
-      value={getValue(objValue as { value: string; label: string })}
-      onChange={(newValue) => {
-        return onChange((newValue as { value: string }).value);
-      }}
+      value={getValue(objValue as { value: string })}
+      onChange={(newValue) => onChange((newValue as { value: string }).value)}
     />
   );
 };

@@ -6,15 +6,15 @@ import RegisteredCompanies from "@/components/RegisteredСompanies/RegisteredCom
 
 import styles from "./page.module.css";
 
-export default function Home() {
-  return (
-    <main className={styles.main}>
-      <Layout>
-        <MainScreen />
-        <RegisteredVacancies />
-        <Banner />
-        <RegisteredCompanies />
-      </Layout>
-    </main>
-  );
-}
+const Home = () => (
+  <main className={styles.main}>
+    <Layout>
+      <MainScreen />
+      <RegisteredVacancies />
+      <Banner />
+      <RegisteredCompanies />
+    </Layout>
+  </main>
+);
+
+export default Home;

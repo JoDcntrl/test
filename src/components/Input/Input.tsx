@@ -22,6 +22,7 @@ const Input: FC<InputTypes> = ({
     return null;
   }
   const { register } = useFormContext();
+
   return (
     <div className={cn(styles.inputWrapper, className)}>
       {isIcon && (
@@ -30,7 +31,7 @@ const Input: FC<InputTypes> = ({
         </div>
       )}
       <input
-        {...register(name, { required: required })}
+        {...register(name, { required: "City is require field!" })}
         className={cn(styles.input, {
           [styles.error]: error,
           [styles.isIcon]: isIcon,

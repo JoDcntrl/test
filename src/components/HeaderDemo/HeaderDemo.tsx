@@ -43,18 +43,19 @@ const HeaderDemo: React.FC<HeaderDemoTypes> = ({ className, ...props }) => {
           className={cn(styles.headerDemo, { [styles.active]: activeBurger })}
         >
           <div className={styles.headerLinks}>
-            {LinksArr.map(({ id, text, withCount, disabled, count }) => (
+            {LinksArr.map(({ id, text, withCount, disabled, count, link }) => (
               <Link
                 key={id}
                 count={count}
                 withCount={withCount}
                 disabled={disabled}
+                link={link}
               >
                 {text}
               </Link>
             ))}
           </div>
-          <div className={styles.buttonConnectWalletWrapper} >
+          <div className={styles.buttonConnectWalletWrapper}>
             <button className={styles.buttonConnectWallet} disabled>
               Connect wallet
             </button>
