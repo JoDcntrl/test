@@ -99,14 +99,10 @@ const FiltersCompanies = () => {
               )}
             />
           </div>
-        </div>
-        <div className={styles.block}>
-          <div className={styles.blockList}>
-            <label className={styles.blockListItem}>
-              <Checkbox name="remote" nameGroup="remote" data={Remote} />
-              <span>Remote</span>
-            </label>
-          </div>
+          <label className={styles.checkbox}>
+            <Checkbox name="remote" nameGroup="remote" data={Remote} />
+            <span>Remote</span>
+          </label>
         </div>
         <div className={styles.blockInput}>
           <h3 className={styles.blockInputTitle}>Company</h3>
@@ -138,26 +134,27 @@ const FiltersCompanies = () => {
             error={errors.city}
           />
         </div>
-
-        <Button
-          type="reset"
-          onClick={() => {
-            methods.reset();
-          }}
-          appearance="secondary"
-          size="l"
-          className={styles.buttonStyle}
-        >
-          Reset all
-        </Button>
-        <Button
-          type="submit"
-          appearance="secondary"
-          size="l"
-          className={styles.buttonStyle}
-        >
-          Submit
-        </Button>
+        <div className={styles.blockButtons}>
+          <Button
+            type="reset"
+            onClick={() => {
+              methods.reset();
+            }}
+            appearance="secondary"
+            size="l"
+            className={styles.buttonStyle}
+          >
+            Reset all
+          </Button>
+          <Button
+            type="submit"
+            appearance="secondary"
+            size="l"
+            className={styles.buttonStyle}
+          >
+            Submit
+          </Button>
+        </div>
       </form>
     </FormProvider>
   );
