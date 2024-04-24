@@ -1,9 +1,9 @@
 import React from "react";
 import Link from "next/link";
 
-import { FooterDemoTypes } from "./Footer.types";
 import { LinksArr, IconsArr } from "@/components/FooterDemo/FooterData";
 import { getYear } from "@/helpers/helpers";
+import { FooterDemoTypes } from "./Footer.types";
 
 import { Logo } from "@/assets/svgs/Logo";
 

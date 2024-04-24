@@ -7,9 +7,8 @@ export const yearDeclensionRu = (count: number) => {
   } else return `${count} лет`;
 };
 
-export const yearDeclensionEn = (count: number): string => {
-  return `${count} year${count !== 1 ? "s" : ""}`;
-};
+export const yearDeclensionEn = (count: number): string =>
+  `${count} year${count !== 1 ? "s" : ""}`;
 
 export const convertISOToDate = (isoDate: string): string => {
   const date = new Date(isoDate);

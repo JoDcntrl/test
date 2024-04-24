@@ -1,0 +1,10 @@
+.buttonsTagToggle {
+  background: none;
+  border: none;
+  transform: rotate(180deg);
+  cursor: pointer;
+}
+
+.buttonsTagToggle.buttonsTagToggleActive {
+  transform: rotate(0deg);
+}

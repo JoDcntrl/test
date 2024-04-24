@@ -1,8 +1,8 @@
 import React from "react";
 
-import { LayoutTypes } from "./Layout.types";
 import HeaderDemo from "@/components/HeaderDemo/HeaderDemo";
 import FooterDemo from "@/components/FooterDemo/FooterDemo";
+import { LayoutTypes } from "./Layout.types";
 
 const Layout: React.FC<LayoutTypes> = ({ children }) => (
   <>

@@ -1,31 +1,31 @@
-import React from "react";
+import { FC } from "react";
 
 import { LogoMain } from "@/assets/svgs/LogoMain";
 
-import "./mainScreen.scss";
+import styles from "./mainScreen.module.scss";
 
-const MainScreen: React.FC = () => (
-  <main className="mainContainer">
-    <div className="pictureOne" />
-    <div className="blockHeader">
-      <div className="blockWebThree">
-        <p className="webThreeLabel">WEB3</p>
-        <p className="webThreeText">Recruitment Platform</p>
+const MainScreen: FC = () => (
+  <main className={styles.mainContainer}>
+    <div className={styles.pictureOne} />
+    <div className={styles.blockHeader}>
+      <div className={styles.blockWebThree}>
+        <p className={styles.webThreeLabel}>WEB3</p>
+        <p className={styles.webThreeText}>Recruitment Platform</p>
       </div>
-      <div className="blockMain">
-        <h1 className="blockMainH">Join the Thriving Teams in the</h1>
-        <h1 className="blockMainText">TON Ecosystem</h1>
+      <div className={styles.blockMain}>
+        <h1 className={styles.blockMainH}>Join the Thriving Teams in the</h1>
+        <h1 className={styles.blockMainText}>TON Ecosystem</h1>
       </div>
       <div>
-        <button className="buttonAdd" disabled>
+        <button className={styles.buttonAdd} disabled>
           Add company
         </button>
       </div>
     </div>
-    <div className="blockImg">
+    <div className={styles.blockImg}>
       <LogoMain />
     </div>
-    <div className="pictureTwo" />
+    <div className={styles.pictureTwo} />
   </main>
 );
 

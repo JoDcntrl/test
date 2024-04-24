@@ -1,9 +1,9 @@
 import React from "react";
 import Image from "next/image";
 
-import { CompanyCardTypes } from "@/components/CompanyCard/CompanyCard.types";
 import { Location } from "@/components/CompanyCard/Location";
 import { Fire } from "@/components/CompanyCard/Fire";
+import { CompanyCardTypes } from "@/components/CompanyCard/CompanyCard.types";
 
 import styles from "./CompanyCard.module.scss";
 
@@ -28,7 +28,7 @@ const CompanyCard: React.FC<CompanyCardTypes> = ({
       </div>
       <div className={styles.flex}>
         <Fire />
-        <p className={styles.locationVacancy}>{vacancyNumber} вакансий</p>
+        <p className={styles.locationVacancy}>{vacancyNumber} vacancies</p>
       </div>
     </div>
   </div>

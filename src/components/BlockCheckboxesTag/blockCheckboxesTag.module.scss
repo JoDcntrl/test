@@ -1,0 +1,39 @@
+@import "@/assets/core/_variables.scss";
+
+.buttonsTagWrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 12px 0;
+}
+
+.blockButtonsTag {
+  display: flex;
+  flex-wrap: wrap;
+  overflow: hidden;
+  gap: 8px;
+  transition: max-height 0.5s, padding 0.5s;
+  max-height: 0;
+}
+
+.blockButtonsTag.blockButtonsTagActive {
+  max-height: 270px;
+  padding-bottom: 12px;
+}
+
+.buttonsTagLabel {
+  display: flex;
+  justify-content: space-between;
+  background-color: $bg-card;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 120%;
+  color: $text-secondary;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 150%;
+  cursor: pointer;
+  text-transform: capitalize;
+}
+
+
