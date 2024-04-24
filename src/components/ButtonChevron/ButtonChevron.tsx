@@ -15,7 +15,7 @@ const ButtonChevron = ({
     type="button"
     onClick={() => setOpenBlock((prev) => !prev)}
     className={cn(styles.buttonsTagToggle, {
-      [styles.buttonsTagToggleActive]: openBlock === true,
+      [styles.buttonsTagToggleActive]: openBlock,
     })}
   >
     <Chevron />
