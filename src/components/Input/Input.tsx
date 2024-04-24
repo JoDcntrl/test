@@ -2,11 +2,11 @@
 
 import React, { FC } from "react";
 import cn from "classnames";
-
 import { useFormContext } from "react-hook-form";
 
-import { Search } from "@/assets/svgs/Search";
 import { InputTypes } from "@/components/Input/Input.types";
+
+import { Search } from "@/assets/svgs/Search";
 
 import styles from "./Input.module.scss";
 

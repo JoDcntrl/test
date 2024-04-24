@@ -4,7 +4,7 @@ import LinkNext from "next/link";
 
 import { LinkTypes } from "@/components/Link/Link.types";
 
-import "./link.css";
+import styles from "./link.module.scss";
 
 const Link: React.FC<LinkTypes> = ({
   className,
@@ -17,23 +17,23 @@ const Link: React.FC<LinkTypes> = ({
 }) => (
   <LinkNext href={`${link}`}>
     <div
-      className={cn(className, "headerLink", {
-        ["disabled"]: disabled,
+      className={cn(className, styles.headerLink, {
+        [styles.disabled]: disabled,
       })}
       {...props}
     >
       <span
-        className={cn("headerLinkText", {
-          ["disabled"]: disabled,
-          ["withCount"]: withCount,
+        className={cn(styles.headerLinkText, {
+          [styles.disabled]: disabled,
+          [styles.withCount]: withCount,
         })}
       >
         {children}
       </span>
 
       {withCount && (
-        <div className={cn("headerLinkCount")}>
-          <span className="LinkCountText">{count}</span>
+        <div className={cn(styles.headerLinkCount)}>
+          <span className={styles.LinkCountText}>{count}</span>
         </div>
       )}
     </div>

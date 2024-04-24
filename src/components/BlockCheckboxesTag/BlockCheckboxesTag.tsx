@@ -1,11 +1,9 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useFormContext } from "react-hook-form";
 import cn from "classnames";
 
 import CheckboxTag from "@/components/CheckboxTag/CheckboxTag";
-
-import { Chevron } from "@/assets/svgs/Chevron";
-
+import ButtonChevron from "@/components/ButtonChevron/ButtonChevron";
 import { BlockCheckboxesTagTypes } from "./BlockCheckboxesTag.types";
 
 import styles from "./blockCheckboxesTag.module.scss";
@@ -35,15 +33,7 @@ const BlockCheckboxesTag: React.FC<BlockCheckboxesTagTypes> = ({
     <div className={styles.buttonsTagWrapper}>
       <label className={styles.buttonsTagLabel}>
         {nameGroup}
-        <button
-          type="button"
-          onClick={() => setOpenBlock((prev) => !prev)}
-          className={cn(styles.buttonsTagToggle, {
-            [styles.buttonsTagToggleActive]: openBlock === true,
-          })}
-        >
-          <Chevron />
-        </button>
+        <ButtonChevron openBlock={openBlock} setOpenBlock={setOpenBlock} />
       </label>
       <div
         className={cn(styles.blockButtonsTag, {

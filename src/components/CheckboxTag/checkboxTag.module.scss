@@ -1,19 +1,19 @@
 @import "@/assets/core/_variables.scss";
 
-.checkboxTag-btn {
+.checkboxTagBtn {
   display: inline-block;
   margin: 0 5px 0 0;
   user-select: none;
   position: relative;
 }
-.checkboxTag-btn input[type="checkbox"] {
+.checkboxTagBtn input[type="checkbox"] {
   z-index: -1;
   opacity: 0;
   display: block;
   width: 0;
   height: 0;
 }
-.checkboxTag-btn span {
+.checkboxTagBtn span {
   display: inline-block;
   cursor: pointer;
   padding: 6px 10px;
@@ -26,26 +26,26 @@
   line-height: 16px;
 }
 
-.checkboxTag-btn span:hover {
+.checkboxTagBtn span:hover {
   background: #5267d31a;
   color: $main-primary;
 }
 
-.checkboxTag-btn input[type="checkbox"]:checked + span {
+.checkboxTagBtn input[type="checkbox"]:checked + span {
   background: #5267d31a;
   color: $main-primary;
 }
 
-.checkboxTag-btn input[type="checkbox"]:active:not(:disabled) + span {
+.checkboxTagBtn input[type="checkbox"]:active:not(:disabled) + span {
   background: #5267d31a;
   color: $main-primary;
 }
 
-.checkboxTag-btn input[type="checkbox"]:disabled + span {
+.checkboxTagBtn input[type="checkbox"]:disabled + span {
   background: #efefef;
   color: #b1b1b1;
   cursor: not-allowed;
 }
-.checkboxTag-btn input[type="checkbox"]:checked:disabled + span {
+.checkboxTagBtn input[type="checkbox"]:checked:disabled + span {
   background: #efefef;
 }

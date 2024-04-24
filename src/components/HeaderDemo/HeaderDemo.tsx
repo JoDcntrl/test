@@ -1,12 +1,11 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import cn from "classnames";
 import LinkNext from "next/link";
 
 import Link from "@/components/Link/Link";
 import { LinksArr } from "./HeaderData";
-
 import { HeaderDemoTypes } from "@/components/HeaderDemo/Header.types";
 
 import { Logo } from "@/assets/svgs/Logo";
