@@ -1,4 +1,4 @@
-export interface FilterJobsFormTypes {
+export interface FilterJobsForm {
   design: string[];
   development: string[];
   technical: string[];

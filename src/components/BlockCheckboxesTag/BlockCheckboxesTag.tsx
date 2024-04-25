@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useFormContext } from "react-hook-form";
+import { useForm, useFormContext } from "react-hook-form";
 import cn from "classnames";
 
 import CheckboxTag from "@/components/CheckboxTag/CheckboxTag";
@@ -8,13 +8,14 @@ import { BlockCheckboxesTagTypes } from "./BlockCheckboxesTag.types";
 
 import styles from "./blockCheckboxesTag.module.scss";
 
-const BlockCheckboxesTag: React.FC<BlockCheckboxesTagTypes> = ({
+const BlockCheckboxesTag = <T extends Record<string, any>>({
   data,
   nameGroup,
-}) => {
+  register,
+}: BlockCheckboxesTagTypes<T>) => {
   const [openBlock, setOpenBlock] = useState(false);
 
-  const { setValue } = useFormContext();
+  const { setValue } = useForm();
 
   useEffect(() => {
     const setActiveItems = () => {
@@ -42,6 +43,7 @@ const BlockCheckboxesTag: React.FC<BlockCheckboxesTagTypes> = ({
       >
         {data?.map(({ nameSection, id, disabled }) => (
           <CheckboxTag
+            register={register}
             key={id}
             disabled={disabled}
             name={nameSection}

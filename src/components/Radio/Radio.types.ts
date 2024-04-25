@@ -1,7 +1,9 @@
 import { InputHTMLAttributes } from "react";
+import { FieldValues, Path, UseFormRegister } from "react-hook-form";
 
-export interface RadioTypes extends InputHTMLAttributes<HTMLInputElement> {
-  nameGroup: string;
+export interface RadioTypes<T extends FieldValues>
+  extends InputHTMLAttributes<HTMLInputElement> {
+  nameGroup: Path<T>;
   data: {
     id: number;
     nameSection: string;
@@ -9,4 +11,5 @@ export interface RadioTypes extends InputHTMLAttributes<HTMLInputElement> {
     active: boolean;
   }[];
   required?: boolean;
+  register: UseFormRegister<T>;
 }

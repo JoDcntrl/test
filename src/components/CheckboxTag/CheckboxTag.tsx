@@ -10,9 +10,8 @@ const CheckboxTag: React.FC<CheckboxTagTypes> = ({
   name,
   nameGroup,
   required = false,
+  register,
 }) => {
-  const { register } = useFormContext();
-
   return (
     <label className={styles.checkboxTagBtn}>
       <input

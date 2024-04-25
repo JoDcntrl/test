@@ -1,35 +1,19 @@
 import React, { useEffect } from "react";
 import cn from "classnames";
-import { useFormContext } from "react-hook-form";
+import { useForm } from "react-hook-form";
 
 import { CheckboxTypes } from "./Checkbox.types";
 
 import styles from "./checkbox.module.scss";
 
-const Checkbox: React.FC<CheckboxTypes> = ({
+const Checkbox = <T extends Record<string, any>>({
   name,
   nameGroup,
-  data,
+  register,
   disabled = false,
   required = false,
-}) => {
-  const { register, setValue } = useFormContext();
-
-  useEffect(() => {
-    const setActiveItems = () => {
-      const arrayActives: string[] = [];
-      data?.forEach((item: { active: any; nameSection: string }) => {
-        if (item.active) {
-          arrayActives.push(item.nameSection);
-        }
-      });
-      if (arrayActives.length > 0) {
-        setValue(nameGroup, arrayActives);
-      }
-    };
-    setActiveItems();
-  }, []);
-
+  active = false,
+}: CheckboxTypes<T>) => {
   return (
     <div
       className={cn(styles.checkbox, {
@@ -41,6 +25,7 @@ const Checkbox: React.FC<CheckboxTypes> = ({
         disabled={disabled}
         type="checkbox"
         value={name}
+        defaultChecked={active}
       />
       <div
         className={cn(styles.checkboxCheckmark, {
