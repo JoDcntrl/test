@@ -1,7 +1,8 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import cn from "classnames";
+import LinkNext from "next/link";
 
 import Link from "@/components/Link/Link";
 import { LinksArr } from "./HeaderData";
@@ -35,27 +36,30 @@ const HeaderDemo: React.FC<HeaderDemoTypes> = ({ className, ...props }) => {
   return (
     <header className={styles.headerDemoMain}>
       <div className={cn(className, styles.headerDemoWrapper)} {...props}>
-        <div className={styles.headerDemoLogoContainer}>
-          <Logo />
-          <span className={styles.logoText}>decentral job</span>
-        </div>
+        <LinkNext href="/">
+          <div className={styles.headerDemoLogoContainer}>
+            <Logo />
+            <span className={styles.logoText}>decentral job</span>
+          </div>
+        </LinkNext>
         <div
           className={cn(styles.headerDemo, { [styles.active]: activeBurger })}
         >
           <div className={styles.headerLinks}>
-            {LinksArr.map(({ id, text, withCount, disabled, count }) => (
+            {LinksArr.map(({ id, text, withCount, disabled, count, link }) => (
               <Link
                 key={id}
                 count={count}
                 withCount={withCount}
                 disabled={disabled}
+                link={link}
               >
                 {text}
               </Link>
             ))}
           </div>
-          <div className="">
-            <button className={styles.headerButtonConnectWallet} disabled>
+          <div className={styles.buttonConnectWalletWrapper}>
+            <button className={styles.buttonConnectWallet} disabled>
               Connect wallet
             </button>
           </div>

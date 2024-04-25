@@ -1,0 +1,86 @@
+@import "@/assets/core/_variables.scss";
+
+.radiosListItem {
+  display: flex;
+}
+
+.radio,
+.radio::before,
+.radio::after {
+  box-sizing: border-box;
+}
+
+.radio *,
+.radio *::before,
+.radio *::after {
+  box-sizing: border-box;
+}
+
+.radio {
+  display: inline-block;
+  position: relative;
+  margin-right: 8px;
+  width: 16px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.radio.disabled {
+  cursor: not-allowed;
+}
+
+.radio input {
+  position: relative;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.radio input:checked ~ .radioCheckmark:after {
+  opacity: 1;
+}
+
+.radio:hover input ~ .radioCheckmark::after {
+  opacity: 1;
+}
+
+.radio:hover input ~ .radioCheckmark.disabled::after {
+  opacity: 0;
+}
+
+.radio .radioCheckmark {
+  position: absolute;
+  top: 2px;
+  left: 0;
+  height: 16px;
+  width: 16px;
+  border: 1px solid $stroke-card;
+  transition: background-color 0.25s ease;
+  border-radius: 4px;
+}
+
+.radio .radioCheckmark:after {
+  content: "";
+  position: absolute;
+  left: 5px;
+  top: 1px;
+  width: 5px;
+  height: 10px;
+  border: 1.4px solid $main-primary;
+  border-width: 0 1px 1px 0;
+  transform: rotate(45deg);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.radio input:checked ~ .radioCheckmark.disabled:after {
+  border: 1.4px solid $stroke-card;
+  border-width: 0 1px 1px 0;
+  opacity: 1;
+  cursor: not-allowed;
+}
+
+.radioBody {
+  color: $text-secondary;
+}

@@ -5,6 +5,7 @@ export const LinksArr = [
     withCount: true,
     disabled: false,
     count: 32,
+    link: "/vacancies",
   },
   {
     id: 2,
@@ -12,6 +13,7 @@ export const LinksArr = [
     withCount: false,
     disabled: false,
     count: null,
+    link: "/companies",
   },
   {
     id: 4,
