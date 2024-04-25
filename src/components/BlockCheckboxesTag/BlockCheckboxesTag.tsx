@@ -43,7 +43,7 @@ const BlockCheckboxesTag = <T extends Record<string, any>>({
       >
         {data?.map(({ nameSection, id, disabled }) => (
           <CheckboxTag
-            register={register}
+            // register={register}
             key={id}
             disabled={disabled}
             name={nameSection}

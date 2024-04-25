@@ -159,7 +159,7 @@ const FiltersJobs = () => {
           placeholder="Any"
           required={true}
           error={errors.city}
-          register={register}
+          // register={register}
         />
       </div>
       <div className={styles.blockButtons}>

@@ -10,12 +10,11 @@ const CheckboxTag: React.FC<CheckboxTagTypes> = ({
   name,
   nameGroup,
   required = false,
-  register,
+  // register,
 }) => {
   return (
     <label className={styles.checkboxTagBtn}>
       <input
-        {...register(nameGroup, { required: required })}
         disabled={disabled}
         type="checkbox"
         value={name}

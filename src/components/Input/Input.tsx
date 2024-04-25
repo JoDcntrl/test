@@ -16,7 +16,7 @@ const Input = <T extends Record<string, any>>({
   className,
   error,
   isIcon = false,
-  register,
+  // register,
   ...props
 }: InputTypes<T>) => {
   return (
@@ -27,7 +27,6 @@ const Input = <T extends Record<string, any>>({
         </div>
       )}
       <input
-        {...register(name, { required: "City " })}
         className={cn(styles.input, {
           [styles.error]: error,
           [styles.isIcon]: isIcon,
