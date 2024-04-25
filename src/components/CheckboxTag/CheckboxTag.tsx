@@ -1,17 +1,17 @@
 import React from "react";
-import { useFormContext } from "react-hook-form";
 
 import { CheckboxTagTypes } from "./CheckboxTag.types";
 
 import styles from "./checkboxTag.module.scss";
 
-const CheckboxTag: React.FC<CheckboxTagTypes> = ({
+const CheckboxTag = <T extends Record<string, any>>({
   disabled = false,
   name,
   nameGroup,
   required = false,
+  active = false,
   register,
-}) => {
+}: CheckboxTagTypes<T>) => {
   return (
     <label className={styles.checkboxTagBtn}>
       <input
@@ -19,6 +19,7 @@ const CheckboxTag: React.FC<CheckboxTagTypes> = ({
         disabled={disabled}
         type="checkbox"
         value={name}
+        defaultChecked={active}
       />
       <span>{name}</span>
     </label>

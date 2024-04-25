@@ -28,7 +28,6 @@ import Select from "@/components/Select/Select";
 import { FilterJobsForm } from "./FilterJobsForm.types";
 
 import styles from "./filterJobs.module.scss";
-import { FilterCompaniesForm } from "../FiltersCompanies/FilterCompaniesForm.types";
 
 const FiltersJobs = () => {
   const {
@@ -59,17 +58,17 @@ const FiltersJobs = () => {
             register={register}
             nameGroup="development"
           />
-          <BlockCheckboxesTag
+          <BlockCheckboxesTag<FilterJobsForm>
             data={Technical}
             nameGroup="technical"
             register={register}
           />
-          <BlockCheckboxesTag
+          <BlockCheckboxesTag<FilterJobsForm>
             data={Design}
             nameGroup="design"
             register={register}
           />
-          <BlockCheckboxesTag
+          <BlockCheckboxesTag<FilterJobsForm>
             data={Other}
             nameGroup="other"
             register={register}
@@ -152,15 +151,18 @@ const FiltersJobs = () => {
       </div>
       <div className={styles.blockInput}>
         <h3 className={styles.blockInputTitle}>City</h3>
-        <Input<FilterJobsForm>
-          name="city"
-          isIcon={false}
-          className={styles.inputContainer}
-          placeholder="Any"
-          required={true}
-          error={errors.city}
-          register={register}
-        />
+        {register && (
+          <Input
+            name="city"
+            isIcon={false}
+            className={styles.inputContainer}
+            placeholder="Any"
+            required={true}
+            warning="Fill in the field"
+            register={register}
+            error={errors.city}
+          />
+        )}
       </div>
       <div className={styles.blockButtons}>
         <Button

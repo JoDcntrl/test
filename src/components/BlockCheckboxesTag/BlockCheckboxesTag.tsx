@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import { useForm, useFormContext } from "react-hook-form";
+import React, { useState } from "react";
 import cn from "classnames";
 
 import CheckboxTag from "@/components/CheckboxTag/CheckboxTag";
@@ -15,21 +14,6 @@ const BlockCheckboxesTag = <T extends Record<string, any>>({
 }: BlockCheckboxesTagTypes<T>) => {
   const [openBlock, setOpenBlock] = useState(false);
 
-  const { setValue } = useForm();
-
-  useEffect(() => {
-    const setActiveItems = () => {
-      const arrayActives: string[] = [];
-      data.forEach((item) => {
-        if (item.active) {
-          arrayActives.push(item.nameSection);
-        }
-      });
-      setValue(nameGroup, arrayActives);
-    };
-    setActiveItems();
-  }, []);
-
   return (
     <div className={styles.buttonsTagWrapper}>
       <label className={styles.buttonsTagLabel}>
@@ -41,13 +25,14 @@ const BlockCheckboxesTag = <T extends Record<string, any>>({
           [styles.blockButtonsTagActive]: openBlock === true,
         })}
       >
-        {data?.map(({ nameSection, id, disabled }) => (
-          <CheckboxTag
+        {data?.map(({ nameSection, id, disabled, active }) => (
+          <CheckboxTag<T>
             register={register}
             key={id}
             disabled={disabled}
             name={nameSection}
             nameGroup={nameGroup}
+            active={active}
           />
         ))}
       </div>

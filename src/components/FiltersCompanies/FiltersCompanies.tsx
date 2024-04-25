@@ -70,6 +70,7 @@ const FiltersCompanies = () => {
           placeholder="Any"
           required={true}
           register={register}
+          warning="Fill in the field"
           error={errors.city}
         />
       </div>

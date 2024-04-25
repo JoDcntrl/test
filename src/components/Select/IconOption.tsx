@@ -1,10 +1,16 @@
 import { components } from "react-select";
+import Image from "next/image";
 
 const IconOption = (props: any) => (
   <components.Option {...props}>
     {props.data.label}
     {props.isSelected && (
-      <img src={props.data.icon.src} style={{ width: 20, height: 20 }} />
+      <Image
+        src={props.data.icon.src}
+        alt="image option"
+        width={48}
+        height={48}
+      />
     )}
   </components.Option>
 );
