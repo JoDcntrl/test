@@ -2,7 +2,7 @@
 
 import React, { FC } from "react";
 import cn from "classnames";
-import { useFormContext } from "react-hook-form";
+import { useForm, useFormContext } from "react-hook-form";
 
 import { InputTypes } from "@/components/Input/Input.types";
 
@@ -10,19 +10,15 @@ import { Search } from "@/assets/svgs/Search";
 
 import styles from "./Input.module.scss";
 
-const Input: FC<InputTypes> = ({
+const Input = <T extends Record<string, any>>({
   name,
   required = false,
   className,
   error,
   isIcon = false,
+  register,
   ...props
-}) => {
-  if (useFormContext() === null) {
-    return null;
-  }
-  const { register } = useFormContext();
-
+}: InputTypes<T>) => {
   return (
     <div className={cn(styles.inputWrapper, className)}>
       {isIcon && (
@@ -31,7 +27,7 @@ const Input: FC<InputTypes> = ({
         </div>
       )}
       <input
-        {...register(name, { required: "City is require field!" })}
+        {...register(name, { required: "City " })}
         className={cn(styles.input, {
           [styles.error]: error,
           [styles.isIcon]: isIcon,

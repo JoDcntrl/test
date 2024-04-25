@@ -1,27 +1,19 @@
 import React, { useEffect } from "react";
 import cn from "classnames";
-import { useFormContext } from "react-hook-form";
 
 import { RadioTypes } from "./Radio.types";
 
 import styles from "./radio.module.scss";
 
-const Radio: React.FC<RadioTypes> = ({ nameGroup, data, required = false }) => {
-  const { register, setValue } = useFormContext();
-
-  useEffect(() => {
-    const setActiveItems = () => {
-      const findedActive = data.find(({ active }) => active);
-      if (findedActive?.active) {
-        setValue(nameGroup, findedActive?.nameSection);
-      }
-    };
-    setActiveItems();
-  }, []);
-
+const Radio = <T extends Record<string, any>>({
+  nameGroup,
+  data,
+  register,
+  required = false,
+}: RadioTypes<T>) => {
   return (
     <>
-      {data?.map(({ id, nameSection, disabled }) => (
+      {data?.map(({ id, nameSection, disabled, active }) => (
         <div key={id}>
           <label className={styles.radiosListItem}>
             <div
@@ -34,6 +26,7 @@ const Radio: React.FC<RadioTypes> = ({ nameGroup, data, required = false }) => {
                 type="radio"
                 disabled={disabled}
                 value={nameSection}
+                defaultChecked={active}
               />
               <div
                 className={cn(styles.radioCheckmark, {

@@ -1,8 +1,10 @@
 import { InputHTMLAttributes } from "react";
+import { FieldValues, Path, UseFormRegister } from "react-hook-form";
 
-export interface CheckboxTypes extends InputHTMLAttributes<HTMLInputElement> {
+export interface CheckboxTypes<T extends FieldValues>
+  extends InputHTMLAttributes<HTMLInputElement> {
   name: string;
-  nameGroup: string;
+  nameGroup: Path<T>;
   data: {
     id: number;
     nameSection: string;
@@ -12,4 +14,5 @@ export interface CheckboxTypes extends InputHTMLAttributes<HTMLInputElement> {
   disabled?: boolean;
   active?: boolean;
   required?: boolean;
+  register: UseFormRegister<T>;
 }

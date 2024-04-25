@@ -1,6 +1,7 @@
 import { DetailedHTMLProps, HTMLAttributes } from "react";
+import { FieldValues, UseFormRegister } from "react-hook-form";
 
-export interface BlockCheckboxesTagTypes
+export interface BlockCheckboxesTagTypes<T extends FieldValues>
   extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
   data: {
     id: number;
@@ -9,4 +10,5 @@ export interface BlockCheckboxesTagTypes
     active: boolean;
   }[];
   nameGroup: string;
+  register: UseFormRegister<T>;
 }
