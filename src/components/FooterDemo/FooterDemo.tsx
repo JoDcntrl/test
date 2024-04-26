@@ -26,15 +26,15 @@ const FooterDemo: React.FC<FooterDemoTypes> = () => (
         </div>
       </div>
       <div className={styles.footerIcons}>
-        {IconsArr.map(({ icon, id }) => (
-          <Link key={id} className={styles.footerListLink} href={""}>
+        {IconsArr.map(({ icon, id, href }) => (
+          <Link key={id} className={styles.footerListLink} href={href}>
             {icon}
           </Link>
         ))}
       </div>
     </div>
     <div className={styles.footerDemoBottom}>
-      <span className={styles.footerBottom}>© Decentral job</span>
+      <span className={styles.footerBottom}>© Decentral Job</span>
       <span className={styles.footerBottom}>{getYear()}</span>
     </div>
   </footer>

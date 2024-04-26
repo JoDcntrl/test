@@ -62,13 +62,13 @@ export const Other = [
 ];
 
 export const Company = [
-  { value: "Company 1", label: "Company 1", icon: Check },
-  { value: "Company 2", label: "Company 2", icon: Check },
-  { value: "Company 3", label: "Company 3", icon: Check },
+  { value: "Bemo", label: "Bemo", icon: Check },
+  { value: "Tonstakers", label: "Tonstakers", icon: Check },
+  { value: "Wallet", label: "Wallet", icon: Check },
 ];
 
 export const EmploymentType = [
-  { value: "Type 1", label: "Type 1", icon: Check },
-  { value: "Type 2", label: "Type 2", icon: Check },
-  { value: "Type 3", label: "Type 3", icon: Check },
+  { value: "Full time", label: "Full time", icon: Check },
+  { value: "Remote", label: "Remote", icon: Check },
+  { value: "Any", label: "Any", icon: Check },
 ];

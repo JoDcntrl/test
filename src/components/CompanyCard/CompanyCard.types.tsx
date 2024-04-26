@@ -1,9 +1,8 @@
 import { DetailedHTMLProps, HTMLAttributes } from "react";
-import { StaticImageData } from "next/image";
 
 export interface CompanyCardTypes
   extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
-  logo: StaticImageData | string;
+  logo: string;
   title: string;
   description: string;
   city: string;
