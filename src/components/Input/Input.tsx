@@ -1,8 +1,7 @@
 "use client";
 
-import React, { FC } from "react";
+import React from "react";
 import cn from "classnames";
-import { useForm, useFormContext } from "react-hook-form";
 
 import { InputTypes } from "@/components/Input/Input.types";
 
@@ -16,10 +15,10 @@ const Input = <T extends Record<string, any>>({
   className,
   error,
   isIcon = false,
-  // register,
+  register,
   ...props
-}: InputTypes<T>) => {
-  return (
+}: InputTypes<T>) =>
+  register && (
     <div className={cn(styles.inputWrapper, className)}>
       {isIcon && (
         <div className={styles.icon}>
@@ -27,6 +26,7 @@ const Input = <T extends Record<string, any>>({
         </div>
       )}
       <input
+        {...register(name)}
         className={cn(styles.input, {
           [styles.error]: error,
           [styles.isIcon]: isIcon,
@@ -40,6 +40,5 @@ const Input = <T extends Record<string, any>>({
       )}
     </div>
   );
-};
 
 export default Input;

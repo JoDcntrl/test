@@ -7,6 +7,7 @@ import {
   SubmitErrorHandler,
   Controller,
 } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
 
 import Checkbox from "@/components/Checkbox/Checkbox";
 import {
@@ -25,10 +26,10 @@ import Button from "@/components/Button/Button";
 import BlockCheckboxesTag from "@/components/BlockCheckboxesTag/BlockCheckboxesTag";
 import Radio from "@/components/Radio/Radio";
 import Select from "@/components/Select/Select";
+import { schema } from "./FilterJobsSchemaYup";
 import { FilterJobsForm } from "./FilterJobsForm.types";
 
 import styles from "./filterJobs.module.scss";
-import { FilterCompaniesForm } from "../FiltersCompanies/FilterCompaniesForm.types";
 
 const FiltersJobs = () => {
   const {
@@ -37,7 +38,18 @@ const FiltersJobs = () => {
     reset,
     control,
     formState: { errors },
-  } = useForm<FilterJobsForm>();
+  } = useForm<FilterJobsForm>({
+    resolver: yupResolver(schema),
+    defaultValues: {
+      design: null,
+      development: null,
+      technical: null,
+      other: null,
+      qualification: null,
+      type: null,
+      company: null,
+    },
+  });
 
   const onSubmit: SubmitHandler<FilterJobsForm> = (data) => console.log(data);
 
@@ -59,17 +71,17 @@ const FiltersJobs = () => {
             register={register}
             nameGroup="development"
           />
-          <BlockCheckboxesTag
+          <BlockCheckboxesTag<FilterJobsForm>
             data={Technical}
             nameGroup="technical"
             register={register}
           />
-          <BlockCheckboxesTag
+          <BlockCheckboxesTag<FilterJobsForm>
             data={Design}
             nameGroup="design"
             register={register}
           />
-          <BlockCheckboxesTag
+          <BlockCheckboxesTag<FilterJobsForm>
             data={Other}
             nameGroup="other"
             register={register}
@@ -109,16 +121,18 @@ const FiltersJobs = () => {
           <Controller
             name="type"
             control={control}
-            render={({ field: { onChange, value } }) => (
-              <div>
-                <Select
-                  onChange={onChange}
-                  objValue={value}
-                  data={EmploymentType}
-                  placeholder="Any"
-                />
-              </div>
-            )}
+            render={({ field: { onChange, value } }) => {
+              return (
+                <div>
+                  <Select
+                    onChange={onChange}
+                    objValue={value}
+                    data={EmploymentType}
+                    placeholder="Any"
+                  />
+                </div>
+              );
+            }}
           />
         </div>
         <label className={styles.checkbox}>
@@ -152,15 +166,17 @@ const FiltersJobs = () => {
       </div>
       <div className={styles.blockInput}>
         <h3 className={styles.blockInputTitle}>City</h3>
-        <Input<FilterJobsForm>
-          name="city"
-          isIcon={false}
-          className={styles.inputContainer}
-          placeholder="Any"
-          required={true}
-          error={errors.city}
-          // register={register}
-        />
+        {register && (
+          <Input
+            name="city"
+            isIcon={false}
+            className={styles.inputContainer}
+            placeholder="Any"
+            required={true}
+            register={register}
+            error={errors.city}
+          />
+        )}
       </div>
       <div className={styles.blockButtons}>
         <Button

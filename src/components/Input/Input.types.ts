@@ -5,7 +5,6 @@ import {
   Path,
   UseFormRegister,
 } from "react-hook-form";
-import { FilterCompaniesForm } from "../FiltersCompanies/FilterCompaniesForm.types";
 
 export interface InputTypes<T extends FieldValues>
   extends InputHTMLAttributes<HTMLInputElement> {

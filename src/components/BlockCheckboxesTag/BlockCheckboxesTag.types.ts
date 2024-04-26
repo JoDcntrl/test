@@ -1,14 +1,14 @@
 import { DetailedHTMLProps, HTMLAttributes } from "react";
-import { FieldValues, UseFormRegister } from "react-hook-form";
+import { FieldValues, Path, UseFormRegister } from "react-hook-form";
 
 export interface BlockCheckboxesTagTypes<T extends FieldValues>
   extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
-  data: {
+  data?: {
     id: number;
     nameSection: string;
     disabled: boolean;
     active: boolean;
   }[];
-  nameGroup: string;
+  nameGroup: Path<T>;
   register: UseFormRegister<T>;
 }

@@ -1,6 +1,5 @@
-import React, { useEffect } from "react";
+import React from "react";
 import cn from "classnames";
-import { useForm } from "react-hook-form";
 
 import { CheckboxTypes } from "./Checkbox.types";
 
@@ -13,27 +12,25 @@ const Checkbox = <T extends Record<string, any>>({
   disabled = false,
   required = false,
   active = false,
-}: CheckboxTypes<T>) => {
-  return (
+}: CheckboxTypes<T>) => (
+  <div
+    className={cn(styles.checkbox, {
+      [styles.disabled]: disabled,
+    })}
+  >
+    <input
+      {...register(nameGroup, { required: required })}
+      disabled={disabled}
+      type="checkbox"
+      value={name}
+      defaultChecked={active}
+    />
     <div
-      className={cn(styles.checkbox, {
+      className={cn(styles.checkboxCheckmark, {
         [styles.disabled]: disabled,
       })}
-    >
-      <input
-        {...register(nameGroup, { required: required })}
-        disabled={disabled}
-        type="checkbox"
-        value={name}
-        defaultChecked={active}
-      />
-      <div
-        className={cn(styles.checkboxCheckmark, {
-          [styles.disabled]: disabled,
-        })}
-      ></div>
-    </div>
-  );
-};
+    ></div>
+  </div>
+);
 
 export default Checkbox;
