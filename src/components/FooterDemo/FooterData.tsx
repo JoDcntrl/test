@@ -56,7 +56,7 @@ export const IconsArr = [
   {
     id: 2,
     icon: <Subtract />,
-    href: ""
+    href: "https://twitter.com/decentralj59284"
   },
   {
     id: 3,
@@ -66,7 +66,7 @@ export const IconsArr = [
   {
     id: 4,
     icon: <Frame />,
-    href: ""
+    href: "https://github.com/decentraljob"
   },
   {
     id: 5,
