@@ -42,7 +42,6 @@ const Companies = () => (
         <FiltersCompanies />
       </section>
     </div>
-    <input type="checkbox" />
   </main>
 );
 
