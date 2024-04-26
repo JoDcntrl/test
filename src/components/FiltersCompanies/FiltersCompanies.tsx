@@ -9,10 +9,10 @@ import { Additionally, CompanySize, Industry } from "./FilterCompanyData";
 import Input from "@/components/Input/Input";
 import Button from "@/components/Button/Button";
 import Radio from "@/components/Radio/Radio";
+import { schema } from "./FilterCompaniesSchemaYup";
 import { FilterCompaniesForm } from "./FilterCompaniesForm.types";
 
 import styles from "./filtersCompanies.module.scss";
-import { schema } from "./FilterCompaniesSchemaYup";
 
 const FiltersCompanies = () => {
   const {
