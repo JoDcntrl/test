@@ -171,7 +171,7 @@ const FiltersJobs = () => {
             name="city"
             isIcon={false}
             className={styles.inputContainer}
-            placeholder="Any"
+            placeholder="Dubai"
             required={true}
             register={register}
             error={errors.city}

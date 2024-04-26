@@ -43,21 +43,26 @@ export const IconsArr = [
   {
     id: 1,
     icon: <Shape />,
+    href: ""
   },
   {
     id: 2,
     icon: <Subtract />,
+    href: ""
   },
   {
     id: 3,
     icon: <Google />,
+    href: ""
   },
   {
     id: 4,
     icon: <Frame />,
+    href: ""
   },
   {
     id: 5,
     icon: <Telegram />,
+    href: "https://t.me/decentraljob"
   },
 ];
