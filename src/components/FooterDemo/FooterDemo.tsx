@@ -18,8 +18,8 @@ const FooterDemo: React.FC<FooterDemoTypes> = () => (
       </div>
       <div className={styles.footerMenu}>
         <div className={styles.footerList}>
-          {LinksArr.map(({ text, id }) => (
-            <Link key={id} className={styles.footerListLink} href={""}>
+          {LinksArr.map(({ text, id, href }) => (
+            <Link key={id} className={styles.footerListLink} href={href}>
               {text}
             </Link>
           ))}
