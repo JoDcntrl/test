@@ -28,7 +28,7 @@ const Input = <T extends Record<string, any>>({
           </div>
         )}
         <input
-          {...register(name, { required: warning })}
+          {...register(name)}
           className={cn(styles.input, {
             [styles.error]: error,
             [styles.isIcon]: isIcon,

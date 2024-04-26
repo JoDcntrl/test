@@ -7,6 +7,7 @@ import {
   SubmitErrorHandler,
   Controller,
 } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
 
 import Checkbox from "@/components/Checkbox/Checkbox";
 import {
@@ -25,6 +26,7 @@ import Button from "@/components/Button/Button";
 import BlockCheckboxesTag from "@/components/BlockCheckboxesTag/BlockCheckboxesTag";
 import Radio from "@/components/Radio/Radio";
 import Select from "@/components/Select/Select";
+import { schema } from "./FilterJobsSchemaYup";
 import { FilterJobsForm } from "./FilterJobsForm.types";
 
 import styles from "./filterJobs.module.scss";
@@ -36,7 +38,9 @@ const FiltersJobs = () => {
     reset,
     control,
     formState: { errors },
-  } = useForm<FilterJobsForm>();
+  } = useForm<FilterJobsForm>({
+    resolver: yupResolver(schema),
+  });
 
   const onSubmit: SubmitHandler<FilterJobsForm> = (data) => console.log(data);
 
@@ -108,16 +112,18 @@ const FiltersJobs = () => {
           <Controller
             name="type"
             control={control}
-            render={({ field: { onChange, value } }) => (
-              <div>
-                <Select
-                  onChange={onChange}
-                  objValue={value}
-                  data={EmploymentType}
-                  placeholder="Any"
-                />
-              </div>
-            )}
+            render={({ field: { onChange, value } }) => {
+              return (
+                <div>
+                  <Select
+                    onChange={onChange}
+                    objValue={value}
+                    data={EmploymentType}
+                    placeholder="Any"
+                  />
+                </div>
+              );
+            }}
           />
         </div>
         <label className={styles.checkbox}>
