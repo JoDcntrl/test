@@ -75,7 +75,7 @@ const FiltersCompanies = () => {
           className={styles.inputContainer}
           placeholder="Any"
           required={true}
-          register={register}
+          // register={register}
           error={errors.city}
         />
       </div>
