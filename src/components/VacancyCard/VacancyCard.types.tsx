@@ -1,5 +1,4 @@
 import { DetailedHTMLProps, HTMLAttributes } from "react";
-import { StaticImageData } from "next/image";
 
 export interface VacancyCardTypes
   extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
@@ -10,7 +9,7 @@ export interface VacancyCardTypes
   description: string;
   salary: number;
   company: string;
-  logo: StaticImageData | string;
+  logo: string;
   date: string;
   className?: string;
 }
