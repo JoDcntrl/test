@@ -25,7 +25,6 @@ const Companies = () => {
               placeholder="Search..."
               name="search"
               register={register}
-              warning="Fill in the field"
             />
             <div className={styles.blockTotalSort}>
               <span className={styles.blockTotal}>Total vacancies: 250</span>

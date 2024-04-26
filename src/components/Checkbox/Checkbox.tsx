@@ -1,6 +1,5 @@
-import React, { useEffect } from "react";
+import React from "react";
 import cn from "classnames";
-import { useForm } from "react-hook-form";
 
 import { CheckboxTypes } from "./Checkbox.types";
 

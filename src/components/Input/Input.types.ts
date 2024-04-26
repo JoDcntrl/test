@@ -12,6 +12,5 @@ export interface InputTypes<T extends FieldValues>
   isIcon?: boolean;
   name: Path<T>;
   required?: boolean;
-  warning: string;
   register: UseFormRegister<T>;
 }

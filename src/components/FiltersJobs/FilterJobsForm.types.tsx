@@ -1,12 +1,12 @@
 export interface FilterJobsForm {
-  design?: string[];
-  development?: string[];
-  technical?: string[];
-  other?: string[];
-  qualification?: string[];
+  design?: string[] | null;
+  development?: string[] | null;
+  technical?: string[] | null;
+  other?: string[] | null;
+  qualification?: string[] | null;
   experience?: string;
-  type?: string;
+  type?: string | null;
   city: string;
   remote?: string;
-  company?: string;
+  company?: string | null;
 }

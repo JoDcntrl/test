@@ -22,6 +22,9 @@ const FiltersCompanies = () => {
     formState: { errors },
   } = useForm<FilterCompaniesForm>({
     resolver: yupResolver(schema),
+    defaultValues: {
+      industry: null,
+    },
   });
 
   const onSubmit: SubmitHandler<FilterCompaniesForm> = (data) =>
@@ -73,7 +76,6 @@ const FiltersCompanies = () => {
           placeholder="Any"
           required={true}
           register={register}
-          warning="Fill in the field"
           error={errors.city}
         />
       </div>

@@ -14,7 +14,6 @@ const Input = <T extends Record<string, any>>({
   required = false,
   className,
   error,
-  warning,
   isIcon = false,
   register,
   ...props

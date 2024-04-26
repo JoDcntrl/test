@@ -40,6 +40,15 @@ const FiltersJobs = () => {
     formState: { errors },
   } = useForm<FilterJobsForm>({
     resolver: yupResolver(schema),
+    defaultValues: {
+      design: null,
+      development: null,
+      technical: null,
+      other: null,
+      qualification: null,
+      type: null,
+      company: null,
+    },
   });
 
   const onSubmit: SubmitHandler<FilterJobsForm> = (data) => console.log(data);
@@ -164,7 +173,6 @@ const FiltersJobs = () => {
             className={styles.inputContainer}
             placeholder="Any"
             required={true}
-            warning="Fill in the field"
             register={register}
             error={errors.city}
           />

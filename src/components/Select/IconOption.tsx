@@ -8,8 +8,8 @@ const IconOption = (props: any) => (
       <Image
         src={props.data.icon.src}
         alt="image option"
-        width={48}
-        height={48}
+        width={20}
+        height={20}
       />
     )}
   </components.Option>
