@@ -2,12 +2,14 @@
 
 import React from "react";
 import { useForm, SubmitHandler, SubmitErrorHandler } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
 
 import Checkbox from "@/components/Checkbox/Checkbox";
 import { Additionally, CompanySize, Industry } from "./FilterCompanyData";
 import Input from "@/components/Input/Input";
 import Button from "@/components/Button/Button";
 import Radio from "@/components/Radio/Radio";
+import { schema } from "./FilterCompaniesSchemaYup";
 import { FilterCompaniesForm } from "./FilterCompaniesForm.types";
 
 import styles from "./filtersCompanies.module.scss";
@@ -18,14 +20,18 @@ const FiltersCompanies = () => {
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm<FilterCompaniesForm>();
+  } = useForm<FilterCompaniesForm>({
+    resolver: yupResolver(schema),
+    defaultValues: {
+      industry: null,
+    },
+  });
 
   const onSubmit: SubmitHandler<FilterCompaniesForm> = (data) =>
     console.log(data);
 
-  const error: SubmitErrorHandler<FilterCompaniesForm> = (data) => {
+  const error: SubmitErrorHandler<FilterCompaniesForm> = (data) =>
     console.log(data);
-  };
 
   return (
     <form
@@ -69,7 +75,7 @@ const FiltersCompanies = () => {
           className={styles.inputContainer}
           placeholder="Any"
           required={true}
-          // register={register}
+          register={register}
           error={errors.city}
         />
       </div>

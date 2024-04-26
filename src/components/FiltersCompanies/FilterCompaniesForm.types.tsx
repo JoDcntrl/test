@@ -1,6 +1,6 @@
 export interface FilterCompaniesForm {
-  industry: string[];
-  size: string;
+  industry?: string[] | null;
+  size?: string;
   city: string;
-  additionally: string;
+  additionally?: string;
 }

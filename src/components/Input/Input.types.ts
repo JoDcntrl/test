@@ -5,7 +5,6 @@ import {
   Path,
   UseFormRegister,
 } from "react-hook-form";
-import { FilterCompaniesForm } from "../FiltersCompanies/FilterCompaniesForm.types";
 
 export interface InputTypes<T extends FieldValues>
   extends InputHTMLAttributes<HTMLInputElement> {
@@ -13,5 +12,5 @@ export interface InputTypes<T extends FieldValues>
   isIcon?: boolean;
   name: Path<T>;
   required?: boolean;
-  // register: UseFormRegister<T>;
+  register: UseFormRegister<T>;
 }
