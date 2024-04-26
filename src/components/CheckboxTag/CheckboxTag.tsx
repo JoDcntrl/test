@@ -11,19 +11,17 @@ const CheckboxTag = <T extends Record<string, any>>({
   required = false,
   active = false,
   register,
-}: CheckboxTagTypes<T>) => {
-  return (
-    <label className={styles.checkboxTagBtn}>
-      <input
-        {...register(nameGroup, { required: required })}
-        disabled={disabled}
-        type="checkbox"
-        value={name}
-        defaultChecked={active}
-      />
-      <span>{name}</span>
-    </label>
-  );
-};
+}: CheckboxTagTypes<T>) => (
+  <label className={styles.checkboxTagBtn}>
+    <input
+      {...register(nameGroup, { required: required })}
+      disabled={disabled}
+      type="checkbox"
+      value={name}
+      defaultChecked={active}
+    />
+    <span>{name}</span>
+  </label>
+);
 
 export default CheckboxTag;

@@ -17,31 +17,28 @@ const Input = <T extends Record<string, any>>({
   isIcon = false,
   register,
   ...props
-}: InputTypes<T>) => {
-  return (
-    register && (
-      <div className={cn(styles.inputWrapper, className)}>
-        {isIcon && (
-          <div className={styles.icon}>
-            <Search />
-          </div>
-        )}
-        <input
-          {...register(name)}
-          className={cn(styles.input, {
-            [styles.error]: error,
-            [styles.isIcon]: isIcon,
-          })}
-          {...props}
-        />
-        {error && (
-          <span role="alert" className={styles.errorMessage}>
-            {error.message}
-          </span>
-        )}
-      </div>
-    )
+}: InputTypes<T>) =>
+  register && (
+    <div className={cn(styles.inputWrapper, className)}>
+      {isIcon && (
+        <div className={styles.icon}>
+          <Search />
+        </div>
+      )}
+      <input
+        {...register(name)}
+        className={cn(styles.input, {
+          [styles.error]: error,
+          [styles.isIcon]: isIcon,
+        })}
+        {...props}
+      />
+      {error && (
+        <span role="alert" className={styles.errorMessage}>
+          {error.message}
+        </span>
+      )}
+    </div>
   );
-};
 
 export default Input;
