@@ -18,23 +18,23 @@ const FooterDemo: React.FC<FooterDemoTypes> = () => (
       </div>
       <div className={styles.footerMenu}>
         <div className={styles.footerList}>
-          {LinksArr.map(({ text, id }) => (
-            <Link key={id} className={styles.footerListLink} href={""}>
+          {LinksArr.map(({ text, id, href }) => (
+            <Link key={id} className={styles.footerListLink} href={href}>
               {text}
             </Link>
           ))}
         </div>
       </div>
       <div className={styles.footerIcons}>
-        {IconsArr.map(({ icon, id }) => (
-          <Link key={id} className={styles.footerListLink} href={""}>
+        {IconsArr.map(({ icon, id, href }) => (
+          <Link key={id} className={styles.footerListLink} href={href}>
             {icon}
           </Link>
         ))}
       </div>
     </div>
     <div className={styles.footerDemoBottom}>
-      <span className={styles.footerBottom}>© Decentral job</span>
+      <span className={styles.footerBottom}>© Decentral Job</span>
       <span className={styles.footerBottom}>{getYear()}</span>
     </div>
   </footer>
