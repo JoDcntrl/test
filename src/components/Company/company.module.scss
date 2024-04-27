@@ -1,6 +1,6 @@
 @import "@/assets/core/_variables.scss";
 
-.main {
+.canvas {
   width: 100%;
   margin-top: 80px;
   background-color: $bg-main;
@@ -8,34 +8,91 @@
 }
 
 @media (max-width: 1024px) and (min-width: 500px) {
-  .main {
+  .canvas {
     padding: 0 20px;
   }
 }
 
-.mainWrapper {
-  display: flex;
-  flex-direction: row-reverse;
+.canvasWrapper {
+  flex-direction: column;
   max-width: 1216px;
   margin: 0 auto;
-  padding-top: 112px;
   padding-bottom: 127px;
-  gap: 0 32px;
+  gap: 32px 32px;
+}
+
+@media (max-width: 500px) {
+  .canvasWrapper {
+    padding-bottom: 40px;
+  }
+}
+
+.wrapperBlockLinks {
+  display: flex;
+  padding-top: 40px;
+  padding-bottom: 56px;
+  gap: 0 4px;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 130%;
+  color: $text-secondary;
+}
+
+@media (max-width: 768px) {
+  .wrapperBlockLinks {
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+}
+
+@media (max-width: 500px) {
+  .wrapperBlockLinks {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+}
+
+.blockLinkCurrent {
+  color: $text-primary;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 130%;
+}
+
+.blockSlash {
+  width: 20px;
+  height: 16px;
+  text-align: center;
+}
+
+.wrapperBlockMain {
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 32px 32px;
+}
+
+@media (max-width: 1024px) {
+  .wrapperBlockMain {
+    flex-direction: column-reverse;
+    justify-content: center;
+  }
 }
 
 .mainTitle {
-  font-size: 48px;
+  margin-bottom: 32px;
+  font-size: 32px;
   font-weight: 600;
-  margin-bottom: 45.5px;
+  line-height: 120%;
+  color: $text-primary;
 }
 
-.mainSection {
-  width: 100%;
+.mainBlock {
+  display: flex;
+  flex-direction: column;
 }
 
 .blockTotalSort {
-  margin-top: 32px;
-  margin-bottom: 16px;
+  margin-bottom: 24px;
   display: flex;
   justify-content: space-between;
 }
@@ -57,14 +114,6 @@
 }
 
 .blockCards {
-  width: 100%;
   display: grid;
-  grid-template-columns: repeat(1, 1fr);
   gap: 24px;
-}
-
-@media (max-width: 768px) {
-  .blockCards {
-    grid-template-columns: repeat(1, 1fr);
-  }
 }

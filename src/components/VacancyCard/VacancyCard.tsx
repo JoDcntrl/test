@@ -1,5 +1,6 @@
 import React from "react";
 import cn from "classnames";
+import Image from "next/image";
 
 import { convertISOToDate, priceRu, yearDeclensionEn } from "@/helpers/helpers";
 import { VacancyCardTypes } from "@/components/VacancyCard/VacancyCard.types";
@@ -36,7 +37,7 @@ const VacancyCard: React.FC<VacancyCardTypes> = ({
     <p className={styles.vacancyDescription}>{description}</p>
     <div className={styles.vacancyCardFooter}>
       <div className={styles.vacancyCardContainerLogo}>
-        <img
+        <Image
           src={logo}
           alt="company logo"
           className={styles.vacancyCompanyLogo}

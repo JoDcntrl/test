@@ -1,10 +1,14 @@
 import Company from "@/components/Company/Company";
 import Layout from "@/components/Layout/Layout";
 
-export default function PageCompanies() {
-  return (
+import styles from "@/app/page.module.css";
+
+const PageCompany = () => (
+  <main className={styles.main}>
     <Layout>
       <Company />
     </Layout>
-  );
-}
+  </main>
+);
+
+export default PageCompany;

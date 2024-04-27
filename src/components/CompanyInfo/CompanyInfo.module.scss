@@ -1,0 +1,194 @@
+@import "@/assets/core/_variables.scss";
+
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 24px 24px;
+}
+
+.mainSection {
+  max-width: 384px;
+  width: 100%;
+  background-color: $bg-card;
+  padding: 32px;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px 0;
+}
+
+@media (max-width: 1024px) {
+  .mainSection {
+    max-width: 100%;
+    height: 100%;
+  }
+}
+
+.sectionBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 24px 0;
+}
+
+.containerImg {
+  display: flex;
+}
+
+@media (max-width: 1024px) {
+  .containerImg {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 385px) {
+  .containerImg {
+    img {
+      width: 220px;
+      height: 220px;
+    }
+  }
+}
+
+.sectionBlockInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 24px 24px;
+}
+
+@media (max-width: 1024px) {
+  .sectionBlockInfo {
+    align-items: center;
+  }
+}
+
+.infoTitle {
+  display: flex;
+  flex-direction: column;
+  gap: 8px 0;
+}
+
+.infoTitleH1 {
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 120%;
+  color: $text-primary;
+}
+
+.infoTitleLink {
+  color: $main-primary;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 140%;
+}
+
+@media (max-width: 1024px) {
+  .infoTitleLink {
+    text-align: center;
+  }
+}
+
+.infoData {
+  display: flex;
+  flex-direction: column;
+  gap: 24px 0;
+}
+
+@media (max-width: 1024px) {
+  .infoData {
+    flex-direction: row;
+    gap: 0 40px;
+  }
+}
+
+@media (max-width: 500px) {
+  .infoData {
+    gap: 0 18px;
+  }
+}
+
+@media (max-width: 430px) {
+  .infoData {
+    flex-direction: column;
+    gap: 20px 0;
+  }
+}
+
+.infoSection {
+  display: flex;
+  flex-direction: column;
+  gap: 4px 0;
+}
+
+.infoSectionTitle {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 120%;
+  color: $text-primary;
+}
+
+@media (max-width: 1024px) {
+  .infoSectionTitle {
+    text-align: center;
+  }
+}
+
+.infoSectionText {
+  color: $text-secondary;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 150%;
+}
+
+@media (max-width: 1024px) {
+  .infoSectionText {
+    text-align: center;
+  }
+}
+
+.infoIcons {
+  display: flex;
+  gap: 0 8px;
+  cursor: pointer;
+}
+
+@media (max-width: 1024px) {
+  .infoIcons {
+    justify-content: center;
+  }
+}
+
+.iconsListLink {
+  height: 32px;
+  width: 32px;
+}
+
+.sectionBot {
+  max-width: 384px;
+  width: 100%;
+  background-color: $bg-card;
+  padding: 32px;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px 0;
+}
+
+@media (max-width: 1024px) {
+  .sectionBot {
+    max-width: 100%;
+  }
+}
+
+.sectionBotTitle {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 120%;
+  color: $text-primary;
+}
+
+.sectionBotText {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 140%;
+  color: $text-secondary;
+}
