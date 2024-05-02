@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import LinkNext from "next/link";
 
 import CompanyCard from "@/components/CompanyCard/CompanyCard";
 import FiltersCompanies from "@/components/FiltersCompanies/FiltersCompanies";
@@ -27,14 +28,16 @@ const Companies = () => (
           <div className={styles.blockCards}>
             {cards.map(
               ({ id, logo, title, description, city, vacancyNumber }) => (
-                <CompanyCard
-                  key={id}
-                  logo={logo}
-                  title={title}
-                  description={description}
-                  city={city}
-                  vacancyNumber={vacancyNumber}
-                />
+                <LinkNext key={id} href={`/company/${id}`}>
+                  <CompanyCard
+                    key={id}
+                    logo={logo}
+                    title={title}
+                    description={description}
+                    city={city}
+                    vacancyNumber={vacancyNumber}
+                  />
+                </LinkNext>
               )
             )}
           </div>

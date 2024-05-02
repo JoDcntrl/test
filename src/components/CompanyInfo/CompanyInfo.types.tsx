@@ -2,14 +2,14 @@ import { ReactElement } from "react";
 
 export interface CompanyInfoTypes {
   dataCompany: {
+    title: string;
     logo: string;
-    name: string;
     nameLink: string;
     link: string;
     city: string;
     industry: string;
     sizeCompany: string;
-    about: string;
+    description: string;
     linksContact: {
       id: number;
       icon: ReactElement;

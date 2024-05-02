@@ -22,7 +22,7 @@ const CompanyInfo: React.FC<CompanyInfoTypes> = ({ dataCompany }) => (
         </div>
         <div className={styles.sectionBlockInfo}>
           <div className={styles.infoTitle}>
-            <h1 className={styles.infoTitleH1}>{dataCompany.name}</h1>
+            <h1 className={styles.infoTitleH1}>{dataCompany.title}</h1>
             <a className={styles.infoTitleLink} href={dataCompany.link}>
               {dataCompany.nameLink}
             </a>
@@ -57,7 +57,7 @@ const CompanyInfo: React.FC<CompanyInfoTypes> = ({ dataCompany }) => (
     </section>
     <section className={styles.sectionBot}>
       <h2 className={styles.sectionBotTitle}>About company</h2>
-      <div className={styles.sectionBotText}>{dataCompany.about}</div>
+      <div className={styles.sectionBotText}>{dataCompany.description}</div>
     </section>
   </div>
 );

@@ -1,28 +1,3 @@
-import { Subtract } from "@/assets/svgs/Subtract";
-import { Telegram } from "@/assets/svgs/Telegram";
-
-export const dataCompany = {
-  logo: "https://cdn.getro.com/companies/2da1be3c-a9cd-5af9-8ec5-e67430ea3196",
-  name: "Stellar",
-  nameLink: "stellar.org",
-  link: "https://stellar.org/",
-  city: "Los-Angeles",
-  industry: "IT",
-  sizeCompany: "1 - 50",
-  about:
-    "NBCom Group is a network of branded stores and online stores iPort (Apple Premium Reseller), Samsung, Sony Centre, Xiaomi, multi-brand store NB computers, as well as authorized service centers iPort, Samsung and Resonance Space business space.",
-  linksContact: [
-    {
-      id: 1,
-      icon: <Telegram />,
-    },
-    {
-      id: 2,
-      icon: <Subtract />,
-    },
-  ],
-};
-
 export const activeJobs = [
   {
     id: 1,
