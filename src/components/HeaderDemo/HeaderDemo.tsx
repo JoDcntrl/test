@@ -14,7 +14,11 @@ import { Cross } from "@/assets/svgs/Cross";
 
 import styles from "./headerDemo.module.scss";
 
-const HeaderDemo: React.FC<HeaderDemoTypes> = ({ className, ...props }) => {
+const HeaderDemo: React.FC<HeaderDemoTypes> = ({
+  wide = false,
+  className,
+  ...props
+}) => {
   const [activeBurger, setActiveBurger] = useState(false);
 
   const toggleBurger = () => {
@@ -35,7 +39,12 @@ const HeaderDemo: React.FC<HeaderDemoTypes> = ({ className, ...props }) => {
 
   return (
     <header className={styles.headerDemoMain}>
-      <div className={cn(className, styles.headerDemoWrapper)} {...props}>
+      <div
+        className={cn(className, styles.headerDemoWrapper, {
+          [styles.wide]: wide,
+        })}
+        {...props}
+      >
         <LinkNext href="/">
           <div className={styles.headerDemoLogoContainer}>
             <Logo />

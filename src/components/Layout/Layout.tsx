@@ -4,11 +4,11 @@ import HeaderDemo from "@/components/HeaderDemo/HeaderDemo";
 import FooterDemo from "@/components/FooterDemo/FooterDemo";
 import { LayoutTypes } from "./Layout.types";
 
-const Layout: React.FC<LayoutTypes> = ({ children }) => (
+const Layout: React.FC<LayoutTypes> = ({ children, wide = false }) => (
   <>
-    <HeaderDemo />
+    <HeaderDemo wide={wide} />
     {children}
-    <FooterDemo />
+    <FooterDemo wide={wide} />
   </>
 );
 

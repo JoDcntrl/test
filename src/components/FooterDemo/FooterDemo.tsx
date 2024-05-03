@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import cn from "classnames";
 
 import { LinksArr, IconsArr } from "@/components/FooterDemo/FooterData";
 import { getYear } from "@/helpers/helpers";
@@ -9,9 +10,9 @@ import { Logo } from "@/assets/svgs/Logo";
 
 import styles from "./footerDemo.module.scss";
 
-const FooterDemo: React.FC<FooterDemoTypes> = () => (
+const FooterDemo: React.FC<FooterDemoTypes> = ({ wide = false }) => (
   <footer className={styles.footerDemoMain}>
-    <div className={styles.footerDemo}>
+    <div className={cn(styles.footerDemo, { [styles.wide]: wide })}>
       <div className={styles.footerDemoLogoContainer}>
         <Logo />
         <span className={styles.logoText}>decentral job</span>
