@@ -1,21 +1,19 @@
 "use client";
 import React from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 
 import { activeJobs } from "./CompanyData";
 import VacancyCard from "@/components/VacancyCard/VacancyCard";
 import CompanyInfo from "@/components/CompanyInfo/CompanyInfo";
 import { cards } from "@/components/Companies/CompaniesData";
+import { CompanyTypes } from "./Company.types";
 
 import { Vector } from "@/assets/svgs/Vector";
 
 import styles from "./company.module.scss";
 
-const Company = () => {
-  const pathname = usePathname();
-  const id = pathname.split("/").pop();
-  const dataCompany = cards.find((comp) => comp.id === Number(id));
+const Company: React.FC<CompanyTypes> = ({ companyId }) => {
+  const dataCompany = cards.find((comp) => comp.id === Number(companyId));
   return (
     <>
       {dataCompany ? (
@@ -31,7 +29,7 @@ const Company = () => {
               </Link>
               <span className={styles.blockSlash}>/</span>
               <Link className={styles.blockLinkCurrent} href={""}>
-                {dataCompany?.title}
+                {dataCompany.title}
               </Link>
             </div>
             <div className={styles.wrapperBlockMain}>
@@ -59,7 +57,6 @@ const Company = () => {
                         city,
                         description,
                         salary,
-                        company,
                         date,
                       }) => (
                         <VacancyCard
@@ -70,7 +67,7 @@ const Company = () => {
                           city={city}
                           description={description}
                           salary={salary}
-                          company={company}
+                          company={dataCompany.title}
                           logo={dataCompany.logo}
                           date={date}
                         />
