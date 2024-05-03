@@ -23,9 +23,9 @@ const CompanyInfo: React.FC<CompanyInfoTypes> = ({ dataCompany }) => (
         <div className={styles.sectionBlockInfo}>
           <div className={styles.infoTitle}>
             <h1 className={styles.infoTitleH1}>{dataCompany.title}</h1>
-            <a className={styles.infoTitleLink} href={dataCompany.link}>
+            <Link className={styles.infoTitleLink} href={dataCompany.link}>
               {dataCompany.nameLink}
-            </a>
+            </Link>
           </div>
           <div className={styles.infoData}>
             <div className={styles.infoSection}>

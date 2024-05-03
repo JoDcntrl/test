@@ -1,4 +1,5 @@
 "use client";
+
 import React from "react";
 import Link from "next/link";
 
@@ -14,6 +15,8 @@ import styles from "./company.module.scss";
 
 const Company: React.FC<CompanyTypes> = ({ companyId }) => {
   const dataCompany = cards.find((comp) => comp.id === Number(companyId));
+  const dataVacancies = activeJobs.slice(0, dataCompany?.vacancyNumber);
+
   return (
     <>
       {dataCompany ? (
@@ -38,7 +41,7 @@ const Company: React.FC<CompanyTypes> = ({ companyId }) => {
                 <div className={styles.mainBlock}>
                   <div className={styles.blockTotalSort}>
                     <span className={styles.blockTotal}>
-                      Total vacancies: {activeJobs.length}
+                      Total vacancies: {dataVacancies.length}
                     </span>
                     <span className={styles.blockSort}>
                       By date of posting
@@ -48,7 +51,7 @@ const Company: React.FC<CompanyTypes> = ({ companyId }) => {
                     </span>
                   </div>
                   <div className={styles.blockCards}>
-                    {activeJobs.map(
+                    {dataVacancies.map(
                       ({
                         id,
                         name,
