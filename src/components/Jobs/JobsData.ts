@@ -1,7 +1,7 @@
-
-export const cards = [
+export const cardsVacancies = [
   {
-    id: 1,
+    idVacancy: 1,
+    idCompany: 1,
     name: "Senior Frontend Engineer",
     experience: 3,
     mode: "Remote",
@@ -14,7 +14,8 @@ export const cards = [
     date: "2024-04-04T01:30:00.000-05:00",
   },
   {
-    id: 2,
+    idVacancy: 2,
+    idCompany: 2,
     name: "Software Development Engineer",
     experience: 3,
     mode: "Full day",
@@ -27,7 +28,8 @@ export const cards = [
     date: "2024-04-20T01:30:00.000-05:00",
   },
   {
-    id: 3,
+    idVacancy: 3,
+    idCompany: 3,
     name: "Lead QA Engineer",
     experience: 7,
     mode: "Full day",
@@ -40,7 +42,8 @@ export const cards = [
     date: "2024-04-07T01:30:00.000-05:00",
   },
   {
-    id: 4,
+    idVacancy: 4,
+    idCompany: 10,
     name: "Product Analyst",
     experience: 5,
     mode: "Full day",
@@ -53,7 +56,8 @@ export const cards = [
     date: "2024-04-15T01:30:00.000-05:00",
   },
   {
-    id: 5,
+    idVacancy: 5,
+    idCompany: 11,
     name: "Product Manager",
     experience: 1,
     mode: "Full day",
@@ -66,7 +70,8 @@ export const cards = [
     date: "2024-04-10T01:30:00.000-05:00",
   },
   {
-    id: 6,
+    idVacancy: 6,
+    idCompany: 12,
     name: "Chief Marketing Officer (CMO)",
     experience: 7,
     mode: "Full day",
@@ -79,7 +84,8 @@ export const cards = [
     date: "2024-04-19T01:30:00.000-05:00",
   },
   {
-    id: 7,
+    idVacancy: 7,
+    idCompany: 10,
     name: "Customer Support Lead Wallet",
     experience: 5,
     mode: "Full day",
@@ -92,7 +98,8 @@ export const cards = [
     date: "2024-02-10T01:30:00.000-05:00",
   },
   {
-    id: 8,
+    idVacancy: 8,
+    idCompany: 2,
     name: "Full-stack Engineer",
     experience: 1,
     mode: "Full day",

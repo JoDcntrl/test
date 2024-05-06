@@ -1,18 +1,26 @@
 "use client";
+
 import React from "react";
 import { useForm } from "react-hook-form";
+import { useRouter } from "next/navigation";
 
 import Input from "@/components/Input/Input";
 import FiltersJobs from "@/components/FiltersJobs/FilterJobs";
-import { cards } from "./JobsData";
+import { cardsVacancies } from "./JobsData";
 import VacancyCard from "@/components/VacancyCard/VacancyCard";
 
 import { Vector } from "@/assets/svgs/Vector";
 
 import styles from "./jobs.module.scss";
 
-const Companies = () => {
+const Jobs = () => {
   const { register } = useForm();
+
+  const router = useRouter();
+
+  const handleClickVacancy = (idCompany: number, idVacancy: number) =>
+    router.push(`/company/${idCompany}/vacancy/${idVacancy}`);
+
   return (
     <main className={styles.main}>
       <div className={styles.mainWrapper}>
@@ -36,9 +44,10 @@ const Companies = () => {
               </span>
             </div>
             <div className={styles.blockCards}>
-              {cards.map(
+              {cardsVacancies.map(
                 ({
-                  id,
+                  idVacancy,
+                  idCompany,
                   name,
                   experience,
                   mode,
@@ -50,7 +59,8 @@ const Companies = () => {
                   date,
                 }) => (
                   <VacancyCard
-                    key={id}
+                    onClick={() => handleClickVacancy(idCompany, idVacancy)}
+                    key={idVacancy}
                     name={name}
                     experience={experience}
                     mode={mode}
@@ -72,4 +82,4 @@ const Companies = () => {
   );
 };
 
-export default Companies;
+export default Jobs;

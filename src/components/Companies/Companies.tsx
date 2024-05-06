@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 
 import CompanyCard from "@/components/CompanyCard/CompanyCard";
 import FiltersCompanies from "@/components/FiltersCompanies/FiltersCompanies";
-import { cards } from "./CompaniesData";
+import { cardsCompanies } from "./CompaniesData";
 
 import { Vector } from "@/assets/svgs/Vector";
 
@@ -14,6 +14,7 @@ import styles from "./companies.module.scss";
 const Companies = () => {
   const router = useRouter();
   const handleClickCompany = (id: number) => router.push(`/company/${id}`);
+
   return (
     <main className={styles.main}>
       <div className={styles.mainWrapper}>
@@ -30,7 +31,7 @@ const Companies = () => {
               </span>
             </div>
             <div className={styles.blockCards}>
-              {cards.map(
+              {cardsCompanies.map(
                 ({ id, logo, title, description, city, vacancyNumber }) => (
                   <CompanyCard
                     onClick={() => handleClickCompany(id)}
