@@ -2,11 +2,12 @@
 
 import React from "react";
 import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
 
-import { activeJobs } from "./CompanyData";
+import { cardsVacancies } from "@/components/RegisteredVacancies/RegisteredVacanciesDate";
 import VacancyCard from "@/components/VacancyCard/VacancyCard";
 import CompanyInfo from "@/components/CompanyInfo/CompanyInfo";
-import { cards } from "@/components/Companies/CompaniesData";
+import { cardsCompanies } from "@/components/Companies/CompaniesData";
 import { CompanyTypes } from "./Company.types";
 
 import { Vector } from "@/assets/svgs/Vector";
@@ -14,8 +15,16 @@ import { Vector } from "@/assets/svgs/Vector";
 import styles from "./company.module.scss";
 
 const Company: React.FC<CompanyTypes> = ({ companyId }) => {
-  const dataCompany = cards.find((comp) => comp.id === Number(companyId));
-  const dataVacancies = activeJobs.slice(0, dataCompany?.vacancyNumber);
+  const dataCompany = cardsCompanies.find(
+    (company) => company.id === Number(companyId)
+  );
+
+  const dataVacancies = cardsVacancies.slice(0, dataCompany?.vacancyNumber);
+
+  const router = useRouter();
+  const pathname = usePathname();
+  const handleClickVacancy = (id: number) =>
+    router.push(`${pathname}/vacancy/${id}`);
 
   return (
     <>
@@ -53,7 +62,7 @@ const Company: React.FC<CompanyTypes> = ({ companyId }) => {
                   <div className={styles.blockCards}>
                     {dataVacancies.map(
                       ({
-                        id,
+                        idVacancy,
                         name,
                         experience,
                         mode,
@@ -63,7 +72,8 @@ const Company: React.FC<CompanyTypes> = ({ companyId }) => {
                         date,
                       }) => (
                         <VacancyCard
-                          key={id}
+                          onClick={() => handleClickVacancy(idVacancy)}
+                          key={idVacancy}
                           name={name}
                           experience={experience}
                           mode={mode}

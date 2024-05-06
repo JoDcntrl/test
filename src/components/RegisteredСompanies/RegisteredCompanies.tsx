@@ -4,7 +4,7 @@ import React from "react";
 import { useRouter } from "next/navigation";
 
 import Button from "@/components/Button/Button";
-import { cards } from "./RegisteredСompaniesData";
+import { cardsCompanies } from "./RegisteredСompaniesData";
 import CompanyCard from "@/components/CompanyCard/CompanyCard";
 
 import styles from "./registeredСompanies.module.scss";
@@ -12,6 +12,8 @@ import styles from "./registeredСompanies.module.scss";
 const RegisteredCompanies: React.FC = () => {
   const router = useRouter();
   const handleClickCompaniesButton = () => router.push("/companies");
+
+  const cards = cardsCompanies.slice(0, 6);
 
   const handleClickCompany = (id: number) => router.push(`/company/${id}`);
 

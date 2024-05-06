@@ -5,7 +5,7 @@ import { useForm, SubmitHandler, SubmitErrorHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
 import Checkbox from "@/components/Checkbox/Checkbox";
-import { Additionally, CompanySize, Industry } from "./FilterCompanyData";
+import { CompanySize, Industry } from "./FilterCompanyData";
 import Input from "@/components/Input/Input";
 import Button from "@/components/Button/Button";
 import Radio from "@/components/Radio/Radio";
@@ -24,6 +24,7 @@ const FiltersCompanies = () => {
     resolver: yupResolver(schema),
     defaultValues: {
       industry: null,
+      additionally: null,
     },
   });
 
@@ -48,7 +49,6 @@ const FiltersCompanies = () => {
                 name={nameSection}
                 disabled={disabled}
                 nameGroup="industry"
-                data={Industry}
                 register={register}
                 active={active}
               />
@@ -74,7 +74,6 @@ const FiltersCompanies = () => {
           isIcon={false}
           className={styles.inputContainer}
           placeholder="Any"
-          required={true}
           register={register}
           error={errors.city}
         />
@@ -86,7 +85,6 @@ const FiltersCompanies = () => {
             <Checkbox<FilterCompaniesForm>
               name="Open positions"
               nameGroup="additionally"
-              data={Additionally}
               register={register}
             />
             <span>Open positions</span>

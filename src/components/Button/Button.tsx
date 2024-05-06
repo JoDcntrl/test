@@ -9,11 +9,13 @@ const Button = ({
   children,
   appearance,
   className,
+  disabled = false,
   type = "button",
   size,
   ...props
 }: ButtonTypes): JSX.Element => (
   <button
+    disabled={disabled}
     type={type}
     className={cn(styles.button, className, {
       [styles.primary]: appearance === "primary",
