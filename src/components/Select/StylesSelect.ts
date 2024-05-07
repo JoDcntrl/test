@@ -1,12 +1,9 @@
 import { StylesConfig } from "react-select";
 
 export const stylesSelect: StylesConfig = {
-  container: (styles) => ({
-    ...styles,
-    height: "39px",
-  }),
   control: (styles) => ({
     ...styles,
+    minHeight: "39px",
     border: "1px solid #E6E6E6",
     borderRadius: "12px",
     boxSizing: "border-box",
