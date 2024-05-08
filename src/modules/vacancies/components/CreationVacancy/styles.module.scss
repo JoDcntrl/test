@@ -1,0 +1,24 @@
+@import '@/assets/core/_variables.scss';
+
+.creation {
+  padding-top: 80px;
+  color: $text-primary;
+  width: 100%;
+  background-color: $bg-main;
+}
+
+.creationWrapper {
+  max-width: 1216px;
+  margin: 0 auto;
+}
+
+.breadCrumbsWrapper {
+  padding-top: 40px;
+}
+
+.title {
+  padding-top: 56px;
+  padding-bottom: 40px;
+  font-size: 40px;
+  line-height: 48px;
+}

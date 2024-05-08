@@ -1,0 +1,33 @@
+@import '@/assets/core/_variables.scss';
+
+.baseInfo {
+  padding: 32px;
+  background-color: $white;
+  border-radius: 16px;
+}
+
+.title {
+  font-size: $text-24;
+  line-height: 28.8px;
+  font-weight: $font-semiBold;
+  padding-bottom: 32px;
+}
+
+.label {
+  font-size: $text-14;
+  line-height: 19.6px;
+  font-weight: $font-medium;
+  padding-bottom: 8px;
+}
+
+.labeledField {
+  padding-bottom: 24px;
+}
+
+.field {
+  height: 56px;
+}
+
+.fieldWrapper {
+  height: 58px;
+}
