@@ -14,6 +14,8 @@ const Select: React.FC<SelectTypes> = ({
   objValue,
   data,
   placeholder,
+  height = "48px",
+  color = "#666666",
 }) => {
   const getValue = (obj: { value: string }) =>
     obj ? data?.find((option) => option.value === obj.value) : "";
@@ -21,7 +23,7 @@ const Select: React.FC<SelectTypes> = ({
   return (
     <ReactSelect
       placeholder={placeholder}
-      styles={stylesSelect}
+      styles={stylesSelect(height, color)}
       instanceId={useId()}
       options={data}
       components={{ Option: IconOption, DropdownIndicator }}

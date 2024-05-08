@@ -1,9 +1,9 @@
 import * as yup from "yup";
 
 export const schema = yup.object().shape({
-  linkLogo: yup
+  linkLogo: yup.string().url("Link must be a valid URL"),
+  companyDescription: yup
     .string()
-    .required("Enter city")
-    .min(2, "Minimum 2 letters")
-    .matches(/^[a-zA-Za-яА-Я]*$/, "Letters only"),
+    .required("Description is required")
+    .max(500, "Description must not be longer than 500 characters"),
 });

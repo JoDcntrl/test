@@ -28,10 +28,11 @@ import {
 import { schema } from "./CompanyCreationSchemaYup";
 import Button from "../Button/Button";
 import Select from "../Select/Select";
-import { Industry } from "./CompanyCreationData";
+import { Industry, size } from "./CompanyCreationData";
 import { CompanyCreationFormTypes } from "./CompanyCreationFormTypes";
+import TextArea from "../Textarea/Textarea";
 
-const Company: React.FC<CompanyCreationTypes> = ({ companyId }) => {
+const Company: React.FC<CompanyCreationTypes> = () => {
   const {
     register,
     watch,
@@ -40,6 +41,10 @@ const Company: React.FC<CompanyCreationTypes> = ({ companyId }) => {
     formState: { errors },
   } = useForm<CompanyCreationFormTypes>({
     resolver: yupResolver(schema),
+    defaultValues: {
+      industry: { value: "IT", label: "IT" },
+      size: { value: "1 - 50", label: "1 - 50" },
+    },
   });
 
   const onSubmit: SubmitHandler<CompanyCreationFormTypes> = (data) =>
@@ -47,30 +52,6 @@ const Company: React.FC<CompanyCreationTypes> = ({ companyId }) => {
 
   const error: SubmitErrorHandler<CompanyCreationFormTypes> = (data) => {
     console.log(data);
-  };
-
-  const [logoUrl, setLogoUrl] = useState(LogoEmpty);
-
-  const handleImageError = () => {
-    setLogoUrl(LogoEmpty);
-  };
-
-  const urlSchema = yup.object().shape({
-    url: yup.string().url(),
-  });
-
-  const handleLogoChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const newUrl = event.target.value;
-
-    urlSchema
-      .validate({ url: newUrl })
-      .then(() => {
-        setLogoUrl(newUrl);
-      })
-      .catch((err) => {
-        console.error(err.errors);
-        setLogoUrl(LogoEmpty);
-      });
   };
 
   return (
@@ -101,25 +82,26 @@ const Company: React.FC<CompanyCreationTypes> = ({ companyId }) => {
                   <Input
                     name="linkLogo"
                     placeholder="Stellar"
-                    onChange={handleLogoChange}
                     register={register}
+                    error={errors.linkLogo}
                   />
                 </div>
               </div>
-              <div className={styles.infromationIndustry}>
-                <span className={styles.industryText}>Industry</span>
-                <div className={styles.infromationSelect}>
+              <div className={styles.infromationSelect}>
+                <span className={styles.selectTitle}>Industry</span>
+                <div className={styles.selectInput}>
                   <Controller
-                    name="type"
+                    name="industry"
                     control={control}
                     render={({ field: { onChange, value } }) => {
                       return (
                         <div>
                           <Select
+                            height="59px"
+                            color="#1B1E27"
                             onChange={onChange}
                             objValue={value}
                             data={Industry}
-                            placeholder="Any"
                           />
                         </div>
                       );
@@ -127,21 +109,49 @@ const Company: React.FC<CompanyCreationTypes> = ({ companyId }) => {
                   />
                 </div>
               </div>
+              <div className={styles.infromationSelect}>
+                <span className={styles.selectTitle}>Industry</span>
+                <div className={styles.selectInput}>
+                  <Controller
+                    name="size"
+                    control={control}
+                    render={({ field: { onChange, value } }) => {
+                      return (
+                        <div>
+                          <Select
+                            color="#1B1E27"
+                            height="59px"
+                            onChange={onChange}
+                            objValue={value}
+                            data={size}
+                          />
+                        </div>
+                      );
+                    }}
+                  />
+                </div>
+              </div>
+              <div className={styles.description}>
+                <span className={styles.descriptionTitle}>
+                  Company Description
+                </span>
+                <TextArea<CompanyCreationFormTypes>
+                  register={register}
+                  name="companyDescription"
+                  placeholder="Describe the company's activities"
+                />
+              </div>
             </section>
           </main>
           <aside className={styles.asideCreationLogo}>
-            {logoUrl == LogoEmpty || logoUrl == "" ? (
-              <Image src={LogoEmpty} priority alt={""} />
-            ) : (
-              <img src={logoUrl} width={320} />
-            )}
+            <Image src={LogoEmpty} priority alt={""} />
             <span className={styles.creationLogoText}>Image link</span>
             <div className={styles.creationLogoInput}>
               <Input
                 name="linkLogo"
                 placeholder="Insert link"
-                onChange={handleLogoChange}
                 register={register}
+                error={errors.linkLogo}
               />
               <Image
                 src={Question}
@@ -153,6 +163,14 @@ const Company: React.FC<CompanyCreationTypes> = ({ companyId }) => {
           </aside>
         </div>
       </div>
+      <Button
+        type="submit"
+        appearance="secondary"
+        size="l"
+        className={styles.buttonStyle}
+      >
+        Submit
+      </Button>
     </form>
   );
 };

@@ -8,5 +8,6 @@ export interface SelectTypes
     value: string;
     label: string;
   }[];
-  placeholder: string;
+  placeholder?: string;
+  height?: string;
 }
