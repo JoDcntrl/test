@@ -1,5 +1,9 @@
 @import '@/assets/core/_variables.scss';
 
+.formData {
+  max-width: 800px;
+}
+
 .baseInfo {
   padding: 32px;
   background-color: $white;

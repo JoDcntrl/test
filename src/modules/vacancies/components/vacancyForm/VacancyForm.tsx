@@ -100,36 +100,40 @@ export const VacancyForm = () => {
             </div>
           </div>
           <div className={styles.labeledField}>
-            <label className={styles.label}>Experience</label>
-            <Controller
-              name="name"
-              control={control}
-              render={({ field: { onChange, value } }) => (
-                <Select
-                  variant={VARIANT.BIG}
-                  onChange={onChange}
-                  objValue={value}
-                  data={EmploymentType}
-                  placeholder="1 to 3 years"
-                />
-              )}
-            />
+            <p className={styles.label}>Experience</p>
+            <div className={styles.fieldWrapper}>
+              <Controller
+                name="name"
+                control={control}
+                render={({ field: { onChange, value } }) => (
+                  <Select
+                    variant={VARIANT.BIG}
+                    onChange={onChange}
+                    objValue={value}
+                    data={EmploymentType}
+                    placeholder="1 to 3 years"
+                  />
+                )}
+              />
+            </div>
           </div>
           <div className={styles.labeledField}>
-            <label className={styles.label}>Type of Employment</label>
-            <Controller
-              name="name"
-              control={control}
-              render={({ field: { onChange, value } }) => (
-                <Select
-                  variant={VARIANT.BIG}
-                  onChange={onChange}
-                  objValue={value}
-                  data={EmploymentType}
-                  placeholder="Full-time"
-                />
-              )}
-            />
+            <p className={styles.label}>Type of Employment</p>
+            <div className={styles.fieldWrapper}>
+              <Controller
+                name="name"
+                control={control}
+                render={({ field: { onChange, value } }) => (
+                  <Select
+                    variant={VARIANT.BIG}
+                    onChange={onChange}
+                    objValue={value}
+                    data={EmploymentType}
+                    placeholder="Full-time"
+                  />
+                )}
+              />
+            </div>
           </div>
           <label className={styles.checkbox}>
             <Checkbox<any>
@@ -141,20 +145,22 @@ export const VacancyForm = () => {
             <span>Remote</span>
           </label>
           <div className={styles.labeledField}>
-            <label className={styles.label}>Income level</label>
-            <Controller
-              name="name"
-              control={control}
-              render={({ field: { onChange, value } }) => (
-                <Select
-                  variant={VARIANT.BIG}
-                  onChange={onChange}
-                  objValue={value}
-                  data={EmploymentType}
-                  placeholder="from $10,000"
-                />
-              )}
-            />
+            <p className={styles.label}>Income level</p>
+            <div className={styles.fieldWrapper}>
+              <Controller
+                name="name"
+                control={control}
+                render={({ field: { onChange, value } }) => (
+                  <Select
+                    variant={VARIANT.BIG}
+                    onChange={onChange}
+                    objValue={value}
+                    data={EmploymentType}
+                    placeholder="from $10,000"
+                  />
+                )}
+              />
+            </div>
           </div>
           <Button
             type="submit"
