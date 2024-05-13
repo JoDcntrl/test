@@ -19,7 +19,6 @@ import TextArea from "@/components/Textarea/Textarea";
 import Button from "@/components/Button/Button";
 import { schema } from "./CompanyCreationSchemaYup";
 import { city, industry, size } from "./CompanyCreationData";
-import { CompanyCreationTypes } from "./CompanyCreation.types";
 import { CompanyCreationFormTypes } from "./CompanyCreationFormTypes";
 
 import LogoEmpty from "@/assets/svgs/logoEmpty.svg";
@@ -27,8 +26,10 @@ import Question from "@/assets/svgs/Question.png";
 
 import styles from "./companyCreation.module.scss";
 
-const Company: React.FC<CompanyCreationTypes> = () => {
-  const [links, setLinks] = useState<{ id: string; value: string }[]>([]);
+const Company: React.FC = () => {
+  const [links, setLinks] = useState<{ id: string; value: string | null }[]>(
+    []
+  );
 
   const [acitveLogo, setActiveLogo] = useState<boolean>(false);
 
@@ -38,6 +39,7 @@ const Company: React.FC<CompanyCreationTypes> = () => {
     register,
     watch,
     control,
+    setValue,
     handleSubmit,
     formState: { errors },
   } = useForm<CompanyCreationFormTypes>({
@@ -47,7 +49,7 @@ const Company: React.FC<CompanyCreationTypes> = () => {
       industry: "IT",
       size: "1 - 50",
       city: "Los-Angeles",
-      telegram: "",
+      linkLogo: null,
     },
   });
 
@@ -69,8 +71,23 @@ const Company: React.FC<CompanyCreationTypes> = () => {
   };
 
   const addLink = () => {
-    setLinks((prev) => [...prev, { id: uuid(), value: "" }]);
+    setLinks((prev) => [...prev, { id: uuid(), value: null }]);
   };
+
+  useEffect(() => {
+    const createFieldLink = (
+      arrLinks: { id: string; value: string | null }[]
+    ) => {
+      if (arrLinks.length > 0) {
+        setValue(
+          `link-${arrLinks.length - 1}`,
+          arrLinks[arrLinks.length - 1].value
+        );
+      }
+    };
+
+    createFieldLink(links);
+  }, [links, setValue]);
 
   const onSubmit: SubmitHandler<CompanyCreationFormTypes> = (data) =>
     console.log(data);
@@ -87,8 +104,8 @@ const Company: React.FC<CompanyCreationTypes> = () => {
             Main
           </Link>
           <span className={styles.blockSlash}>/</span>
-          <Link className={styles.blockLink} href="/companies">
-            Companies
+          <Link className={styles.blockLinkCurrent} href="/company-creation">
+            Company creation
           </Link>
         </div>
         <h1 className={styles.blockTitle}>
@@ -171,6 +188,7 @@ const Company: React.FC<CompanyCreationTypes> = () => {
                   register={register}
                   name="companyDescription"
                   placeholder="Describe the company's activities"
+                  error={errors.companyDescription}
                 />
               </div>
             </section>
@@ -246,17 +264,20 @@ const Company: React.FC<CompanyCreationTypes> = () => {
           </main>
           <aside className={styles.asideCreationLogo}>
             {!acitveLogo ? (
-              <Image src={LogoEmpty} priority alt={"LogoEmpty"} />
+              <Image
+                className={styles.logoEmpty}
+                src={LogoEmpty}
+                priority
+                alt="LogoEmpty"
+              />
             ) : (
-              <img
-                src={linkLogoValue}
+              <Image
+                src={linkLogoValue?.startsWith("https") ? linkLogoValue : "/"}
                 width={320}
                 height={320}
                 alt="Error loading image"
-                loading="lazy"
               />
             )}
-
             <span className={styles.creationLogoText}>Image link</span>
             <div className={styles.creationLogoInput}>
               <Input<CompanyCreationFormTypes>
@@ -269,7 +290,7 @@ const Company: React.FC<CompanyCreationTypes> = () => {
                 onClick={() => changeActiveQuestion()}
                 src={Question}
                 priority
-                alt={""}
+                alt={"Question"}
                 className={styles.inputQuestion}
               />
               <div

@@ -1,26 +1,33 @@
 import React from "react";
-import { useFormContext } from "react-hook-form";
+import cn from "classnames";
+
 import { TextareaTypes } from "./Textarea.types";
+
 import styles from "./textarea.module.scss";
 
 const TextArea = <T extends Record<string, any>>({
   name,
   placeholder,
   rows = 4,
+  error,
   register,
-}: TextareaTypes<T>) => {
-  return (
-    register && (
-      <div className={styles.textareConatiner}>
-        <textarea
-          {...register(name)}
-          placeholder={placeholder}
-          rows={rows}
-          className={styles.textarea}
-        />
-      </div>
-    )
+}: TextareaTypes<T>) =>
+  register && (
+    <div className={styles.textareConatiner}>
+      <textarea
+        {...register(name)}
+        placeholder={placeholder}
+        rows={rows}
+        className={cn(styles.textarea, {
+          [styles.error]: error,
+        })}
+      />
+      {error && (
+        <span role="alert" className={styles.errorMessage}>
+          {error.message}
+        </span>
+      )}
+    </div>
   );
-};
 
 export default TextArea;

@@ -1,11 +1,11 @@
 export interface CompanyCreationFormTypes {
-  companyName: string;
-  linkLogo?: string;
+  city?: string;
+  linkLogo?: string | null;
   industry?: string;
   size?: string;
-  companyDescription?: string;
-  city?: string;
-  webSite?: string;
-  telegram?: string;
-  [key: string]: any;
+  companyDescription: string;
+  companyName: string;
+  webSite: string;
+  telegram: string;
+  [key: string]: string | null | undefined;
 }

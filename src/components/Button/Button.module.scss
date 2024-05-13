@@ -2,12 +2,10 @@
 
 .button {
   display: flex;
-
   box-sizing: border-box;
-
   cursor: pointer;
   text-align: center;
-
+  justify-content: center;
   outline: none;
 }
 
