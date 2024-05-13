@@ -13,7 +13,7 @@ const TextArea = <T extends Record<string, any>>({
   register,
 }: TextareaTypes<T>) =>
   register && (
-    <div className={styles.textareConatiner}>
+    <div className={cn(styles.textareConatiner)}>
       <textarea
         {...register(name)}
         placeholder={placeholder}

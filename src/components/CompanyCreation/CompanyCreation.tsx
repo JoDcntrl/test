@@ -122,10 +122,10 @@ const Company: React.FC = () => {
         <div className={styles.wrapperBlockMain}>
           <main className={styles.main}>
             <section className={styles.blockBasicInformation}>
-              <h2 className={styles.infromationTitle}>Basic information</h2>
-              <div className={styles.infromationName}>
+              <h2 className={styles.informationTitle}>Basic information</h2>
+              <div className={styles.informationName}>
                 <span className={styles.nameTitle}>Company name</span>
-                <div className={styles.infromationInput}>
+                <div className={styles.informationInput}>
                   <Input<CompanyCreationFormTypes>
                     name="companyName"
                     placeholder="Stellar"
@@ -134,7 +134,7 @@ const Company: React.FC = () => {
                   />
                 </div>
               </div>
-              <div className={styles.infromationSelect}>
+              <div className={styles.informationSelect}>
                 <span className={styles.selectTitle}>Industry</span>
                 <div className={styles.selectInput}>
                   <Controller
@@ -157,7 +157,7 @@ const Company: React.FC = () => {
                   />
                 </div>
               </div>
-              <div className={styles.infromationSelect}>
+              <div className={styles.informationSelect}>
                 <span className={styles.selectTitle}>Industry</span>
                 <div className={styles.selectInput}>
                   <Controller
