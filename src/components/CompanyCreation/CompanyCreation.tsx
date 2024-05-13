@@ -22,7 +22,7 @@ import { city, industry, size } from "./CompanyCreationData";
 import { CompanyCreationFormTypes } from "./CompanyCreationFormTypes";
 
 import LogoEmpty from "@/assets/svgs/logoEmpty.svg";
-import Question from "@/assets/svgs/Question.png";
+import Question from "@/assets/images/Question.png";
 
 import styles from "./companyCreation.module.scss";
 
