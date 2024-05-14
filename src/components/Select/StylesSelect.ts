@@ -1,7 +1,11 @@
 import { StylesConfig } from "react-select";
 import { VARIANT } from "./Select.types";
 
-export const stylesSelect = (variant: string): StylesConfig => {
+export const stylesSelect = (
+  variant: string,
+  enteredValueColor: string,
+  error: string
+): StylesConfig => {
   return {
     container: (styles) => ({
       ...styles,
@@ -9,7 +13,7 @@ export const stylesSelect = (variant: string): StylesConfig => {
     }),
     control: (styles) => ({
       ...styles,
-      border: "1px solid #E6E6E6",
+      border: error ? "1px solid #d56f75" : "1px solid #E6E6E6",
       borderRadius: "12px",
       boxSizing: "border-box",
     }),
@@ -29,7 +33,7 @@ export const stylesSelect = (variant: string): StylesConfig => {
       margin: "0",
       padding: "0px",
       paddingLeft: "16px",
-      color: "#666666",
+      color: enteredValueColor,
     }),
     placeholder: (styles) => ({
       ...styles,

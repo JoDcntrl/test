@@ -14,9 +14,13 @@ import Select from "@/components/Select/Select";
 import Check from "@/assets/svgs/Check.svg";
 import Checkbox from "@/components/Checkbox/Checkbox";
 import { VARIANT } from "@/components/Select/Select.types";
-interface FuckYou {
+interface ICreateVacancyForm {
   name: string;
   other: string;
+  qualification: string;
+  experience: string;
+  typeOfEmloyment: string;
+  incomeLevel: string;
 }
 
 export const VacancyForm = () => {
@@ -26,13 +30,14 @@ export const VacancyForm = () => {
     reset,
     control,
     formState: { errors },
-  } = useForm<FuckYou>({
+  } = useForm<ICreateVacancyForm>({
     resolver: yupResolver(vacancyFormSchema),
   });
 
-  const onSubmit: SubmitHandler<FuckYou> = (data) => console.log(data);
+  const onSubmit: SubmitHandler<ICreateVacancyForm> = (data) =>
+    console.log(data);
 
-  const error: SubmitErrorHandler<FuckYou> = (data) => {
+  const error: SubmitErrorHandler<ICreateVacancyForm> = (data) => {
     console.log(data);
   };
 
@@ -57,7 +62,6 @@ export const VacancyForm = () => {
               name="name"
               isIcon={false}
               placeholder="Full-stack Engineer"
-              required={true}
               register={register}
               error={errors.name}
               className={styles.field}
@@ -67,15 +71,17 @@ export const VacancyForm = () => {
             <p className={styles.label}>Other</p>
             <div className={styles.fieldWrapper}>
               <Controller
-                name="name"
+                name="other"
                 control={control}
                 render={({ field: { onChange, value } }) => (
                   <Select
+                    error={errors.other}
                     variant={VARIANT.BIG}
                     onChange={onChange}
                     objValue={value}
                     data={EmploymentType}
                     placeholder="Others"
+                    enteredValueColor="#1B1E27"
                   />
                 )}
               />
@@ -85,7 +91,7 @@ export const VacancyForm = () => {
             <p className={styles.label}>Qualification</p>
             <div className={styles.fieldWrapper}>
               <Controller
-                name="name"
+                name="qualification"
                 control={control}
                 render={({ field: { onChange, value } }) => (
                   <Select
@@ -94,6 +100,8 @@ export const VacancyForm = () => {
                     objValue={value}
                     data={EmploymentType}
                     placeholder="Senior"
+                    enteredValueColor="#1B1E27"
+                    error={errors.qualification}
                   />
                 )}
               />
@@ -103,7 +111,7 @@ export const VacancyForm = () => {
             <p className={styles.label}>Experience</p>
             <div className={styles.fieldWrapper}>
               <Controller
-                name="name"
+                name="experience"
                 control={control}
                 render={({ field: { onChange, value } }) => (
                   <Select
@@ -112,6 +120,8 @@ export const VacancyForm = () => {
                     objValue={value}
                     data={EmploymentType}
                     placeholder="1 to 3 years"
+                    enteredValueColor="#1B1E27"
+                    error={errors.experience}
                   />
                 )}
               />
@@ -121,7 +131,7 @@ export const VacancyForm = () => {
             <p className={styles.label}>Type of Employment</p>
             <div className={styles.fieldWrapper}>
               <Controller
-                name="name"
+                name="typeOfEmloyment"
                 control={control}
                 render={({ field: { onChange, value } }) => (
                   <Select
@@ -130,25 +140,29 @@ export const VacancyForm = () => {
                     objValue={value}
                     data={EmploymentType}
                     placeholder="Full-time"
+                    enteredValueColor="#1B1E27"
+                    error={errors.typeOfEmloyment}
                   />
                 )}
               />
             </div>
+            <div className={styles.checkboxWrapper}>
+              <label className={styles.checkbox}>
+                <Checkbox<any>
+                  name="remote"
+                  nameGroup="remote"
+                  data={Remote}
+                  register={register}
+                />
+                <span>Remote</span>
+              </label>
+            </div>
           </div>
-          <label className={styles.checkbox}>
-            <Checkbox<any>
-              name="remote"
-              nameGroup="remote"
-              data={Remote}
-              register={register}
-            />
-            <span>Remote</span>
-          </label>
           <div className={styles.labeledField}>
             <p className={styles.label}>Income level</p>
             <div className={styles.fieldWrapper}>
               <Controller
-                name="name"
+                name="incomeLevel"
                 control={control}
                 render={({ field: { onChange, value } }) => (
                   <Select
@@ -157,6 +171,8 @@ export const VacancyForm = () => {
                     objValue={value}
                     data={EmploymentType}
                     placeholder="from $10,000"
+                    enteredValueColor="#1B1E27"
+                    error={errors.typeOfEmloyment}
                   />
                 )}
               />

@@ -1,8 +1,8 @@
 import { DetailedHTMLProps, HTMLAttributes } from "react";
 
 export enum VARIANT {
-  SMALL = 'small',
-  BIG = 'big'
+  SMALL = "small",
+  BIG = "big",
 }
 
 export interface SelectTypes
@@ -15,4 +15,6 @@ export interface SelectTypes
   }[];
   placeholder: string;
   variant?: string;
+  enteredValueColor?: string;
+  error?: any;
 }

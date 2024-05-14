@@ -1,0 +1,11 @@
+@import "@/assets/core/_variables.scss";
+
+.errorMessage {
+  position: absolute;
+  bottom: -20px;
+  left: 0;
+  color: $main-error;
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 16px;
+}
