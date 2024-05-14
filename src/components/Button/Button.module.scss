@@ -1,13 +1,11 @@
-@import '../../assets/core/_variables.scss';
+@import "../../assets/core/_variables.scss";
 
 .button {
-  display: inline-block;
-
+  display: flex;
   box-sizing: border-box;
-
   cursor: pointer;
   text-align: center;
-
+  justify-content: center;
   outline: none;
 }
 
@@ -18,13 +16,13 @@
 }
 
 .primary:hover {
-  border: 1px solid #5483E6;
-  background-color: #5483E6;
+  border: 1px solid #5483e6;
+  background-color: #5483e6;
 }
 
 .primary:active {
-  border: 1px solid #507CD8;
-  background-color: #507CD8;
+  border: 1px solid #507cd8;
+  background-color: #507cd8;
 }
 
 .primary:disabled {
@@ -41,12 +39,12 @@
 }
 
 .ghost:hover {
-  color: #5483E6;
+  color: #5483e6;
   background-color: transparent;
 }
 
 .ghost:active {
-  color: #507CD8;
+  color: #507cd8;
   background-color: transparent;
 }
 
@@ -63,16 +61,16 @@
 }
 
 .secondary:hover {
-  background-color: #DDE6F7;
+  background-color: #dde6f7;
 }
 
 .secondary:active {
-  background-color: #D3DFF6;
+  background-color: #d3dff6;
 }
 
 .secondary:disabled {
   color: $text-tertiary;
-  background-color: #EDEDED;
+  background-color: #ededed;
   cursor: not-allowed;
 }
 
@@ -83,13 +81,13 @@
 }
 
 .tertiary:hover {
-  border: 1px solid #5483E6;
-  color: #5483E6;
+  border: 1px solid #5483e6;
+  color: #5483e6;
 }
 
 .tertiary:active {
-  border: 1px solid #507CD8;
-  color: #507CD8;
+  border: 1px solid #507cd8;
+  color: #507cd8;
 }
 
 .tertiary:disabled {
@@ -130,3 +128,23 @@
   line-height: 24px;
 }
 
+.iconButton {
+  display: none;
+}
+.iconButton:hover {
+  svg {
+    path {
+      fill: #507cd8;
+    }
+  }
+}
+
+.iconRight {
+  display: block;
+  margin-left: 8px;
+}
+
+.iconLeft {
+  display: block;
+  margin-right: 8px;
+}
