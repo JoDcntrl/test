@@ -14,26 +14,21 @@ import { Logo } from "@/assets/svgs/Logo";
 import styles from "./footerDemo.module.scss";
 import { number } from "yup";
 import FooterPopupDemo from "./FooterPopupDemo/FooterPopupDemo";
+import { clearTimeout } from "timers";
 
 const FooterDemo: React.FC<FooterDemoTypes> = ({ wide = false }) => {
   const [selectedLinkId, setSelectedLinkId] = useState<number | null>(null);
-  const [mouseOnPopup, setMouseOnPopup] = useState<boolean>(false);
 
   let timerId: ReturnType<typeof setTimeout> | null;
 
   const closePopup = () => {
-    setSelectedLinkId(null);
 
-    if (timerId) {
-      clearTimeout(timerId);
-      timerId = null;
-    }
+      setSelectedLinkId(null);  
+
   }
 
   const closePopupOnTimer = () => {
-    if (!mouseOnPopup) {
-      timerId = setTimeout(closePopup, 300);
-    }
+      timerId = setTimeout(closePopup, 100);
   }
 
   useEffect(() => {
@@ -41,14 +36,12 @@ const FooterDemo: React.FC<FooterDemoTypes> = ({ wide = false }) => {
 
     return () => {
       document.removeEventListener('click', closePopup);
-
       if (timerId) {
         clearTimeout(timerId);
       }
     }
   }, []);
 
-  console.log(selectedLinkId === id)
 
   return (
   <footer className={styles.footerDemoMain}>
@@ -66,10 +59,10 @@ const FooterDemo: React.FC<FooterDemoTypes> = ({ wide = false }) => {
               className={styles.footerListLink} 
               scroll = {false}
               onMouseEnter={() => setSelectedLinkId(id === 5 ? id : null)}
-              onMouseLeave={closePopupOnTimer}
+              onMouseLeave={() => selectedLinkId === id ? closePopupOnTimer() : null}
             > 
               {text}
-              {selectedLinkId === id  && <FooterPopupDemo mouseEnterPopup = {setMouseOnPopup} closePopup={closePopup}/>}          
+              {selectedLinkId === id  && <FooterPopupDemo/>}          
             </Link>
           ))}
         </div>

@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Button from '@/components/Button/Button';
 import style from './FooterPopupDemo.module.css'
 import { FooterPopupDemoTypes } from './FooterPopupDemo.types';
+import { useState } from 'react';
 
 
 const FooterPopupDemo: React.FC<FooterPopupDemoTypes> = (props) => {
@@ -19,9 +20,9 @@ const FooterPopupDemo: React.FC<FooterPopupDemoTypes> = (props) => {
     }
 
     return (
-        <div 
+        <div className={style.wrapper}>
+           <div 
             className= {style.popup}
-            onMouseLeave={props.closePopup}
         >
             <div className= {style.title}>
                 <p>Write to us at </p>
@@ -33,10 +34,13 @@ const FooterPopupDemo: React.FC<FooterPopupDemoTypes> = (props) => {
                 size='m'
                 className={style.button}
                 onClick={copyEmail}
+                
             >
                 Copy the email
             </Button>            
+        </div> 
         </div>
+        
     )
 }
 
