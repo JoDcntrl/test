@@ -43,6 +43,9 @@ const VacancyCard: React.FC<VacancyCardTypes> = ({
           className={styles.vacancyCompanyLogo}
           width="24"
           height="24"
+          style={{
+            borderRadius: '4px'
+          }}
         />
         <p className={styles.vacancyCardLogoText}>{company}</p>
       </div>
