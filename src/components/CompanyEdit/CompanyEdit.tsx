@@ -176,7 +176,7 @@ const CompanyEdit: React.FC = () => {
                 </div>
               </div>
               <div className={styles.informationSelect}>
-                <span className={styles.selectTitle}>Industry</span>
+                <span className={styles.selectTitle}>Company size</span>
                 <div className={styles.selectInput}>
                   <Controller
                     name="size"
