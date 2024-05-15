@@ -89,8 +89,10 @@ const Company: React.FC = () => {
     createFieldLink(links);
   }, [links, setValue]);
 
-  const onSubmit: SubmitHandler<CompanyCreationFormTypes> = (data) =>
+  const onSubmit: SubmitHandler<CompanyCreationFormTypes> = (data) => {
     console.log(data);
+    localStorage.setItem("formDataCompany", JSON.stringify(data));
+  };
 
   const error: SubmitErrorHandler<CompanyCreationFormTypes> = (data) => {
     console.log(data);

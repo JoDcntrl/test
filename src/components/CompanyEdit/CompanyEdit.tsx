@@ -41,6 +41,7 @@ const CompanyEdit: React.FC = () => {
     control,
     setValue,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<CompanyEditFormTypes>({
     resolver: yupResolver(schema),
@@ -52,6 +53,13 @@ const CompanyEdit: React.FC = () => {
       linkLogo: null,
     },
   });
+
+  useEffect(() => {
+    const formDataCompany = localStorage.getItem("formDataCompany");
+    if (formDataCompany) {
+      reset(JSON.parse(formDataCompany));
+    }
+  }, [reset]);
 
   const linkLogoValue = watch("linkLogo");
 
@@ -89,8 +97,10 @@ const CompanyEdit: React.FC = () => {
     createFieldLink(links);
   }, [links, setValue]);
 
-  const onSubmit: SubmitHandler<CompanyEditFormTypes> = (data) =>
+  const onSubmit: SubmitHandler<CompanyEditFormTypes> = (data) => {
     console.log(data);
+    localStorage.setItem("formDataCompany", JSON.stringify(data));
+  };
 
   const error: SubmitErrorHandler<CompanyEditFormTypes> = (data) => {
     console.log(data);
