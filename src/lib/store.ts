@@ -1,11 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { apiService } from "./apiService";
-import counterReducer from "./features/counter/counter";
 
 export const makeStore = () => {
   return configureStore({
     reducer: {
-      counter: counterReducer,
       [apiService.reducerPath]: apiService.reducer,
     },
     middleware: (getDefaultMiddleware) =>
