@@ -3,6 +3,8 @@ import cn from "classnames";
 
 import { ButtonTypes } from "@/components/Button/Button.types";
 
+import { IconButton } from "@/assets/svgs/IconButton";
+
 import styles from "./Button.module.scss";
 
 const Button = ({
@@ -12,6 +14,7 @@ const Button = ({
   disabled = false,
   type = "button",
   size,
+  icon = "",
   ...props
 }: ButtonTypes): JSX.Element => (
   <button
@@ -29,7 +32,21 @@ const Button = ({
     })}
     {...props}
   >
+    <div
+      className={cn(styles.iconButton, className, {
+        [styles.iconLeft]: icon === "left",
+      })}
+    >
+      <IconButton />
+    </div>
     {children}
+    <div
+      className={cn(styles.iconButton, className, {
+        [styles.iconRight]: icon === "right",
+      })}
+    >
+      <IconButton />
+    </div>
   </button>
 );
 
