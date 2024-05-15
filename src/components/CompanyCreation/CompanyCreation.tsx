@@ -158,7 +158,7 @@ const Company: React.FC = () => {
                 </div>
               </div>
               <div className={styles.informationSelect}>
-                <span className={styles.selectTitle}>Industry</span>
+                <span className={styles.selectTitle}>Company size</span>
                 <div className={styles.selectInput}>
                   <Controller
                     name="size"
@@ -255,7 +255,7 @@ const Company: React.FC = () => {
                   onClick={addLink}
                   size={"s"}
                   appearance={"ghost"}
-                  icon="left"
+                  iconPosition="left"
                 >
                   Add a link
                 </Button>

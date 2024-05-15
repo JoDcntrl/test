@@ -155,9 +155,8 @@
 
 .creationLogoInput {
   position: relative;
-
   input {
-    color: $text-secondary;
+    color: $text-primary;
     height: 48px;
     padding: 12px 16px;
     padding-right: 40px;
@@ -165,6 +164,9 @@
     font-size: 16px;
     font-weight: 400;
     line-height: 150%;
+  }
+  input::placeholder {
+    color: $text-secondary;
   }
   .inputQuestion {
     position: absolute;
@@ -232,7 +234,7 @@
     line-height: 150%;
   }
   input::placeholder {
-    color: $text-primary;
+    color: $text-secondary;
   }
 }
 
@@ -304,7 +306,7 @@
     line-height: 150%;
   }
   input::placeholder {
-    color: $text-primary;
+    color: $text-secondary;
   }
 }
 

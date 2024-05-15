@@ -14,7 +14,7 @@ const Button = ({
   disabled = false,
   type = "button",
   size,
-  icon = "",
+  iconPosition = "",
   ...props
 }: ButtonTypes): JSX.Element => (
   <button
@@ -29,12 +29,13 @@ const Button = ({
       [styles.m]: size === "m",
       [styles.l]: size === "l",
       [styles.xl]: size === "xl",
+      [styles.buttonWithIcon]: iconPosition,
     })}
     {...props}
   >
     <div
       className={cn(styles.iconButton, className, {
-        [styles.iconLeft]: icon === "left",
+        [styles.iconLeft]: iconPosition === "left",
       })}
     >
       <IconButton />
@@ -42,7 +43,7 @@ const Button = ({
     {children}
     <div
       className={cn(styles.iconButton, className, {
-        [styles.iconRight]: icon === "right",
+        [styles.iconRight]: iconPosition === "right",
       })}
     >
       <IconButton />
