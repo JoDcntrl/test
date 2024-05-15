@@ -19,7 +19,14 @@
 }
 
 .textarea::placeholder {
+<<<<<<< HEAD
   color: $text-primary;
+=======
+  color: $text-secondary;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 150%;
+>>>>>>> development
   font-family: "Inter", sans-serif;
 }
 

@@ -130,6 +130,7 @@
 
 .iconButton {
   display: none;
+  height: 20px;
 }
 .iconButton:hover {
   svg {
@@ -148,3 +149,11 @@
   display: block;
   margin-right: 8px;
 }
+<<<<<<< HEAD
+=======
+
+.buttonWithIcon {
+  padding: 0;
+  align-items: center;
+}
+>>>>>>> development

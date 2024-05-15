@@ -17,16 +17,16 @@ import Input from "@/components/Input/Input";
 import Select from "@/components/Select/Select";
 import TextArea from "@/components/Textarea/Textarea";
 import Button from "@/components/Button/Button";
-import { schema } from "./CompanyEditSchemaYup";
-import { city, industry, size } from "./CompanyEditData";
-import { CompanyEditFormTypes } from "./CompanyEditFormTypes";
+import { schema } from "./CompanyCreationSchemaYup";
+import { city, industry, size } from "./CompanyCreationData";
+import { CompanyCreationFormTypes } from "./CompanyCreationFormTypes";
 
 import LogoEmpty from "@/assets/svgs/logoEmpty.svg";
 import Question from "@/assets/images/Question.png";
 
-import styles from "./CompanyEdit.module.scss";
+import styles from "./companyCreation.module.scss";
 
-const CompanyEdit: React.FC = () => {
+const Company: React.FC = () => {
   const [links, setLinks] = useState<{ id: string; value: string | null }[]>(
     []
   );
@@ -42,7 +42,7 @@ const CompanyEdit: React.FC = () => {
     setValue,
     handleSubmit,
     formState: { errors },
-  } = useForm<CompanyEditFormTypes>({
+  } = useForm<CompanyCreationFormTypes>({
     resolver: yupResolver(schema),
     mode: "onChange",
     defaultValues: {
@@ -89,10 +89,10 @@ const CompanyEdit: React.FC = () => {
     createFieldLink(links);
   }, [links, setValue]);
 
-  const onSubmit: SubmitHandler<CompanyEditFormTypes> = (data) =>
+  const onSubmit: SubmitHandler<CompanyCreationFormTypes> = (data) =>
     console.log(data);
 
-  const error: SubmitErrorHandler<CompanyEditFormTypes> = (data) => {
+  const error: SubmitErrorHandler<CompanyCreationFormTypes> = (data) => {
     console.log(data);
   };
 
@@ -104,27 +104,19 @@ const CompanyEdit: React.FC = () => {
             Main
           </Link>
           <span className={styles.blockSlash}>/</span>
-          <Link className={styles.blockLink} href="/companies">
-            Companies
-          </Link>
-          <span className={styles.blockSlash}>/</span>
-          <Link className={styles.blockLink} href="/company-edit">
-            Stellar
-          </Link>
-          <span className={styles.blockSlash}>/</span>
-          <Link className={styles.blockLinkCurrent} href="/company-edit">
-            Edit
+          <Link className={styles.blockLinkCurrent} href="/company-creation">
+            Company creation
           </Link>
         </div>
         <h1 className={styles.blockTitle}>
-          <span className={styles.blockTitleText}>Editing</span>
+          <span className={styles.blockTitleText}>Company creation</span>
           <Button
             appearance="primary"
             size="l"
             type="submit"
             className={styles.buttonStyle}
           >
-            Save changes
+            Create a company
           </Button>
         </h1>
         <div className={styles.wrapperBlockMain}>
@@ -134,7 +126,7 @@ const CompanyEdit: React.FC = () => {
               <div className={styles.informationName}>
                 <span className={styles.nameTitle}>Company name</span>
                 <div className={styles.informationInput}>
-                  <Input<CompanyEditFormTypes>
+                  <Input<CompanyCreationFormTypes>
                     name="companyName"
                     placeholder="Stellar"
                     register={register}
@@ -166,7 +158,7 @@ const CompanyEdit: React.FC = () => {
                 </div>
               </div>
               <div className={styles.informationSelect}>
-                <span className={styles.selectTitle}>Industry</span>
+                <span className={styles.selectTitle}>Company size</span>
                 <div className={styles.selectInput}>
                   <Controller
                     name="size"
@@ -192,7 +184,7 @@ const CompanyEdit: React.FC = () => {
                 <span className={styles.descriptionTitle}>
                   Company Description
                 </span>
-                <TextArea<CompanyEditFormTypes>
+                <TextArea<CompanyCreationFormTypes>
                   register={register}
                   name="companyDescription"
                   placeholder="Describe the company's activities"
@@ -228,7 +220,7 @@ const CompanyEdit: React.FC = () => {
               <div className={styles.contactsWrapperInput}>
                 <span className={styles.inputTitle}>Web site</span>
                 <div className={styles.contactsInput}>
-                  <Input<CompanyEditFormTypes>
+                  <Input<CompanyCreationFormTypes>
                     name="webSite"
                     placeholder="stellar.org"
                     register={register}
@@ -239,7 +231,7 @@ const CompanyEdit: React.FC = () => {
               <div className={styles.contactsWrapperInput}>
                 <span className={styles.inputTitle}>Telegram</span>
                 <div className={styles.contactsInput}>
-                  <Input<CompanyEditFormTypes>
+                  <Input<CompanyCreationFormTypes>
                     name="telegram"
                     placeholder="t.me/stellar"
                     register={register}
@@ -250,7 +242,7 @@ const CompanyEdit: React.FC = () => {
               {links.map((link, index) => (
                 <div key={link.id} className={styles.contactsWrapperInput}>
                   <div className={styles.contactsInput}>
-                    <Input<CompanyEditFormTypes>
+                    <Input<CompanyCreationFormTypes>
                       name={`link-${index}`}
                       placeholder="Paste link"
                       register={register}
@@ -288,7 +280,7 @@ const CompanyEdit: React.FC = () => {
             )}
             <span className={styles.creationLogoText}>Image link</span>
             <div className={styles.creationLogoInput}>
-              <Input<CompanyEditFormTypes>
+              <Input<CompanyCreationFormTypes>
                 name="linkLogo"
                 placeholder="Insert link"
                 register={register}
@@ -316,4 +308,4 @@ const CompanyEdit: React.FC = () => {
   );
 };
 
-export default CompanyEdit;
+export default Company;
