@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useId } from "react";
+import React, { useEffect, useState } from "react";
 import ReactSelect from "react-select";
 
 import DropdownIndicator from "./DropdownIndicator";
@@ -14,15 +14,26 @@ const Select: React.FC<SelectTypes> = ({
   objValue,
   data,
   placeholder,
+  height = "48px",
+  color = "#666666",
 }) => {
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  if (!isMounted) {
+    return null;
+  }
+
   const getValue = (obj: { value: string }) =>
     obj ? data?.find((option) => option.value === obj.value) : "";
 
   return (
     <ReactSelect
       placeholder={placeholder}
-      styles={stylesSelect}
-      instanceId={useId()}
+      styles={stylesSelect(height, color)}
       options={data}
       components={{ Option: IconOption, DropdownIndicator }}
       value={getValue(objValue as { value: string })}
