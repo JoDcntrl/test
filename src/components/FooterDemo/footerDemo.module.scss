@@ -27,10 +27,19 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  gap: 10px;
 }
 
-.footerDemoLogoContainer svg {
-  margin-right: 12px;
+.logoWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #F1F1F1;
+  border-radius: 5px;
+  box-sizing: border-box;
+  width: 40px;
+  height: 40px;
+  padding: 6px;  
 }
 
 .logoText {
@@ -81,6 +90,7 @@
   line-height: 20px;
   cursor: pointer;
   margin-bottom: 13px;
+  position: relative;
 }
 
 .footerListLink:hover {

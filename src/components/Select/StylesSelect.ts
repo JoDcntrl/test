@@ -1,12 +1,9 @@
 import { StylesConfig } from "react-select";
 
-export const stylesSelect: StylesConfig = {
-  container: (styles) => ({
-    ...styles,
-    height: "39px",
-  }),
+export const stylesSelect = (height: string, color: string): StylesConfig => ({
   control: (styles) => ({
     ...styles,
+    height: height,
     border: "1px solid #E6E6E6",
     borderRadius: "12px",
     boxSizing: "border-box",
@@ -26,7 +23,7 @@ export const stylesSelect: StylesConfig = {
     margin: "0",
     padding: "0px",
     paddingLeft: "16px",
-    color: "#666666",
+    color: color,
   }),
   placeholder: (styles) => ({
     ...styles,
@@ -34,7 +31,7 @@ export const stylesSelect: StylesConfig = {
     alignItems: "center",
     margin: "0",
     paddingLeft: "16px",
-    color: "#666666",
+    color: color,
   }),
   indicatorsContainer: (styles, state) => ({
     ...styles,
@@ -67,11 +64,11 @@ export const stylesSelect: StylesConfig = {
   option: (styles, state) => ({
     ...styles,
     padding: "10px 14px",
-    color: "#666666",
+    color: color,
     backgroundColor:
       state.isSelected || state.isFocused ? "rgba(219, 222, 240, 0.16)" : "",
     display: "flex",
     alignItems: "center",
     justifyContent: "space-between",
   }),
-};
+});
