@@ -47,7 +47,9 @@ const FooterDemo: React.FC<FooterDemoTypes> = ({ wide = false }) => {
   <footer className={styles.footerDemoMain}>
     <div className={cn(styles.footerDemo, { [styles.wide]: wide })}>
       <div className={styles.footerDemoLogoContainer}>
-        <Logo />
+        <div className= {styles.logoWrapper}>
+          <Logo />
+        </div>        
         <span className={styles.logoText}>decentral job</span>
       </div>
       <div className={styles.footerMenu}>

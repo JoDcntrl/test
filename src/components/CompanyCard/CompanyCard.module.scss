@@ -8,6 +8,10 @@
   background-color: $bg-card;
   cursor: pointer;
   border-radius: 8px;
+
+  .logo {
+    border-radius: 8px;
+  }
 }
 
 .descriptionBlock {
@@ -62,4 +66,6 @@
     line-height: 16px;
     margin-left: 4px;
   }
+
+
 }
