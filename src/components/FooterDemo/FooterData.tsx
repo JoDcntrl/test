@@ -42,8 +42,8 @@ export const LinksArr = [
   },
   {
     id: 8,
-    text: "Terms of Use",
-    href: ""
+    text: "Terms & conditions",
+    href: "/terms-conditions"
   },
 ];
 
