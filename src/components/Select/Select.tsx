@@ -27,7 +27,7 @@ const Select: React.FC<SelectTypes> = ({
 
   const preparedStyles = stylesSelect(variant, enteredValueColor, error);
   return (
-    <div>
+    <div className={styles.selectWrapper}>
       <ReactSelect
         placeholder={placeholder}
         styles={preparedStyles}

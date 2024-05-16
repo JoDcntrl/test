@@ -51,6 +51,8 @@ export const VacancyForm = () => {
     { id: 1, nameSection: "Remote", disabled: false, active: false },
   ];
 
+  console.log("errors", errors);
+
   return (
     <form className={styles.form} onSubmit={handleSubmit(onSubmit, error)}>
       <div className={styles.formData}>

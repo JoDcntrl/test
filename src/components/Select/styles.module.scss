@@ -1,8 +1,12 @@
 @import "@/assets/core/_variables.scss";
 
+.selectWrapper {
+  position: relative;
+}
+
 .errorMessage {
   position: absolute;
-  bottom: -20px;
+  bottom: 0px;
   left: 0;
   color: $main-error;
   font-weight: 400;
