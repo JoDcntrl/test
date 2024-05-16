@@ -18,6 +18,10 @@
   z-index: 1;
 }
 
+.headerDemoWrapper.wide {
+  max-width: 1216px;
+}
+
 .headerDemo {
   display: flex;
   align-items: center;
@@ -31,12 +35,24 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 22px 10px;
+  padding: 22px 0px;
 }
 
-@media (max-width: 1024px) and (min-width: 500px) {
+@media (max-width: 1216px) {
+  .headerDemoLogoContainer {
+    padding-left: 10px;
+  }
+}
+
+@media (max-width: 1024px) {
   .headerDemoLogoContainer {
     padding-left: 20px;
+  }
+}
+
+@media (max-width: 500px) {
+  .headerDemoLogoContainer {
+    padding-left: 10px;
   }
 }
 

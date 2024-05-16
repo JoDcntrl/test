@@ -3,16 +3,20 @@
 import React from "react";
 import { useRouter } from "next/navigation";
 import VacancyCard from "@/components/VacancyCard/VacancyCard";
-import { cards } from "./RegisteredVacanciesDate";
+import { cardsVacancies } from "./RegisteredVacanciesDate";
 import Button from "@/components/Button/Button";
 
 import styles from "./registeredVacancies.module.scss";
 
 const RegisteredVacancies: React.FC = () => {
-  const router = useRouter()
-  const handleClickJobsButton = () => router.push('/vacancies')
+  const router = useRouter();
 
-  return(
+  const handleClickJobsButton = () => router.push("/vacancies");
+
+  const handleClickCompany = (idCompany: number, idVacancy: number) =>
+    router.push(`/company/${idCompany}/vacancy/${idVacancy}`);
+
+  return (
     <section className={styles.section}>
       <div className={styles.sectionWrapper}>
         <div className={styles.sectionTitle}>
@@ -27,21 +31,23 @@ const RegisteredVacancies: React.FC = () => {
           </Button>
         </div>
         <div className={styles.sectionCards}>
-          {cards.map(
+          {cardsVacancies.map(
             ({
-               id,
-               name,
-               experience,
-               mode,
-               city,
-               description,
-               salary,
-               company,
-               logo,
-               date,
-             }) => (
+              idCompany,
+              idVacancy,
+              name,
+              experience,
+              mode,
+              city,
+              description,
+              salary,
+              company,
+              logo,
+              date,
+            }) => (
               <VacancyCard
-                key={id}
+                onClick={() => handleClickCompany(idCompany, idVacancy)}
+                key={idVacancy}
                 name={name}
                 experience={experience}
                 mode={mode}
@@ -57,7 +63,7 @@ const RegisteredVacancies: React.FC = () => {
         </div>
       </div>
     </section>
-  )
+  );
 };
 
 export default RegisteredVacancies;

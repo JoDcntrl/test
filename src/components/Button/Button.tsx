@@ -3,17 +3,22 @@ import cn from "classnames";
 
 import { ButtonTypes } from "@/components/Button/Button.types";
 
+import { IconButton } from "@/assets/svgs/IconButton";
+
 import styles from "./Button.module.scss";
 
 const Button = ({
   children,
   appearance,
   className,
+  disabled = false,
   type = "button",
   size,
+  iconPosition = "",
   ...props
 }: ButtonTypes): JSX.Element => (
   <button
+    disabled={disabled}
     type={type}
     className={cn(styles.button, className, {
       [styles.primary]: appearance === "primary",
@@ -24,10 +29,25 @@ const Button = ({
       [styles.m]: size === "m",
       [styles.l]: size === "l",
       [styles.xl]: size === "xl",
+      [styles.buttonWithIcon]: iconPosition,
     })}
     {...props}
   >
+    <div
+      className={cn(styles.iconButton, className, {
+        [styles.iconLeft]: iconPosition === "left",
+      })}
+    >
+      <IconButton />
+    </div>
     {children}
+    <div
+      className={cn(styles.iconButton, className, {
+        [styles.iconRight]: iconPosition === "right",
+      })}
+    >
+      <IconButton />
+    </div>
   </button>
 );
 

@@ -3,15 +3,13 @@
 import React from "react";
 import cn from "classnames";
 
-import { InputTypes } from "@/components/Input/Input.types";
-
 import { Search } from "@/assets/svgs/Search";
+import { InputTypes } from "@/components/Input/Input.types";
 
 import styles from "./Input.module.scss";
 
 const Input = <T extends Record<string, any>>({
   name,
-  required = false,
   className,
   error,
   isIcon = false,

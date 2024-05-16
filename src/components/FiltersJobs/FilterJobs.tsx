@@ -19,7 +19,6 @@ import {
   Technical,
   Company,
   EmploymentType,
-  Remote,
 } from "./FilterJobsData";
 import Input from "@/components/Input/Input";
 import Button from "@/components/Button/Button";
@@ -94,7 +93,6 @@ const FiltersJobs = () => {
           {Qualification.map(({ nameSection, id, disabled }) => (
             <label key={id} className={styles.blockListItem}>
               <Checkbox
-                data={Qualification}
                 name={nameSection}
                 nameGroup="qualification"
                 disabled={disabled}
@@ -136,12 +134,7 @@ const FiltersJobs = () => {
           />
         </div>
         <label className={styles.checkbox}>
-          <Checkbox<FilterJobsForm>
-            name="remote"
-            nameGroup="remote"
-            data={Remote}
-            register={register}
-          />
+          <Checkbox<FilterJobsForm> nameGroup="remote" register={register} />
           <span>Remote</span>
         </label>
       </div>
@@ -172,7 +165,6 @@ const FiltersJobs = () => {
             isIcon={false}
             className={styles.inputContainer}
             placeholder="Dubai"
-            required={true}
             register={register}
             error={errors.city}
           />

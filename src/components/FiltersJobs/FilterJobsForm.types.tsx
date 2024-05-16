@@ -7,6 +7,6 @@ export interface FilterJobsForm {
   experience?: string;
   type?: string | null;
   city: string;
-  remote?: string;
+  remote?: boolean;
   company?: string | null;
 }
