@@ -1,6 +1,7 @@
 "use client";
 import Link from 'next/link';
 import InformationPageTypes from './InformationPage.types';
+import TextForCards from './TextForCards/TextForCards';
 
 import styles from './informationPage.module.scss'
 
@@ -26,7 +27,7 @@ const InformationPage: React.FC<InformationPageTypes> = ({currentPage, title, ca
                                 <h2 className= {styles.cardTitle}>{card.title}</h2>
                                 <div className= {styles.cardText}>
                                     {
-                                        card.text.map(text => <p>{text}</p>)
+                                        card.text.map(text => <TextForCards text={text}/>)
                                     }
                                 </div>
                             </div>
