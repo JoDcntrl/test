@@ -60,14 +60,14 @@
   line-height: 130%;
 }
   
-.vacancies {
+.cards {
   display: flex;
   flex-direction: column;
   gap: 24px;
   margin-bottom: 120px;
 }
 
-.vacancy {
+.card {
   padding: 32px;
   width: 100%;
   max-width: 800px;
@@ -78,14 +78,14 @@
   gap: 16px;
 }
 
-.vacancyTitle {
+.cardTitle {
   font-size: 20px;
   font-weight: 600;
   line-height: 24px;
   text-align: left;
 } 
 
-.vacancyText {
+.cardText {
   display: flex;
   flex-direction: column;
   gap: 14px;
