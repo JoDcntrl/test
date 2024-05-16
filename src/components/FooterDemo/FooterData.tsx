@@ -38,7 +38,7 @@ export const LinksArr = [
   {
     id: 7,
     text: "Privacy Policy",
-    href: ""
+    href: "/privacy-policy"
   },
   {
     id: 8,
