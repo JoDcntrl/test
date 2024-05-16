@@ -5,7 +5,7 @@ import {
   useForm,
   Controller,
 } from "react-hook-form";
-import styles from "./styles.module.scss";
+
 import { yupResolver } from "@hookform/resolvers/yup";
 import { vacancyFormSchema } from "../../constants/vacancyFormSchema";
 import Input from "@/components/Input/Input";
@@ -14,7 +14,20 @@ import Select from "@/components/Select/Select";
 import Check from "@/assets/svgs/Check.svg";
 import Checkbox from "@/components/Checkbox/Checkbox";
 import { VARIANT } from "@/components/Select/Select.types";
+import { dataTags, dataTextareas } from "./VacancyFormData";
+import CheckboxTag from "@/components/CheckboxTag/CheckboxTag";
+import Textarea from "@/components/Textarea/Textarea";
+
+import styles from "./styles.module.scss";
+import { useState } from "react";
+
 interface ICreateVacancyForm {
+  tags?: string[];
+  publishingOption?: string;
+  description?: string;
+  requirements?: string;
+  responsibilities?: string;
+  terms?: string;
   name: string;
   other: string;
   qualification: string;
@@ -28,10 +41,14 @@ export const VacancyForm = () => {
     register,
     handleSubmit,
     reset,
+    watch,
     control,
     formState: { errors },
   } = useForm<ICreateVacancyForm>({
     resolver: yupResolver(vacancyFormSchema),
+    defaultValues: {
+      publishingOption: "",
+    },
   });
 
   const onSubmit: SubmitHandler<ICreateVacancyForm> = (data) =>
@@ -51,7 +68,7 @@ export const VacancyForm = () => {
     { id: 1, nameSection: "Remote", disabled: false, active: false },
   ];
 
-  console.log("errors", errors);
+  const selectedOption = watch("publishingOption");
 
   return (
     <form className={styles.form} onSubmit={handleSubmit(onSubmit, error)}>
@@ -69,7 +86,7 @@ export const VacancyForm = () => {
               className={styles.field}
             />
           </div>
-          <div className={styles.labeledField}>
+          <div className={styles.labeledFieldOther}>
             <p className={styles.label}>Other</p>
             <div className={styles.fieldWrapper}>
               <Controller
@@ -88,6 +105,18 @@ export const VacancyForm = () => {
                 )}
               />
             </div>
+          </div>
+          <div className={styles.filedTags}>
+            {dataTags?.map(({ nameSection, id, disabled, active }) => (
+              <CheckboxTag<ICreateVacancyForm>
+                register={register}
+                key={id}
+                disabled={disabled}
+                name={nameSection}
+                nameGroup="tags"
+                active={active}
+              />
+            ))}
           </div>
           <div className={styles.labeledField}>
             <p className={styles.label}>Qualification</p>
@@ -153,7 +182,6 @@ export const VacancyForm = () => {
                 <Checkbox<any>
                   name="remote"
                   nameGroup="remote"
-                  data={Remote}
                   register={register}
                 />
                 <span>Remote</span>
@@ -189,8 +217,62 @@ export const VacancyForm = () => {
             Submit
           </Button>
         </div>
-        <div className={styles.posInfo}></div>
-        <div className={styles.settings}></div>
+        <div className={styles.posInfo}>
+          <h1 className={styles.posInfoTitle}>Tell me about the position</h1>
+          {dataTextareas.map(({ title, nameFiledForm, id }) => (
+            <div key={id} className={styles.textarea}>
+              <h2 className={styles.textAreaTitle}>{title}</h2>
+              <Textarea<ICreateVacancyForm>
+                name={nameFiledForm as keyof ICreateVacancyForm}
+                placeholder="Tell us about the job opening"
+                error={errors.description}
+                register={register}
+              />
+            </div>
+          ))}
+        </div>
+        <div className={styles.settings}>
+          <div className={styles.container}>
+            <label
+              className={`${styles.card} ${
+                selectedOption === "single" ? styles.selected : ""
+              }`}
+            >
+              <input
+                {...register("publishingOption")}
+                type="radio"
+                value="single"
+                className={styles.hidden}
+              />
+              <div className={styles.info}>
+                1 job
+                <br />
+                Single occupancy
+              </div>
+              <div className={styles.price}>10Ψ or 25% off DCJ</div>
+            </label>
+
+            <label
+              className={`${styles.card} ${
+                selectedOption === "package" ? styles.selected : ""
+              }`}
+            >
+              <input
+                {...register("publishingOption")}
+                type="radio"
+                value="package"
+                className={styles.hidden}
+              />
+              <div className={styles.info}>
+                10 jobs
+                <br />
+                Job package
+              </div>
+              <div className={styles.price}>35Ψ or 25% off DCJ</div>
+              <div className={styles.sale}>Sale 25%</div>
+            </label>
+          </div>
+        </div>
       </div>
       <div className={styles.formSubmits}></div>
     </form>

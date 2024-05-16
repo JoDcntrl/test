@@ -1,4 +1,4 @@
-@import '@/assets/core/_variables.scss';
+@import "@/assets/core/_variables.scss";
 
 .formData {
   max-width: 800px;
@@ -28,6 +28,10 @@
   padding-bottom: 24px;
 }
 
+.labeledFieldOther {
+  padding-bottom: 16px;
+}
+
 .field {
   height: 56px;
 }
@@ -42,4 +46,84 @@
 
 .checkbox {
   cursor: pointer;
+}
+
+.filedTags {
+  margin-bottom: 24px;
+}
+
+.posInfo {
+  margin-top: 25px;
+  padding: 40px;
+  background-color: $white;
+  border-radius: 16px;
+}
+
+.posInfo .textarea:not(:first-of-type) {
+  margin-top: 24px;
+}
+
+.posInfoTitle {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 120%;
+  color: $text-primary;
+  padding-bottom: 32px;
+}
+
+.textAreaTitle {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 140%;
+}
+
+.container {
+  display: flex;
+  justify-content: space-around;
+  padding: 20px;
+}
+
+.card {
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  padding: 20px;
+  width: 300px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.selected {
+  border-color: #0070f3;
+  box-shadow: 0 0 10px rgba(0, 112, 243, 0.5);
+}
+
+.hidden {
+  display: none;
+}
+
+.info {
+  margin-bottom: 20px;
+  font-size: 16px;
+  text-align: center;
+}
+
+.price {
+  font-size: 24px;
+  color: #0070f3;
+  font-weight: bold;
+  text-align: center;
+}
+
+.sale {
+  background-color: #0070f3;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 8px;
+  text-align: center;
+  width: 100px;
+  margin: 10px auto 0;
 }

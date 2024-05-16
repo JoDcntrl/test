@@ -2,11 +2,12 @@
 
 .selectWrapper {
   position: relative;
+  height: 100%;
 }
 
 .errorMessage {
   position: absolute;
-  bottom: 0px;
+  bottom: -16px;
   left: 0;
   color: $main-error;
   font-weight: 400;

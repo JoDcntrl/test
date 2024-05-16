@@ -33,8 +33,6 @@ const Select: React.FC<SelectTypes> = ({
   const getValue = (obj: { value: string }) =>
     obj ? data?.find((option) => option.value === obj.value) : "";
 
-  console.log("error", error);
-
   const preparedStyles = stylesSelect(variant, enteredValueColor, error);
   return (
     <div className={styles.selectWrapper}>
