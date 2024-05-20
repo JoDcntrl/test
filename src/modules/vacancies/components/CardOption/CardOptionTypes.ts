@@ -4,9 +4,8 @@ import {
   UseFormRegister,
   UseFormWatch,
 } from "react-hook-form";
-import { number } from "yup";
 
-export interface CardSettingTypes<T extends FieldValues> {
+export interface CardOptionTypes<T extends FieldValues> {
   buttonSale?: boolean;
   nameGroup: Path<T>;
   value: string;

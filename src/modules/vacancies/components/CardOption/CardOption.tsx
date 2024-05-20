@@ -5,7 +5,7 @@ import cn from "classnames";
 import { pluralizationEn } from "@/helpers/helpers";
 import Button from "@/components/Button/Button";
 
-import { CardSettingTypes } from "./CardOptionTypes";
+import { CardOptionTypes } from "./CardOptionTypes";
 
 import Ton from "@/assets/svgs/Ton.svg";
 
@@ -21,7 +21,7 @@ const CardOption = <T extends Record<string, any>>({
   watch,
   register,
   nameGroup,
-}: CardSettingTypes<T>) => {
+}: CardOptionTypes<T>) => {
   const option = watch(nameGroup);
   return (
     <label

@@ -1,4 +1,5 @@
 import { VacancyForm } from "@/modules/vacancies/components/vacancyForm/VacancyForm";
+
 import styles from "./styles.module.scss";
 
 export const CreationVacancy = () => (
