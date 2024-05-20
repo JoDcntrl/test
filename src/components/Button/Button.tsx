@@ -15,6 +15,7 @@ const Button = ({
   type = "button",
   size,
   iconPosition = "",
+  iconСross = false,
   ...props
 }: ButtonTypes): JSX.Element => (
   <button
@@ -40,7 +41,7 @@ const Button = ({
     >
       <IconButton />
     </div>
-    {children}
+    {iconСross ? "sdsd" : children}
     <div
       className={cn(styles.iconButton, className, {
         [styles.iconRight]: iconPosition === "right",

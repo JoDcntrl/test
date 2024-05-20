@@ -44,6 +44,8 @@ export const VacancyForm = () => {
     mode: "all",
   });
 
+  const [previewVacancy, setPreviewVacancy] = useState(true);
+
   const [validBasicBlock, setValidBasicBlock] = useState(false);
   const [validDescriptionBlock, setValidDescriptionBlock] = useState(false);
   const [validSettingsBlock, setValidSettingsBlock] = useState(false);
@@ -104,6 +106,14 @@ export const VacancyForm = () => {
   const error: SubmitErrorHandler<VacancyFormTypes> = (data) => {
     console.log(data);
   };
+
+  useEffect(() => {
+    if (previewVacancy) {
+      document.documentElement.style.overflow = "hidden";
+    } else {
+      document.documentElement.style.overflow = "";
+    }
+  }, [previewVacancy]);
 
   return (
     <form className={styles.form} onSubmit={handleSubmit(onSubmit, error)}>
@@ -343,6 +353,80 @@ export const VacancyForm = () => {
         >
           Publish
         </Button>
+        <Button
+          style={{ marginTop: "15px" }}
+          appearance="primary"
+          size="l"
+          className={styles.buttonPublish}
+          onClick={() => setPreviewVacancy((prev) => !prev)}
+        >
+          Test
+        </Button>
+      </div>
+      <div className={styles.modalPreviewVacancy}>
+        <div className={styles.blockTop}>
+          <Button
+            appearance="primary"
+            size="s"
+            className={styles.blockTopClose}
+            onClick={() => setPreviewVacancy((prev) => !prev)}
+            disabled={true}
+            iconСross={true}
+          >
+            Test
+          </Button>
+          <h1 className={styles.blockTopTitle}>Full-stack Engineer</h1>
+          <ul className={styles.blockTotalInfo}>
+            <li className={styles.totalInfoItem}>Today</li>
+            <li className={styles.totalInfoItem}>From $ 5 000</li>
+            <li className={styles.totalInfoItem}>Experience from 1 year</li>
+            <li className={styles.totalInfoItem}>Full Day</li>
+            <li className={styles.totalInfoItem}>Los-Angeles</li>
+          </ul>
+        </div>
+        <div className={styles.blockInformation}>
+          <div className={styles.sectionDescription}>
+            <h2 className={styles.descriptionTitle}>Description</h2>
+            <div className={styles.descriptionText}>
+              The team being recruited is implementing a software framework for
+              developing data products on Apache Spark technology. This
+              framework is intended to replace the historical heterogeneous
+              solutions of application teams, through which will be achieved.
+              This framework is intended to replace the historical heterogeneous
+              solutions of application teams, which will be achieved.
+            </div>
+          </div>
+          <div className={styles.sectionOther}>
+            <h3 className={styles.otherTitle}>Requirements</h3>
+            <div className={styles.otherBlock}>
+              <span className={styles.otherItem}>
+                <span className={styles.otherItemVector}></span>
+                Coordination of team interaction within the framework of
+                platform development projects
+              </span>
+            </div>
+          </div>
+          <div className={styles.sectionOther}>
+            <h3 className={styles.otherTitle}>Responsibilities</h3>
+            <div className={styles.otherBlock}>
+              <span className={styles.otherItem}>
+                <span className={styles.otherItemVector}></span>
+                Coordination of team interaction within the framework of
+                platform development projects
+              </span>
+            </div>
+          </div>
+          <div className={styles.sectionOther}>
+            <h3 className={styles.otherTitle}>TermsAndConditions</h3>
+            <div className={styles.otherBlock}>
+              <span className={styles.otherItem}>
+                <span className={styles.otherItemVector}></span>
+                Coordination of team interaction within the framework of
+                platform development projects
+              </span>
+            </div>
+          </div>
+        </div>
       </div>
     </form>
   );
