@@ -3,17 +3,16 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import cn from "classnames";
+import { clearTimeout } from "timers";
 
-import { LinksArr, IconsArr } from "@/components/FooterDemo/FooterData";
+import FooterPopupDemo from "./FooterPopupDemo/FooterPopupDemo";
+import { LinksArr } from "@/components/FooterDemo/FooterData";
 import { getYear } from "@/helpers/helpers";
 import { FooterDemoTypes } from "./Footer.types";
 
 import { Logo } from "@/assets/svgs/Logo";
 
 import styles from "./footerDemo.module.scss";
-import { number } from "yup";
-import FooterPopupDemo from "./FooterPopupDemo/FooterPopupDemo";
-import { clearTimeout } from "timers";
 
 const FooterDemo: React.FC<FooterDemoTypes> = ({ wide = false }) => {
   const [selectedLinkId, setSelectedLinkId] = useState<number | null>(null);
@@ -43,7 +42,9 @@ const FooterDemo: React.FC<FooterDemoTypes> = ({ wide = false }) => {
     <footer className={styles.footerDemoMain}>
       <div className={cn(styles.footerDemo, { [styles.wide]: wide })}>
         <div className={styles.footerDemoLogoContainer}>
-          <Logo />
+          <div className={styles.logoWrapper}>
+            <Logo />
+          </div>
           <span className={styles.logoText}>decentral job</span>
         </div>
         <div className={styles.footerMenu}>
@@ -65,17 +66,10 @@ const FooterDemo: React.FC<FooterDemoTypes> = ({ wide = false }) => {
             ))}
           </div>
         </div>
-        <div className={styles.footerIcons}>
-          {IconsArr.map(({ icon, id, href }) => (
-            <Link key={id} className={styles.footerListLink} href={href}>
-              {icon}
-            </Link>
-          ))}
+        <div className={styles.footerDemoBottom}>
+          <span className={styles.footerBottom}>© Decentral Job</span>
+          <span className={styles.footerBottom}>{getYear()}</span>
         </div>
-      </div>
-      <div className={styles.footerDemoBottom}>
-        <span className={styles.footerBottom}>© Decentral Job</span>
-        <span className={styles.footerBottom}>{getYear()}</span>
       </div>
     </footer>
   );

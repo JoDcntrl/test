@@ -47,7 +47,9 @@ const HeaderDemo: React.FC<HeaderDemoTypes> = ({
       >
         <LinkNext href="/">
           <div className={styles.headerDemoLogoContainer}>
-            <Logo />
+            <div className= {styles.logoWrapper}>
+              <Logo />
+            </div>            
             <span className={styles.logoText}>decentral job</span>
           </div>
         </LinkNext>
