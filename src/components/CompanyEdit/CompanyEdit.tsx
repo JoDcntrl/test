@@ -17,16 +17,16 @@ import Input from "@/components/Input/Input";
 import Select from "@/components/Select/Select";
 import TextArea from "@/components/Textarea/Textarea";
 import Button from "@/components/Button/Button";
-import { schema } from "./CompanyCreationSchemaYup";
-import { city, industry, size } from "./CompanyCreationData";
-import { CompanyCreationFormTypes } from "./CompanyCreationFormTypes";
+import { schema } from "./CompanyEditSchemaYup";
+import { city, industry, size } from "./CompanyEditData";
+import { CompanyEditFormTypes } from "./CompanyEditFormTypes";
 
 import LogoEmpty from "@/assets/svgs/logoEmpty.svg";
 import Question from "@/assets/images/Question.png";
 
-import styles from "./companyCreation.module.scss";
+import styles from "./CompanyEdit.module.scss";
 
-const Company: React.FC = () => {
+const CompanyEdit: React.FC = () => {
   const [links, setLinks] = useState<{ id: string; value: string | null }[]>(
     []
   );
@@ -41,8 +41,9 @@ const Company: React.FC = () => {
     control,
     setValue,
     handleSubmit,
+    reset,
     formState: { errors },
-  } = useForm<CompanyCreationFormTypes>({
+  } = useForm<CompanyEditFormTypes>({
     resolver: yupResolver(schema),
     mode: "onChange",
     defaultValues: {
@@ -52,6 +53,13 @@ const Company: React.FC = () => {
       linkLogo: null,
     },
   });
+
+  useEffect(() => {
+    const formDataCompany = localStorage.getItem("formDataCompany");
+    if (formDataCompany) {
+      reset(JSON.parse(formDataCompany));
+    }
+  }, [reset]);
 
   const linkLogoValue = watch("linkLogo");
 
@@ -89,12 +97,12 @@ const Company: React.FC = () => {
     createFieldLink(links);
   }, [links, setValue]);
 
-  const onSubmit: SubmitHandler<CompanyCreationFormTypes> = (data) => {
+  const onSubmit: SubmitHandler<CompanyEditFormTypes> = (data) => {
     console.log(data);
     localStorage.setItem("formDataCompany", JSON.stringify(data));
   };
 
-  const error: SubmitErrorHandler<CompanyCreationFormTypes> = (data) => {
+  const error: SubmitErrorHandler<CompanyEditFormTypes> = (data) => {
     console.log(data);
   };
 
@@ -106,19 +114,27 @@ const Company: React.FC = () => {
             Main
           </Link>
           <span className={styles.blockSlash}>/</span>
-          <Link className={styles.blockLinkCurrent} href="/company-creation">
-            Company creation
+          <Link className={styles.blockLink} href="/companies">
+            Companies
+          </Link>
+          <span className={styles.blockSlash}>/</span>
+          <Link className={styles.blockLink} href="/company-edit">
+            Stellar
+          </Link>
+          <span className={styles.blockSlash}>/</span>
+          <Link className={styles.blockLinkCurrent} href="/company-edit">
+            Edit
           </Link>
         </div>
         <h1 className={styles.blockTitle}>
-          <span className={styles.blockTitleText}>Company creation</span>
+          <span className={styles.blockTitleText}>Editing</span>
           <Button
             appearance="primary"
             size="l"
             type="submit"
             className={styles.buttonStyle}
           >
-            Create a company
+            Save changes
           </Button>
         </h1>
         <div className={styles.wrapperBlockMain}>
@@ -128,7 +144,7 @@ const Company: React.FC = () => {
               <div className={styles.informationName}>
                 <span className={styles.nameTitle}>Company name</span>
                 <div className={styles.informationInput}>
-                  <Input<CompanyCreationFormTypes>
+                  <Input<CompanyEditFormTypes>
                     name="companyName"
                     placeholder="Stellar"
                     register={register}
@@ -186,7 +202,7 @@ const Company: React.FC = () => {
                 <span className={styles.descriptionTitle}>
                   Company Description
                 </span>
-                <TextArea<CompanyCreationFormTypes>
+                <TextArea<CompanyEditFormTypes>
                   register={register}
                   name="companyDescription"
                   placeholder="Describe the company's activities"
@@ -222,7 +238,7 @@ const Company: React.FC = () => {
               <div className={styles.contactsWrapperInput}>
                 <span className={styles.inputTitle}>Web site</span>
                 <div className={styles.contactsInput}>
-                  <Input<CompanyCreationFormTypes>
+                  <Input<CompanyEditFormTypes>
                     name="webSite"
                     placeholder="stellar.org"
                     register={register}
@@ -233,7 +249,7 @@ const Company: React.FC = () => {
               <div className={styles.contactsWrapperInput}>
                 <span className={styles.inputTitle}>Telegram</span>
                 <div className={styles.contactsInput}>
-                  <Input<CompanyCreationFormTypes>
+                  <Input<CompanyEditFormTypes>
                     name="telegram"
                     placeholder="t.me/stellar"
                     register={register}
@@ -244,7 +260,7 @@ const Company: React.FC = () => {
               {links.map((link, index) => (
                 <div key={link.id} className={styles.contactsWrapperInput}>
                   <div className={styles.contactsInput}>
-                    <Input<CompanyCreationFormTypes>
+                    <Input<CompanyEditFormTypes>
                       name={`link-${index}`}
                       placeholder="Paste link"
                       register={register}
@@ -282,7 +298,7 @@ const Company: React.FC = () => {
             )}
             <span className={styles.creationLogoText}>Image link</span>
             <div className={styles.creationLogoInput}>
-              <Input<CompanyCreationFormTypes>
+              <Input<CompanyEditFormTypes>
                 name="linkLogo"
                 placeholder="Insert link"
                 register={register}
@@ -310,4 +326,4 @@ const Company: React.FC = () => {
   );
 };
 
-export default Company;
+export default CompanyEdit;
