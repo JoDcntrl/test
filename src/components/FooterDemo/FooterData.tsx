@@ -38,12 +38,12 @@ export const LinksArr = [
   {
     id: 7,
     text: "Privacy Policy",
-    href: ""
+    href: "/privacy-policy"
   },
   {
     id: 8,
-    text: "Terms of Use",
-    href: ""
+    text: "Terms & conditions",
+    href: "/terms-conditions"
   },
 ];
 
