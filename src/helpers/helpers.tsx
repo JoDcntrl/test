@@ -7,6 +7,9 @@ export const yearDeclensionRu = (count: number) => {
   } else return `${count} лет`;
 };
 
+export const pluralizationEn = (text: string, count: number): string =>
+  ` ${count} ${text}${count !== 1 ? "s" : ""}`;
+
 export const yearDeclensionEn = (count: number): string =>
   `${count} year${count !== 1 ? "s" : ""}`;
 

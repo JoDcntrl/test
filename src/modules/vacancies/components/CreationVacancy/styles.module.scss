@@ -1,15 +1,31 @@
-@import '@/assets/core/_variables.scss';
+@import "@/assets/core/_variables.scss";
 
 .creation {
   padding-top: 80px;
   color: $text-primary;
   width: 100%;
   background-color: $bg-main;
+  padding: 0 10px;
+}
+
+@media (max-width: 1024px) and (min-width: 500px) {
+  .creation {
+    padding: 0 20px;
+  }
 }
 
 .creationWrapper {
+  flex-direction: column;
   max-width: 1216px;
   margin: 0 auto;
+  padding-bottom: 127px;
+  gap: 32px 32px;
+}
+
+@media (max-width: 1024px) {
+  .creationWrapper {
+    padding-bottom: 30px;
+  }
 }
 
 .breadCrumbsWrapper {

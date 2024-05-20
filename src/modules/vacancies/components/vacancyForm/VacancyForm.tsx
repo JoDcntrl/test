@@ -1,74 +1,109 @@
 "use client";
+
+import { useEffect, useMemo, useState } from "react";
 import {
   SubmitErrorHandler,
   SubmitHandler,
   useForm,
   Controller,
+  FieldError,
 } from "react-hook-form";
-
+import cn from "classnames";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { vacancyFormSchema } from "../../constants/vacancyFormSchema";
+
 import Input from "@/components/Input/Input";
 import Button from "@/components/Button/Button";
 import Select from "@/components/Select/Select";
-import Check from "@/assets/svgs/Check.svg";
 import Checkbox from "@/components/Checkbox/Checkbox";
-import { VARIANT } from "@/components/Select/Select.types";
-import { dataTags, dataTextareas } from "./VacancyFormData";
+import { vacancyFormSchema } from "@/modules/vacancies/constants/vacancyFormSchema/vacancyFormSchema";
+import {
+  EmploymentType,
+  Experience,
+  Other,
+  Qualification,
+  dataTags,
+  dataTextareas,
+} from "./VacancyFormData";
 import CheckboxTag from "@/components/CheckboxTag/CheckboxTag";
 import Textarea from "@/components/Textarea/Textarea";
+import CardOption from "@/modules/vacancies/components/CardOption/CardOption";
+import { VacancyFormTypes } from "@/modules/vacancies/components/vacancyForm/VacancyFormTypes";
+import { VARIANT } from "@/components/Select/Select.types";
 
 import styles from "./styles.module.scss";
-import { useState } from "react";
-
-interface ICreateVacancyForm {
-  tags?: string[];
-  publishingOption?: string;
-  description?: string;
-  requirements?: string;
-  responsibilities?: string;
-  terms?: string;
-  name: string;
-  other: string;
-  qualification: string;
-  experience: string;
-  typeOfEmloyment: string;
-  incomeLevel: string;
-}
 
 export const VacancyForm = () => {
   const {
     register,
     handleSubmit,
-    reset,
     watch,
     control,
     formState: { errors },
-  } = useForm<ICreateVacancyForm>({
+  } = useForm<VacancyFormTypes>({
     resolver: yupResolver(vacancyFormSchema),
-    defaultValues: {
-      publishingOption: "",
-    },
+    mode: "all",
   });
 
-  const onSubmit: SubmitHandler<ICreateVacancyForm> = (data) =>
-    console.log(data);
+  const [validBasicBlock, setValidBasicBlock] = useState(false);
+  const [validDescriptionBlock, setValidDescriptionBlock] = useState(false);
+  const [validSettingsBlock, setValidSettingsBlock] = useState(false);
 
-  const error: SubmitErrorHandler<ICreateVacancyForm> = (data) => {
-    console.log(data);
+  const fieldsBasic: (keyof VacancyFormTypes)[] = useMemo(
+    () => [
+      "name",
+      "other",
+      "qualification",
+      "experience",
+      "typeOfEmloyment",
+      "incomeLevel",
+    ],
+    []
+  );
+
+  const valuesFieldsBasic = watch(fieldsBasic);
+
+  useEffect(() => {
+    const basicFieldsValid = valuesFieldsBasic.every((field, index) => {
+      return !errors[fieldsBasic[index]] && field;
+    });
+    setValidBasicBlock(basicFieldsValid);
+  }, [fieldsBasic, valuesFieldsBasic, errors]);
+
+  const fieldsDesctription: (keyof VacancyFormTypes)[] = useMemo(
+    () => ["jobDescription", "requirements", "responsibilities", "terms"],
+    []
+  );
+
+  const valuesFieldsDesctription = watch(fieldsDesctription);
+
+  useEffect(() => {
+    const descriptionFieldsValid = valuesFieldsDesctription.every(
+      (field, index) => {
+        return !errors[fieldsDesctription[index]] && field;
+      }
+    );
+    setValidDescriptionBlock(descriptionFieldsValid);
+  }, [fieldsDesctription, valuesFieldsDesctription, errors]);
+
+  const valueFieldSettings = watch("publishingSettings");
+
+  useEffect(() => {
+    const settingFieldValid =
+      !errors["publishingSettings"] && valueFieldSettings ? true : false;
+    setValidSettingsBlock(settingFieldValid);
+  }, [valueFieldSettings, errors.publishingSettings, errors]);
+
+  const disableButtonPreview = () => {
+    return validBasicBlock && validDescriptionBlock && validSettingsBlock
+      ? false
+      : true;
   };
 
-  const EmploymentType = [
-    { value: "Full time", label: "Full time", icon: Check },
-    { value: "Remote", label: "Remote", icon: Check },
-    { value: "Any", label: "Any", icon: Check },
-  ];
+  const onSubmit: SubmitHandler<VacancyFormTypes> = (data) => console.log(data);
 
-  const Remote = [
-    { id: 1, nameSection: "Remote", disabled: false, active: false },
-  ];
-
-  const selectedOption = watch("publishingOption");
+  const error: SubmitErrorHandler<VacancyFormTypes> = (data) => {
+    console.log(data);
+  };
 
   return (
     <form className={styles.form} onSubmit={handleSubmit(onSubmit, error)}>
@@ -77,7 +112,7 @@ export const VacancyForm = () => {
           <h2 className={styles.title}>Basic information</h2>
           <div className={styles.labeledField}>
             <p className={styles.label}>Job title</p>
-            <Input
+            <Input<VacancyFormTypes>
               name="name"
               isIcon={false}
               placeholder="Full-stack Engineer"
@@ -98,8 +133,8 @@ export const VacancyForm = () => {
                     variant={VARIANT.BIG}
                     onChange={onChange}
                     objValue={value}
-                    data={EmploymentType}
-                    placeholder="Others"
+                    data={Other}
+                    placeholder="Choose a other"
                     enteredValueColor="#1B1E27"
                   />
                 )}
@@ -108,7 +143,7 @@ export const VacancyForm = () => {
           </div>
           <div className={styles.filedTags}>
             {dataTags?.map(({ nameSection, id, disabled, active }) => (
-              <CheckboxTag<ICreateVacancyForm>
+              <CheckboxTag<VacancyFormTypes>
                 register={register}
                 key={id}
                 disabled={disabled}
@@ -129,8 +164,8 @@ export const VacancyForm = () => {
                     variant={VARIANT.BIG}
                     onChange={onChange}
                     objValue={value}
-                    data={EmploymentType}
-                    placeholder="Senior"
+                    data={Qualification}
+                    placeholder="Choose a qualification"
                     enteredValueColor="#1B1E27"
                     error={errors.qualification}
                   />
@@ -149,8 +184,8 @@ export const VacancyForm = () => {
                     variant={VARIANT.BIG}
                     onChange={onChange}
                     objValue={value}
-                    data={EmploymentType}
-                    placeholder="1 to 3 years"
+                    data={Experience}
+                    placeholder="Choose a experience"
                     enteredValueColor="#1B1E27"
                     error={errors.experience}
                   />
@@ -170,7 +205,7 @@ export const VacancyForm = () => {
                     onChange={onChange}
                     objValue={value}
                     data={EmploymentType}
-                    placeholder="Full-time"
+                    placeholder="Choose a type of emlpoyment"
                     enteredValueColor="#1B1E27"
                     error={errors.typeOfEmloyment}
                   />
@@ -179,8 +214,7 @@ export const VacancyForm = () => {
             </div>
             <div className={styles.checkboxWrapper}>
               <label className={styles.checkbox}>
-                <Checkbox<any>
-                  name="remote"
+                <Checkbox<VacancyFormTypes>
                   nameGroup="remote"
                   register={register}
                 />
@@ -190,91 +224,126 @@ export const VacancyForm = () => {
           </div>
           <div className={styles.labeledField}>
             <p className={styles.label}>Income level</p>
-            <div className={styles.fieldWrapper}>
-              <Controller
-                name="incomeLevel"
-                control={control}
-                render={({ field: { onChange, value } }) => (
-                  <Select
-                    variant={VARIANT.BIG}
-                    onChange={onChange}
-                    objValue={value}
-                    data={EmploymentType}
-                    placeholder="from $10,000"
-                    enteredValueColor="#1B1E27"
-                    error={errors.typeOfEmloyment}
-                  />
-                )}
-              />
-            </div>
+            <Input<VacancyFormTypes>
+              name="incomeLevel"
+              isIcon={false}
+              placeholder="from $10,000"
+              register={register}
+              error={errors.incomeLevel}
+              className={styles.field}
+            />
           </div>
-          <Button
-            type="submit"
-            appearance="secondary"
-            size="l"
-            className={styles.buttonStyle}
-          >
-            Submit
-          </Button>
         </div>
         <div className={styles.posInfo}>
           <h1 className={styles.posInfoTitle}>Tell me about the position</h1>
-          {dataTextareas.map(({ title, nameFiledForm, id }) => (
+          {dataTextareas.map(({ title, nameFiledForm, placeholder, id }) => (
             <div key={id} className={styles.textarea}>
               <h2 className={styles.textAreaTitle}>{title}</h2>
-              <Textarea<ICreateVacancyForm>
-                name={nameFiledForm as keyof ICreateVacancyForm}
-                placeholder="Tell us about the job opening"
-                error={errors.description}
+              <Textarea<VacancyFormTypes>
+                name={nameFiledForm as keyof VacancyFormTypes}
+                placeholder={placeholder}
+                error={
+                  errors[nameFiledForm as keyof VacancyFormTypes] as FieldError
+                }
                 register={register}
               />
             </div>
           ))}
         </div>
-        <div className={styles.settings}>
-          <div className={styles.container}>
-            <label
-              className={`${styles.card} ${
-                selectedOption === "single" ? styles.selected : ""
-              }`}
-            >
-              <input
-                {...register("publishingOption")}
-                type="radio"
-                value="single"
-                className={styles.hidden}
-              />
-              <div className={styles.info}>
-                1 job
-                <br />
-                Single occupancy
-              </div>
-              <div className={styles.price}>10Ψ or 25% off DCJ</div>
-            </label>
-
-            <label
-              className={`${styles.card} ${
-                selectedOption === "package" ? styles.selected : ""
-              }`}
-            >
-              <input
-                {...register("publishingOption")}
-                type="radio"
-                value="package"
-                className={styles.hidden}
-              />
-              <div className={styles.info}>
-                10 jobs
-                <br />
-                Job package
-              </div>
-              <div className={styles.price}>35Ψ or 25% off DCJ</div>
-              <div className={styles.sale}>Sale 25%</div>
-            </label>
+        <div
+          className={cn(styles.settings, {
+            [styles.settingsError]: errors.publishingSettings,
+          })}
+        >
+          <div className={styles.settingsTitle}>Publishing settings</div>
+          <p className={styles.settingsText}>
+            Select the required type of accommodation
+          </p>
+          <div className={styles.settingsCards}>
+            <CardOption<VacancyFormTypes>
+              numberVacancies={1}
+              nameGroup="publishingSettings"
+              title="Single occupancy"
+              description="Vacancy placement for a period of one month"
+              price={10}
+              watch={watch}
+              value="single"
+              register={register}
+            />
+            <CardOption<VacancyFormTypes>
+              numberVacancies={10}
+              title="Job package"
+              description="Package of ten vacancies with auto-renewal option"
+              price={35}
+              buttonSale={true}
+              watch={watch}
+              nameGroup="publishingSettings"
+              value="package"
+              register={register}
+            />
           </div>
+          {errors.publishingSettings && (
+            <span role="alert" className={styles.settingsErrorMessage}>
+              {errors.publishingSettings?.message}
+            </span>
+          )}
         </div>
       </div>
-      <div className={styles.formSubmits}></div>
+      <div className={styles.formSubmits}>
+        <h3 className={styles.formSubmitsTitle}>Publication</h3>
+        <div className={styles.submitsPreview}>
+          <div
+            className={cn(styles.previewBasicDisabled, {
+              [styles.previewBasic]: validBasicBlock,
+            })}
+          >
+            <div className={styles.previewBasicTitle}>Basic information</div>
+            <div className={styles.previewBasicText}>
+              Specify conditions and requirements
+            </div>
+          </div>
+          <div
+            className={cn(styles.previewDescriptionDisabled, {
+              [styles.previewDescription]: validDescriptionBlock,
+            })}
+          >
+            <div className={styles.previewDescriptionTitle}>
+              Job Description
+            </div>
+            <div className={styles.previewDescriptionText}>
+              Describe what you have to work with
+            </div>
+          </div>
+          <div
+            className={cn(styles.previewSettingsDisabled, {
+              [styles.previewSettings]: validSettingsBlock,
+            })}
+          >
+            <div className={styles.previewSettingsTitle}>
+              Publishing settings
+            </div>
+            <div className={styles.previewSettingsText}>
+              Select the type of activity
+            </div>
+          </div>
+        </div>
+        <Button
+          appearance="secondary"
+          size="l"
+          className={styles.buttonPreview}
+          disabled={disableButtonPreview()}
+        >
+          Preview
+        </Button>
+        <Button
+          type="submit"
+          appearance="primary"
+          size="l"
+          className={styles.buttonPublish}
+        >
+          Publish
+        </Button>
+      </div>
     </form>
   );
 };
