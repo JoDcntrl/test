@@ -9,7 +9,7 @@ import styles from "./page.module.css";
 import { TonConnectUIProvider } from "@tonconnect/ui-react";
 
 const Home = () => (
-  <TonConnectUIProvider manifestUrl="http://localhost:3000/tonconnect-manifest.json">
+  <TonConnectUIProvider manifestUrl="https://jodcntrl.github.io/manifest-test/tonconnect-manifest.json">
     <main className={styles.main}>
       <Layout>
         <MainScreen />
@@ -19,7 +19,7 @@ const Home = () => (
       </Layout>
     </main>
   </TonConnectUIProvider>
-  
+
 );
 
 export default Home;
