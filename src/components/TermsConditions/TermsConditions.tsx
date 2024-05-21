@@ -1,7 +1,7 @@
 "use client";
 
 import { TermsConditionsData } from "./TermsConditionsData";
-import InformationPage from "../InformationPage /InformationPage";
+import InformationPage from "../InformationPage/InformationPage";
 
 const TermsConditions = () => {
     window.scrollTo(0,0);
