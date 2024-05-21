@@ -1,7 +1,7 @@
 "use client";
 
 import { PrivacyPolicyData } from './PrivacyPolicyData'
-import InformationPage from '../InformationPage /InformationPage'
+import InformationPage from '../InformationPage/InformationPage'
 
 
 const PrivacyPolicy = () => {
