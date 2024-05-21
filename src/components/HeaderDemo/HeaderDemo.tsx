@@ -13,6 +13,7 @@ import { Burger } from "@/assets/svgs/Burger";
 import { Cross } from "@/assets/svgs/Cross";
 
 import styles from "./headerDemo.module.scss";
+import { TonConnectButton } from "@tonconnect/ui-react";
 
 const HeaderDemo: React.FC<HeaderDemoTypes> = ({
   wide = false,
@@ -70,9 +71,8 @@ const HeaderDemo: React.FC<HeaderDemoTypes> = ({
             ))}
           </div>
           <div className={styles.buttonConnectWalletWrapper}>
-            <button className={styles.buttonConnectWallet} disabled>
-              Connect wallet
-            </button>
+            <TonConnectButton />
+            
           </div>
         </div>
         {activeBurger ? (
