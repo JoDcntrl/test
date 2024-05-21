@@ -1,11 +1,7 @@
 import * as yup from "yup";
 
 export const vacancyFormSchema = yup.object().shape({
-  name: yup
-    .string()
-    .required("Field is required")
-    .min(2, "Minimum 2 letters")
-    .matches(/^[a-zA-Za-яА-Я]*$/, "Letters only"),
+  name: yup.string().required("Field is required").min(2, "Minimum 2 letters"),
   other: yup.string().required("Field is required"),
   qualification: yup.string().required("Field is required"),
   experience: yup.string().required("Field is required"),

@@ -27,6 +27,7 @@ import {
 import CheckboxTag from "@/components/CheckboxTag/CheckboxTag";
 import Textarea from "@/components/Textarea/Textarea";
 import CardOption from "@/modules/vacancies/components/CardOption/CardOption";
+import PreviewVacancy from "@/modules/vacancies/components/PreviewVacancy/PreviewVacancy";
 import { VacancyFormTypes } from "@/modules/vacancies/components/vacancyForm/VacancyFormTypes";
 import { VARIANT } from "@/components/Select/Select.types";
 
@@ -44,7 +45,7 @@ export const VacancyForm = () => {
     mode: "all",
   });
 
-  const [previewVacancy, setPreviewVacancy] = useState(true);
+  const [activePreview, setActivePreview] = useState(false);
 
   const [validBasicBlock, setValidBasicBlock] = useState(false);
   const [validDescriptionBlock, setValidDescriptionBlock] = useState(false);
@@ -108,15 +109,24 @@ export const VacancyForm = () => {
   };
 
   useEffect(() => {
-    if (previewVacancy) {
+    if (activePreview) {
       document.documentElement.style.overflow = "hidden";
     } else {
       document.documentElement.style.overflow = "";
     }
-  }, [previewVacancy]);
+  }, [activePreview]);
+
+  const changeActivePreview = () => setActivePreview((prev) => !prev);
+
+  console.log(valuesFieldsBasic);
 
   return (
-    <form className={styles.form} onSubmit={handleSubmit(onSubmit, error)}>
+    <form
+      className={cn(styles.form, {
+        [styles.formBackgroundDark]: activePreview,
+      })}
+      onSubmit={handleSubmit(onSubmit, error)}
+    >
       <div className={styles.formData}>
         <div className={styles.baseInfo}>
           <h2 className={styles.title}>Basic information</h2>
@@ -342,6 +352,7 @@ export const VacancyForm = () => {
           size="l"
           className={styles.buttonPreview}
           disabled={disableButtonPreview()}
+          onClick={changeActivePreview}
         >
           Preview
         </Button>
@@ -358,76 +369,20 @@ export const VacancyForm = () => {
           appearance="primary"
           size="l"
           className={styles.buttonPublish}
-          onClick={() => setPreviewVacancy((prev) => !prev)}
+          onClick={changeActivePreview}
         >
           Test
         </Button>
       </div>
-      <div className={styles.modalPreviewVacancy}>
-        <div className={styles.blockTop}>
-          <Button
-            appearance="primary"
-            size="s"
-            className={styles.blockTopClose}
-            onClick={() => setPreviewVacancy((prev) => !prev)}
-            disabled={true}
-            iconСross={true}
-          >
-            Test
-          </Button>
-          <h1 className={styles.blockTopTitle}>Full-stack Engineer</h1>
-          <ul className={styles.blockTotalInfo}>
-            <li className={styles.totalInfoItem}>Today</li>
-            <li className={styles.totalInfoItem}>From $ 5 000</li>
-            <li className={styles.totalInfoItem}>Experience from 1 year</li>
-            <li className={styles.totalInfoItem}>Full Day</li>
-            <li className={styles.totalInfoItem}>Los-Angeles</li>
-          </ul>
-        </div>
-        <div className={styles.blockInformation}>
-          <div className={styles.sectionDescription}>
-            <h2 className={styles.descriptionTitle}>Description</h2>
-            <div className={styles.descriptionText}>
-              The team being recruited is implementing a software framework for
-              developing data products on Apache Spark technology. This
-              framework is intended to replace the historical heterogeneous
-              solutions of application teams, through which will be achieved.
-              This framework is intended to replace the historical heterogeneous
-              solutions of application teams, which will be achieved.
-            </div>
-          </div>
-          <div className={styles.sectionOther}>
-            <h3 className={styles.otherTitle}>Requirements</h3>
-            <div className={styles.otherBlock}>
-              <span className={styles.otherItem}>
-                <span className={styles.otherItemVector}></span>
-                Coordination of team interaction within the framework of
-                platform development projects
-              </span>
-            </div>
-          </div>
-          <div className={styles.sectionOther}>
-            <h3 className={styles.otherTitle}>Responsibilities</h3>
-            <div className={styles.otherBlock}>
-              <span className={styles.otherItem}>
-                <span className={styles.otherItemVector}></span>
-                Coordination of team interaction within the framework of
-                platform development projects
-              </span>
-            </div>
-          </div>
-          <div className={styles.sectionOther}>
-            <h3 className={styles.otherTitle}>TermsAndConditions</h3>
-            <div className={styles.otherBlock}>
-              <span className={styles.otherItem}>
-                <span className={styles.otherItemVector}></span>
-                Coordination of team interaction within the framework of
-                platform development projects
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
+      {activePreview ? (
+        <PreviewVacancy
+          basicInformation={valuesFieldsBasic as string[]}
+          closePreview={changeActivePreview}
+          specification={valuesFieldsDesctription as string[]}
+        />
+      ) : (
+        ""
+      )}
     </form>
   );
 };
