@@ -22,12 +22,12 @@ const InformationPage: React.FC<InformationPageTypes> = ({currentPage, title, ca
                 <h1 className={styles.mainTitle}>{title}</h1>
                 <div className={styles.cards}>
                     {
-                        cards.map((card) => (
-                            <div className= {styles.card}>
+                        cards.map((card, index) => (
+                            <div key={index} className= {styles.card}>
                                 <h2 className= {styles.cardTitle}>{card.title}</h2>
                                 <div className= {styles.cardText}>
                                     {
-                                        card.text.map(text => <TextForCards text={text}/>)
+                                        card.text.map((text, index) => <TextForCards key={index} text={text}/>)
                                     }
                                 </div>
                             </div>
