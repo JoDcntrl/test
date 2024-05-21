@@ -71,7 +71,7 @@ const HeaderDemo: React.FC<HeaderDemoTypes> = ({
             ))}
           </div>
           <div className={styles.buttonConnectWalletWrapper}>
-            <TonConnectButton />
+            <TonConnectButton/>
             
           </div>
         </div>
