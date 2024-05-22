@@ -6,7 +6,6 @@ import RegisteredVacancies from "@/components/RegisteredVacancies/RegisteredVaca
 import RegisteredCompanies from "@/components/RegisteredСompanies/RegisteredCompanies";
 
 import styles from "./page.module.css";
-import { TonConnectUIProvider } from "@tonconnect/ui-react";
 
 const Home = () => (
 

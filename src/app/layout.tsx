@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import StoreProvider from "@/app/StoreProvider";
 import { TonConnectUIProvider } from "@tonconnect/ui-react";
+
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -18,7 +19,7 @@ const RootLayout = ({
 }: Readonly<{
   children: React.ReactNode;
 }>) => (
-  <TonConnectUIProvider manifestUrl="https://jodcntrl.github.io/manifest-test/tonconnect-manifest.json">
+  <TonConnectUIProvider manifestUrl="https://fe-decentral.netlify.app/tonconnect-manifest.json">
     <StoreProvider>
       <html lang="en">
         <head>
