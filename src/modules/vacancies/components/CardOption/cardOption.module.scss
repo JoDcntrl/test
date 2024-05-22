@@ -1,0 +1,75 @@
+@import "@/assets/core/_variables.scss";
+
+.card {
+  border-radius: 16px;
+  background-color: $white;
+  padding: 24px;
+  max-width: 304px;
+  width: 100%;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.cardSelected {
+  border: 2px solid rgb(91, 140, 243);
+}
+
+.cardInputHidden {
+  display: none;
+}
+
+.cardQuantityJobs {
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 130%;
+  color: $text-tertiary;
+  margin-bottom: 8px;
+}
+
+.cardTitle {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 120%;
+  color: $text-primary;
+  margin-bottom: 16px;
+}
+
+.cardText {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 140%;
+  color: $text-secondary;
+  margin-bottom: 40px;
+}
+
+.cardPrice {
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 120%;
+  color: $main-primary;
+}
+
+.cardPriceDiscount {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 140%;
+  color: $main-primary;
+}
+
+.button {
+  padding: 6px 10px;
+  border-radius: 8px;
+}
+
+.buttonText {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 16px;
+  color: $main-primary;
+}

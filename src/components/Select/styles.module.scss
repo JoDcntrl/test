@@ -1,0 +1,16 @@
+@import "@/assets/core/_variables.scss";
+
+.selectWrapper {
+  position: relative;
+  height: 100%;
+}
+
+.errorMessage {
+  position: absolute;
+  bottom: -16px;
+  left: 0;
+  color: $main-error;
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 16px;
+}

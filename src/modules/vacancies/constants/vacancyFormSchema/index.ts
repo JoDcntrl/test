@@ -1,0 +1,1 @@
+export { vacancyFormSchema } from "./vacancyFormSchema";

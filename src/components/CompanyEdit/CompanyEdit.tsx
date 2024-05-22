@@ -163,7 +163,6 @@ const CompanyEdit: React.FC = () => {
                         <div>
                           <Select
                             color="#1B1E27"
-                            height="59px"
                             onChange={onChange}
                             objValue={value}
                             data={industry}
@@ -186,7 +185,6 @@ const CompanyEdit: React.FC = () => {
                         <div>
                           <Select
                             color="#1B1E27"
-                            height="59px"
                             onChange={onChange}
                             objValue={value}
                             data={size}
@@ -222,7 +220,6 @@ const CompanyEdit: React.FC = () => {
                       return (
                         <div>
                           <Select
-                            height="59px"
                             color="#1B1E27"
                             onChange={onChange}
                             objValue={value}
