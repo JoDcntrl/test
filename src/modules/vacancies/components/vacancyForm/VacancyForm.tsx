@@ -109,16 +109,15 @@ export const VacancyForm = () => {
   };
 
   useEffect(() => {
+    const htmlStyle = document.documentElement.style;
     if (activePreview) {
-      document.documentElement.style.overflow = "hidden";
+      htmlStyle.overflow = "hidden";
     } else {
-      document.documentElement.style.overflow = "";
+      htmlStyle.overflow = "";
     }
   }, [activePreview]);
 
   const changeActivePreview = () => setActivePreview((prev) => !prev);
-
-  console.log(valuesFieldsBasic);
 
   return (
     <form
@@ -363,15 +362,6 @@ export const VacancyForm = () => {
           className={styles.buttonPublish}
         >
           Publish
-        </Button>
-        <Button
-          style={{ marginTop: "15px" }}
-          appearance="primary"
-          size="l"
-          className={styles.buttonPublish}
-          onClick={changeActivePreview}
-        >
-          Test
         </Button>
       </div>
       {activePreview ? (

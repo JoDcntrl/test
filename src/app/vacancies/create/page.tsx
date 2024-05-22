@@ -1,13 +1,13 @@
-import LayoutHeader from "@/components/LayoutHeader/LayoutHeader";
+import Layout from "@/components/Layout/Layout";
 import { CreationVacancy } from "@/modules/vacancies/components/CreationVacancy";
 
 import styles from "@/app/page.module.css";
 
 const PageVacancie = () => (
   <main className={styles.main}>
-    <LayoutHeader>
+    <Layout wide={true}>
       <CreationVacancy />
-    </LayoutHeader>
+    </Layout>
   </main>
 );
 
