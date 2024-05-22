@@ -5,17 +5,20 @@ import ReactSelect from "react-select";
 
 import DropdownIndicator from "./DropdownIndicator";
 import IconOption from "./IconOption";
-import { SelectTypes } from "./Select.types";
+import { SelectTypes, VARIANT } from "./Select.types";
 
 import { stylesSelect } from "./StylesSelect";
+
+import styles from "./styles.module.scss";
 
 const Select: React.FC<SelectTypes> = ({
   onChange,
   objValue,
   data,
   placeholder,
-  height = "48px",
-  color = "#666666",
+  variant = VARIANT.SMALL,
+  enteredValueColor = "#666666",
+  error,
 }) => {
   const [isMounted, setIsMounted] = useState(false);
 
@@ -30,15 +33,23 @@ const Select: React.FC<SelectTypes> = ({
   const getValue = (obj: { value: string }) =>
     obj ? data?.find((option) => option.value === obj.value) : "";
 
+  const preparedStyles = stylesSelect(variant, enteredValueColor, error);
   return (
-    <ReactSelect
-      placeholder={placeholder}
-      styles={stylesSelect(height, color)}
-      options={data}
-      components={{ Option: IconOption, DropdownIndicator }}
-      value={getValue(objValue as { value: string })}
-      onChange={(newValue) => onChange((newValue as { value: string }).value)}
-    />
+    <div className={styles.selectWrapper}>
+      <ReactSelect
+        placeholder={placeholder}
+        styles={preparedStyles}
+        options={data}
+        components={{ Option: IconOption, DropdownIndicator }}
+        value={getValue(objValue as { value: string })}
+        onChange={(newValue) => onChange((newValue as { value: string }).value)}
+      />
+      {error && (
+        <span role="alert" className={styles.errorMessage}>
+          {error.message}
+        </span>
+      )}
+    </div>
   );
 };
 

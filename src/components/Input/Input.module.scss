@@ -1,7 +1,7 @@
 @import "@/assets/core/_variables.scss";
 
 .input {
-  height: 36px;
+  height: 100%;
   padding: 8px 12px;
   color: $text-primary;
   border: 1px solid $stroke-card;
@@ -12,6 +12,7 @@
   font-size: 14px;
   line-height: 20px;
   box-sizing: border-box;
+  width: 100%;
 }
 
 .input::placeholder {

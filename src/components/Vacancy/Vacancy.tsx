@@ -7,9 +7,9 @@ import { usePathname } from "next/navigation";
 import { vacancyInfo } from "./VacancyData";
 import { cardsVacancies } from "@/components/RegisteredVacancies/RegisteredVacanciesDate";
 import { cardsCompanies } from "@/components/Companies/CompaniesData";
-import { CompanyTypes } from "./Vacancy.types";
 import { convertISOToDate, yearDeclensionEn } from "@/helpers/helpers";
 import VacancyApply from "@/components/VacancyApply/VacancyApply";
+import { CompanyTypes } from "./Vacancy.types";
 
 import styles from "./vacancy.module.scss";
 
