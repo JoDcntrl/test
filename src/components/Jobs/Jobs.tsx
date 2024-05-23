@@ -19,7 +19,7 @@ const Jobs = () => {
   const router = useRouter();
 
   const handleClickVacancy = (idCompany: number, idVacancy: number) =>
-    router.push(`/company/${idCompany}/vacancy/${idVacancy}`);
+    router.push(`/companies/company/${idCompany}/vacancy/${idVacancy}`);
 
   return (
     <main className={styles.main}>

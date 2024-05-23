@@ -14,7 +14,7 @@ const RegisteredVacancies: React.FC = () => {
   const handleClickJobsButton = () => router.push("/vacancies");
 
   const handleClickCompany = (idCompany: number, idVacancy: number) =>
-    router.push(`/company/${idCompany}/vacancy/${idVacancy}`);
+    router.push(`/companies/company/${idCompany}/vacancy/${idVacancy}`);
 
   return (
     <section className={styles.section}>

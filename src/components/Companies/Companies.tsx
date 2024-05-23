@@ -13,7 +13,8 @@ import styles from "./companies.module.scss";
 
 const Companies = () => {
   const router = useRouter();
-  const handleClickCompany = (id: number) => router.push(`/company/${id}`);
+  const handleClickCompany = (id: number) =>
+    router.push(`/companies/company/${id}`);
 
   return (
     <main className={styles.main}>

@@ -41,7 +41,7 @@ const Vacancy: React.FC<CompanyTypes> = ({ vacancyId }) => {
               <span className={styles.blockSlash}>/</span>
               <Link
                 className={styles.blockLinkCurrent}
-                href={`/company/${idCompany}`}
+                href={`/companies/company/${idCompany}`}
               >
                 {dataCompany?.title}
               </Link>
