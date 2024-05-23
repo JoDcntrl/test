@@ -46,12 +46,6 @@ const Company: React.FC = () => {
   } = useForm<CompanyCreationFormTypes>({
     resolver: yupResolver(schema),
     mode: "onChange",
-    defaultValues: {
-      industry: "IT",
-      size: "1 - 50",
-      city: "Los-Angeles",
-      linkLogo: null,
-    },
   });
 
   const linkLogoValue = watch("linkLogo");
@@ -152,7 +146,7 @@ const Company: React.FC = () => {
                             onChange={onChange}
                             objValue={value}
                             data={industry}
-                            placeholder="IT"
+                            placeholder="Choose a industry"
                           />
                         </div>
                       );
@@ -175,7 +169,7 @@ const Company: React.FC = () => {
                             onChange={onChange}
                             objValue={value}
                             data={size}
-                            placeholder="1 - 50"
+                            placeholder="Choose a size company"
                           />
                         </div>
                       );
@@ -212,7 +206,7 @@ const Company: React.FC = () => {
                             onChange={onChange}
                             objValue={value}
                             data={city}
-                            placeholder="Los-Angeles"
+                            placeholder="Choose a city"
                           />
                         </div>
                       );

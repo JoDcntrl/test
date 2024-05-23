@@ -27,6 +27,8 @@ import Question from "@/assets/images/Question.png";
 import styles from "./CompanyEdit.module.scss";
 
 const CompanyEdit: React.FC = () => {
+  const [formDefaultData, setFormDefaultData] =
+    useState<CompanyEditFormTypes>();
   const [links, setLinks] = useState<{ id: string; value: string | null }[]>(
     []
   );
@@ -46,20 +48,17 @@ const CompanyEdit: React.FC = () => {
   } = useForm<CompanyEditFormTypes>({
     resolver: yupResolver(schema),
     mode: "onChange",
-    defaultValues: {
-      industry: "IT",
-      size: "1 - 50",
-      city: "Los-Angeles",
-      linkLogo: null,
-    },
   });
 
   useEffect(() => {
     const formDataCompany = localStorage.getItem("formDataCompany");
     if (formDataCompany) {
       reset(JSON.parse(formDataCompany));
+      setFormDefaultData(JSON.parse(formDataCompany));
     }
   }, [reset]);
+
+  console.log(formDefaultData?.city);
 
   const linkLogoValue = watch("linkLogo");
 
@@ -162,11 +161,12 @@ const CompanyEdit: React.FC = () => {
                       return (
                         <div>
                           <Select
+                            valueDefault={formDefaultData?.industry}
                             color="#1B1E27"
                             onChange={onChange}
                             objValue={value}
                             data={industry}
-                            placeholder="IT"
+                            placeholder="Choose a industry"
                           />
                         </div>
                       );
@@ -184,11 +184,12 @@ const CompanyEdit: React.FC = () => {
                       return (
                         <div>
                           <Select
+                            valueDefault={formDefaultData?.size}
                             color="#1B1E27"
                             onChange={onChange}
                             objValue={value}
                             data={size}
-                            placeholder="1 - 50"
+                            placeholder="Choose a size"
                           />
                         </div>
                       );
@@ -220,11 +221,12 @@ const CompanyEdit: React.FC = () => {
                       return (
                         <div>
                           <Select
+                            valueDefault={formDefaultData?.city}
                             color="#1B1E27"
                             onChange={onChange}
                             objValue={value}
                             data={city}
-                            placeholder="Los-Angeles"
+                            placeholder="Choose a city"
                           />
                         </div>
                       );

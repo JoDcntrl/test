@@ -23,23 +23,23 @@ import {
   Qualification,
   dataTags,
   dataTextareas,
-} from "./VacancyFormData";
+} from "./VacancyFormCreationData";
 import CheckboxTag from "@/components/CheckboxTag/CheckboxTag";
 import Textarea from "@/components/Textarea/Textarea";
 import CardOption from "@/modules/vacancies/components/CardOption/CardOption";
-import { VacancyFormTypes } from "@/modules/vacancies/components/vacancyForm/VacancyFormTypes";
+import { VacancyFormCreationTypes } from "@/modules/vacancies/components/vacancyFormCreation/VacancyFormCreationTypes";
 import { VARIANT } from "@/components/Select/Select.types";
 
 import styles from "./styles.module.scss";
 
-export const VacancyForm = () => {
+export const VacancyFormCreate = () => {
   const {
     register,
     handleSubmit,
     watch,
     control,
     formState: { errors },
-  } = useForm<VacancyFormTypes>({
+  } = useForm<VacancyFormCreationTypes>({
     resolver: yupResolver(vacancyFormSchema),
     mode: "all",
   });
@@ -48,7 +48,7 @@ export const VacancyForm = () => {
   const [validDescriptionBlock, setValidDescriptionBlock] = useState(false);
   const [validSettingsBlock, setValidSettingsBlock] = useState(false);
 
-  const fieldsBasic: (keyof VacancyFormTypes)[] = useMemo(
+  const fieldsBasic: (keyof VacancyFormCreationTypes)[] = useMemo(
     () => [
       "name",
       "other",
@@ -69,7 +69,7 @@ export const VacancyForm = () => {
     setValidBasicBlock(basicFieldsValid);
   }, [fieldsBasic, valuesFieldsBasic, errors]);
 
-  const fieldsDesctription: (keyof VacancyFormTypes)[] = useMemo(
+  const fieldsDesctription: (keyof VacancyFormCreationTypes)[] = useMemo(
     () => ["jobDescription", "requirements", "responsibilities", "terms"],
     []
   );
@@ -99,9 +99,12 @@ export const VacancyForm = () => {
       : true;
   };
 
-  const onSubmit: SubmitHandler<VacancyFormTypes> = (data) => console.log(data);
+  const onSubmit: SubmitHandler<VacancyFormCreationTypes> = (data) => {
+    console.log(data);
+    localStorage.setItem("formDataVacancy", JSON.stringify(data));
+  };
 
-  const error: SubmitErrorHandler<VacancyFormTypes> = (data) => {
+  const error: SubmitErrorHandler<VacancyFormCreationTypes> = (data) => {
     console.log(data);
   };
 
@@ -112,7 +115,7 @@ export const VacancyForm = () => {
           <h2 className={styles.title}>Basic information</h2>
           <div className={styles.labeledField}>
             <p className={styles.label}>Job title</p>
-            <Input<VacancyFormTypes>
+            <Input<VacancyFormCreationTypes>
               name="name"
               isIcon={false}
               placeholder="Full-stack Engineer"
@@ -143,7 +146,7 @@ export const VacancyForm = () => {
           </div>
           <div className={styles.filedTags}>
             {dataTags?.map(({ nameSection, id, disabled, active }) => (
-              <CheckboxTag<VacancyFormTypes>
+              <CheckboxTag<VacancyFormCreationTypes>
                 register={register}
                 key={id}
                 disabled={disabled}
@@ -214,7 +217,7 @@ export const VacancyForm = () => {
             </div>
             <div className={styles.checkboxWrapper}>
               <label className={styles.checkbox}>
-                <Checkbox<VacancyFormTypes>
+                <Checkbox<VacancyFormCreationTypes>
                   nameGroup="remote"
                   register={register}
                 />
@@ -224,7 +227,7 @@ export const VacancyForm = () => {
           </div>
           <div className={styles.labeledField}>
             <p className={styles.label}>Income level</p>
-            <Input<VacancyFormTypes>
+            <Input<VacancyFormCreationTypes>
               name="incomeLevel"
               isIcon={false}
               placeholder="from $10,000"
@@ -239,11 +242,13 @@ export const VacancyForm = () => {
           {dataTextareas.map(({ title, nameFiledForm, placeholder, id }) => (
             <div key={id} className={styles.textarea}>
               <h2 className={styles.textAreaTitle}>{title}</h2>
-              <Textarea<VacancyFormTypes>
-                name={nameFiledForm as keyof VacancyFormTypes}
+              <Textarea<VacancyFormCreationTypes>
+                name={nameFiledForm as keyof VacancyFormCreationTypes}
                 placeholder={placeholder}
                 error={
-                  errors[nameFiledForm as keyof VacancyFormTypes] as FieldError
+                  errors[
+                    nameFiledForm as keyof VacancyFormCreationTypes
+                  ] as FieldError
                 }
                 register={register}
               />
@@ -260,7 +265,7 @@ export const VacancyForm = () => {
             Select the required type of accommodation
           </p>
           <div className={styles.settingsCards}>
-            <CardOption<VacancyFormTypes>
+            <CardOption<VacancyFormCreationTypes>
               numberVacancies={1}
               nameGroup="publishingSettings"
               title="Single occupancy"
@@ -270,7 +275,7 @@ export const VacancyForm = () => {
               value="single"
               register={register}
             />
-            <CardOption<VacancyFormTypes>
+            <CardOption<VacancyFormCreationTypes>
               numberVacancies={10}
               title="Job package"
               description="Package of ten vacancies with auto-renewal option"
