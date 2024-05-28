@@ -15,7 +15,7 @@ const Select: React.FC<SelectTypes> = ({
   onChange,
   objValue,
   data,
-  valueDefault,
+  defaultValue,
   placeholder,
   variant = VARIANT.SMALL,
   enteredValueColor = "#666666",
@@ -35,10 +35,12 @@ const Select: React.FC<SelectTypes> = ({
     obj ? data?.find((option) => option.value === obj.value) : "";
 
   const preparedStyles = stylesSelect(variant, enteredValueColor, error);
+
+  console.log(defaultValue);
   return (
     <div className={styles.selectWrapper}>
       <ReactSelect
-        defaultValue={{ value: valueDefault, label: valueDefault }}
+        defaultValue={{ value: "Junior", label: "Junior" }}
         placeholder={placeholder}
         styles={preparedStyles}
         options={data}

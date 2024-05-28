@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { FC, useEffect, useMemo, useState } from "react";
 import {
   SubmitErrorHandler,
   SubmitHandler,
@@ -23,23 +23,27 @@ import {
   Qualification,
   dataTags,
   dataTextareas,
-} from "./VacancyFormCreationData";
+} from "./VacancyFormData";
 import CheckboxTag from "@/components/CheckboxTag/CheckboxTag";
 import Textarea from "@/components/Textarea/Textarea";
 import CardOption from "@/modules/vacancies/components/CardOption/CardOption";
-import { VacancyFormCreationTypes } from "@/modules/vacancies/components/vacancyFormCreation/VacancyFormCreationTypes";
+import { FieldsFormTypes } from "@/modules/vacancies/components/VacancyForm/FieldsFormTypes";
+import { VacancyFormTypes } from "./VacancyFormTypes";
 import { VARIANT } from "@/components/Select/Select.types";
 
 import styles from "./styles.module.scss";
 
-export const VacancyFormCreate = () => {
+export const VacancyForm: FC<VacancyFormTypes> = ({ defaultDataForm }) => {
+  const [formDefaultData, setFormDefaultData] = useState<FieldsFormTypes>();
+
   const {
     register,
     handleSubmit,
     watch,
+    reset,
     control,
     formState: { errors },
-  } = useForm<VacancyFormCreationTypes>({
+  } = useForm<FieldsFormTypes>({
     resolver: yupResolver(vacancyFormSchema),
     mode: "all",
   });
@@ -48,17 +52,24 @@ export const VacancyFormCreate = () => {
   const [validDescriptionBlock, setValidDescriptionBlock] = useState(false);
   const [validSettingsBlock, setValidSettingsBlock] = useState(false);
 
-  const fieldsBasic: (keyof VacancyFormCreationTypes)[] = useMemo(
+  const fieldsBasic: (keyof FieldsFormTypes)[] = useMemo(
     () => [
       "name",
       "other",
       "qualification",
       "experience",
-      "typeOfEmloyment",
+      "typeOfEmployment",
       "incomeLevel",
     ],
     []
   );
+
+  useEffect(() => {
+    if (defaultDataForm) {
+      reset(JSON.parse(defaultDataForm));
+      setFormDefaultData(JSON.parse(defaultDataForm));
+    }
+  }, [reset, defaultDataForm]);
 
   const valuesFieldsBasic = watch(fieldsBasic);
 
@@ -69,21 +80,21 @@ export const VacancyFormCreate = () => {
     setValidBasicBlock(basicFieldsValid);
   }, [fieldsBasic, valuesFieldsBasic, errors]);
 
-  const fieldsDesctription: (keyof VacancyFormCreationTypes)[] = useMemo(
+  const fieldsDescription: (keyof FieldsFormTypes)[] = useMemo(
     () => ["jobDescription", "requirements", "responsibilities", "terms"],
     []
   );
 
-  const valuesFieldsDesctription = watch(fieldsDesctription);
+  const valuesFieldsDescription = watch(fieldsDescription);
 
   useEffect(() => {
-    const descriptionFieldsValid = valuesFieldsDesctription.every(
+    const descriptionFieldsValid = valuesFieldsDescription.every(
       (field, index) => {
-        return !errors[fieldsDesctription[index]] && field;
+        return !errors[fieldsDescription[index]] && field;
       }
     );
     setValidDescriptionBlock(descriptionFieldsValid);
-  }, [fieldsDesctription, valuesFieldsDesctription, errors]);
+  }, [fieldsDescription, valuesFieldsDescription, errors]);
 
   const valueFieldSettings = watch("publishingSettings");
 
@@ -94,17 +105,15 @@ export const VacancyFormCreate = () => {
   }, [valueFieldSettings, errors.publishingSettings, errors]);
 
   const disableButtonPreview = () => {
-    return validBasicBlock && validDescriptionBlock && validSettingsBlock
-      ? false
-      : true;
+    return !(validBasicBlock && validDescriptionBlock && validSettingsBlock);
   };
 
-  const onSubmit: SubmitHandler<VacancyFormCreationTypes> = (data) => {
+  const onSubmit: SubmitHandler<FieldsFormTypes> = (data) => {
     console.log(data);
-    localStorage.setItem("formDataVacancy", JSON.stringify(data));
+    localStorage.setItem("defaultDataForm", JSON.stringify(data));
   };
 
-  const error: SubmitErrorHandler<VacancyFormCreationTypes> = (data) => {
+  const error: SubmitErrorHandler<FieldsFormTypes> = (data) => {
     console.log(data);
   };
 
@@ -115,7 +124,7 @@ export const VacancyFormCreate = () => {
           <h2 className={styles.title}>Basic information</h2>
           <div className={styles.labeledField}>
             <p className={styles.label}>Job title</p>
-            <Input<VacancyFormCreationTypes>
+            <Input<FieldsFormTypes>
               name="name"
               isIcon={false}
               placeholder="Full-stack Engineer"
@@ -132,6 +141,7 @@ export const VacancyFormCreate = () => {
                 control={control}
                 render={({ field: { onChange, value } }) => (
                   <Select
+                    defaultValue={formDefaultData?.other}
                     error={errors.other}
                     variant={VARIANT.BIG}
                     onChange={onChange}
@@ -146,7 +156,7 @@ export const VacancyFormCreate = () => {
           </div>
           <div className={styles.filedTags}>
             {dataTags?.map(({ nameSection, id, disabled, active }) => (
-              <CheckboxTag<VacancyFormCreationTypes>
+              <CheckboxTag<FieldsFormTypes>
                 register={register}
                 key={id}
                 disabled={disabled}
@@ -164,6 +174,7 @@ export const VacancyFormCreate = () => {
                 control={control}
                 render={({ field: { onChange, value } }) => (
                   <Select
+                    defaultValue={"Junior"}
                     variant={VARIANT.BIG}
                     onChange={onChange}
                     objValue={value}
@@ -184,6 +195,7 @@ export const VacancyFormCreate = () => {
                 control={control}
                 render={({ field: { onChange, value } }) => (
                   <Select
+                    defaultValue={formDefaultData?.experience}
                     variant={VARIANT.BIG}
                     onChange={onChange}
                     objValue={value}
@@ -200,24 +212,25 @@ export const VacancyFormCreate = () => {
             <p className={styles.label}>Type of Employment</p>
             <div className={styles.fieldWrapper}>
               <Controller
-                name="typeOfEmloyment"
+                name="typeOfEmployment"
                 control={control}
                 render={({ field: { onChange, value } }) => (
                   <Select
+                    defaultValue={formDefaultData?.typeOfEmployment}
                     variant={VARIANT.BIG}
                     onChange={onChange}
                     objValue={value}
                     data={EmploymentType}
-                    placeholder="Choose a type of emlpoyment"
+                    placeholder="Choose a type of employment"
                     enteredValueColor="#1B1E27"
-                    error={errors.typeOfEmloyment}
+                    error={errors.typeOfEmployment}
                   />
                 )}
               />
             </div>
             <div className={styles.checkboxWrapper}>
               <label className={styles.checkbox}>
-                <Checkbox<VacancyFormCreationTypes>
+                <Checkbox<FieldsFormTypes>
                   nameGroup="remote"
                   register={register}
                 />
@@ -227,7 +240,7 @@ export const VacancyFormCreate = () => {
           </div>
           <div className={styles.labeledField}>
             <p className={styles.label}>Income level</p>
-            <Input<VacancyFormCreationTypes>
+            <Input<FieldsFormTypes>
               name="incomeLevel"
               isIcon={false}
               placeholder="from $10,000"
@@ -242,13 +255,11 @@ export const VacancyFormCreate = () => {
           {dataTextareas.map(({ title, nameFiledForm, placeholder, id }) => (
             <div key={id} className={styles.textarea}>
               <h2 className={styles.textAreaTitle}>{title}</h2>
-              <Textarea<VacancyFormCreationTypes>
-                name={nameFiledForm as keyof VacancyFormCreationTypes}
+              <Textarea<FieldsFormTypes>
+                name={nameFiledForm as keyof FieldsFormTypes}
                 placeholder={placeholder}
                 error={
-                  errors[
-                    nameFiledForm as keyof VacancyFormCreationTypes
-                  ] as FieldError
+                  errors[nameFiledForm as keyof FieldsFormTypes] as FieldError
                 }
                 register={register}
               />
@@ -265,7 +276,7 @@ export const VacancyFormCreate = () => {
             Select the required type of accommodation
           </p>
           <div className={styles.settingsCards}>
-            <CardOption<VacancyFormCreationTypes>
+            <CardOption<FieldsFormTypes>
               numberVacancies={1}
               nameGroup="publishingSettings"
               title="Single occupancy"
@@ -275,7 +286,7 @@ export const VacancyFormCreate = () => {
               value="single"
               register={register}
             />
-            <CardOption<VacancyFormCreationTypes>
+            <CardOption<FieldsFormTypes>
               numberVacancies={10}
               title="Job package"
               description="Package of ten vacancies with auto-renewal option"
@@ -346,7 +357,7 @@ export const VacancyFormCreate = () => {
           size="l"
           className={styles.buttonPublish}
         >
-          Publish
+          {defaultDataForm ? <>Save changes</> : <>Publish</>}
         </Button>
       </div>
     </form>

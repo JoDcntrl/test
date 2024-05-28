@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { VacancyFormCreate } from "@/modules/vacancies/components/vacancyFormCreation";
+import { VacancyForm } from "@/modules/vacancies/components/VacancyForm";
 
 import styles from "./styles.module.scss";
 
@@ -21,7 +21,7 @@ export const CreationVacancy = () => (
         </Link>
       </div>
       <h1 className={styles.title}>Job creation</h1>
-      <VacancyFormCreate />
+      <VacancyForm defaultDataForm={null} />
     </div>
   </div>
 );

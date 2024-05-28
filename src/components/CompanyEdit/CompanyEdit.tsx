@@ -29,11 +29,12 @@ import styles from "./CompanyEdit.module.scss";
 const CompanyEdit: React.FC = () => {
   const [formDefaultData, setFormDefaultData] =
     useState<CompanyEditFormTypes>();
+    
   const [links, setLinks] = useState<{ id: string; value: string | null }[]>(
     []
   );
 
-  const [acitveLogo, setActiveLogo] = useState<boolean>(false);
+  const [activeLogo, setActiveLogo] = useState<boolean>(false);
 
   const [activeQuestion, setActiveQuestion] = useState<boolean>(false);
 
@@ -57,8 +58,6 @@ const CompanyEdit: React.FC = () => {
       setFormDefaultData(JSON.parse(formDataCompany));
     }
   }, [reset]);
-
-  console.log(formDefaultData?.city);
 
   const linkLogoValue = watch("linkLogo");
 
@@ -161,7 +160,7 @@ const CompanyEdit: React.FC = () => {
                       return (
                         <div>
                           <Select
-                            valueDefault={formDefaultData?.industry}
+                            defaultValue={formDefaultData?.industry}
                             color="#1B1E27"
                             onChange={onChange}
                             objValue={value}
@@ -184,7 +183,7 @@ const CompanyEdit: React.FC = () => {
                       return (
                         <div>
                           <Select
-                            valueDefault={formDefaultData?.size}
+                            defaultValue={formDefaultData?.size}
                             color="#1B1E27"
                             onChange={onChange}
                             objValue={value}
@@ -221,7 +220,7 @@ const CompanyEdit: React.FC = () => {
                       return (
                         <div>
                           <Select
-                            valueDefault={formDefaultData?.city}
+                            defaultValue={formDefaultData?.city}
                             color="#1B1E27"
                             onChange={onChange}
                             objValue={value}
@@ -280,7 +279,7 @@ const CompanyEdit: React.FC = () => {
             </section>
           </main>
           <aside className={styles.asideCreationLogo}>
-            {!acitveLogo ? (
+            {!activeLogo ? (
               <Image
                 className={styles.logoEmpty}
                 src={LogoEmpty}

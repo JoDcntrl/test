@@ -3,7 +3,7 @@ import Layout from "@/components/Layout/Layout";
 
 import styles from "@/app/page.module.css";
 
-const PageVacancie = () => (
+const PageVacancyEdit = () => (
   <main className={styles.main}>
     <Layout wide={true}>
       <EditVacancy />
@@ -11,4 +11,4 @@ const PageVacancie = () => (
   </main>
 );
 
-export default PageVacancie;
+export default PageVacancyEdit;
